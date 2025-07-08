@@ -100,12 +100,13 @@ export function initAnimations() {
   // Animación de las skills
   gsap.utils.toArray('.skill-tag').forEach((skill, index) => {
     gsap.fromTo(skill, 
-      { x: -50, opacity: 0 },
+      { x: -50, opacity: 0, scale: 0.8 },
       {
         x: 0,
         opacity: 1,
-        duration: 0.6,
-        ease: 'power2.out',
+        scale: 1,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
         delay: index * 0.1,
         scrollTrigger: {
           trigger: skill,
@@ -114,6 +115,17 @@ export function initAnimations() {
         }
       }
     );
+  });
+  
+  // Animación de hover para skills
+  gsap.utils.toArray('.skill-tag').forEach((skill) => {
+    skill.addEventListener('mouseenter', () => {
+      gsap.to(skill, { scale: 1.05, y: -5, duration: 0.3, ease: 'power2.out' });
+    });
+    
+    skill.addEventListener('mouseleave', () => {
+      gsap.to(skill, { scale: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+    });
   });
 
   // Animación de las cajas de información en About
