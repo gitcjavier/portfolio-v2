@@ -1,19 +1,19 @@
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-800">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-100">
   <nav class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
       <div class="text-xl font-bold">
-        <span class="text-white">Developer</span>
+        <span class="text-gray-900">Developer</span>
       </div>
       
       <div class="hidden md:flex items-center space-x-8">
-        <a href="#home" class="text-gray-300 hover:text-white transition-colors duration-200">Inicio</a>
-        <a href="#about" class="text-gray-300 hover:text-white transition-colors duration-200">Sobre mí</a>
-        <a href="#projects" class="text-gray-300 hover:text-white transition-colors duration-200">Proyectos</a>
-        <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-200">Contacto</a>
+        <a href="#home" class="nav-link text-gray-600 hover:text-gray-900 transition-colors duration-300 relative">Home</a>
+        <a href="#about" class="nav-link text-gray-600 hover:text-gray-900 transition-colors duration-300 relative">About</a>
+        <a href="#projects" class="nav-link text-gray-600 hover:text-gray-900 transition-colors duration-300 relative">Work</a>
+        <a href="#contact" class="nav-link text-gray-600 hover:text-gray-900 transition-colors duration-300 relative">Contact</a>
       </div>
       
       <div class="md:hidden">
-        <button class="text-gray-300 hover:text-white">
+        <button class="text-gray-600 hover:text-gray-900">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -22,3 +22,20 @@
     </div>
   </nav>
 </header>
+
+<style>
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+</style>
