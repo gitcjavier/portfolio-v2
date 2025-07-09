@@ -336,6 +336,20 @@ export function initAnimations() {
     end: 99999,
     toggleClass: { className: 'scrolled', targets: 'header' }
   });
+
+  // Floating image scroll fade effect
+  const floatingImage = document.querySelector('.floating-image');
+  if (floatingImage) {
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const opacity = Math.max(0, 1 - progress * 2);
+        gsap.set(floatingImage, { opacity: opacity });
+      }
+    });
+  }
 }
 
 // Initialize animations when DOM is ready
