@@ -39,11 +39,6 @@ export function initAnimations() {
       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 
       '-=0.3'
     )
-    .fromTo('.hero-image', 
-      { x: 50, opacity: 0 },
-      { x: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 
-      '-=0.5'
-    )
     .fromTo('.scroll-indicator', 
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 
@@ -341,6 +336,20 @@ export function initAnimations() {
     end: 99999,
     toggleClass: { className: 'scrolled', targets: 'header' }
   });
+
+  // Floating image scroll fade effect
+  const floatingImage = document.querySelector('.floating-image');
+  if (floatingImage) {
+    ScrollTrigger.create({
+      start: 'top top',
+      end: 'bottom bottom',
+      onUpdate: (self) => {
+        const progress = self.progress;
+        const opacity = Math.max(0, 1 - progress * 2);
+        gsap.set(floatingImage, { opacity: opacity });
+      }
+    });
+  }
 }
 
 // Initialize animations when DOM is ready
