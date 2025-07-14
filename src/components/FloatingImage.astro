@@ -1,0 +1,45 @@
+---
+---
+
+<div class="floating-image fixed right-12 top-1/3 transform -translate-y-1/2 z-40 opacity-100 transition-opacity duration-500">
+  <div class="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-xl border-4 border-blue-100/30 backdrop-blur-sm">
+    <img 
+      src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&dpr=2" 
+      alt="Floating avatar" 
+      class="w-full h-full object-cover"
+    />
+  </div>
+</div>
+
+<style>
+  .floating-image {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(-50%) translateX(0);
+    }
+    50% {
+      transform: translateY(-50%) translateX(-10px);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .floating-image {
+      right: 1.5rem;
+      top: 25%;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .floating-image {
+      right: 1rem;
+    }
+    
+    .floating-image .w-32 {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+</style>
