@@ -22,8 +22,8 @@ const { title } = Astro.props;
     <slot />
     
     <script>
-      import { initAnimations } from '../scripts/animations.js';
-      import { initThemeToggle } from '../scripts/theme.js';
+      import { initAnimations } from '~/scripts/animations.js';
+      import { initThemeToggle } from '~/scripts/theme.js';
       
       // Initialize animations when the DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
