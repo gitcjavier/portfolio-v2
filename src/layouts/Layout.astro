@@ -22,8 +22,8 @@ const { title } = Astro.props;
     <slot />
     
     <script>
-      import { initAnimations } from '~/scripts/animations.js';
-      import { initThemeToggle } from '~/scripts/theme.js';
+      import { initAnimations } from '../scripts/animations.js';
+      import { initThemeToggle } from '../scripts/theme.js';
       
       // Initialize animations when the DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
@@ -46,13 +46,13 @@ const { title } = Astro.props;
   
   /* Header scroll effect */
   header.scrolled {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95) !important;
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   
   .dark header.scrolled {
-    background: rgba(17, 24, 39, 0.95);
+    background: rgba(17, 24, 39, 0.95) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
   
