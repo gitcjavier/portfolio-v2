@@ -1,4 +1,4 @@
-<section id="home" class="min-h-screen flex items-center justify-center bg-white relative overflow-hidden">
+<section id="home" class="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900 relative overflow-hidden">
   <div class="container mx-auto px-6">
     <div class="max-w-6xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -8,15 +8,15 @@
         </div>
         
         <h1 class="hero-name text-6xl md:text-8xl font-bold text-gray-900 mb-6 leading-tight">
-          <div class="name-line opacity-0">John</div>
-          <div class="name-line opacity-0">Developer</div>
+          <div class="name-line opacity-0 dark:text-gray-100">John</div>
+          <div class="name-line opacity-0 dark:text-gray-100">Developer</div>
         </h1>
         
-        <div class="hero-subtitle text-xl md:text-2xl text-gray-600 mb-8 font-light opacity-0">
+        <div class="hero-subtitle text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light opacity-0">
           I build digital products & experiences
         </div>
         
-        <p class="hero-description text-lg text-gray-500 mb-12 max-w-xl leading-relaxed opacity-0">
+        <p class="hero-description text-lg text-gray-500 dark:text-gray-400 mb-12 max-w-xl leading-relaxed opacity-0">
           Currently focused on creating intuitive interfaces and robust backend systems. 
           I love turning complex problems into simple, beautiful solutions.
         </p>
@@ -24,7 +24,7 @@
         <div class="hero-buttons flex flex-col sm:flex-row gap-4 opacity-0">
           <a 
             href="#projects" 
-            class="cta-primary inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-all duration-300 group"
+            class="cta-primary inline-flex items-center px-6 py-3 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-200 transition-all duration-300 group"
           >
             View My Work
             <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@
           </a>
           <a 
             href="mailto:hello@developer.com" 
-            class="cta-secondary inline-flex items-center px-6 py-3 text-gray-700 hover:text-gray-900 transition-all duration-300 group"
+            class="cta-secondary inline-flex items-center px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 transition-all duration-300 group"
           >
             Say Hello
             <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -55,13 +55,13 @@
       </div>
       
       <div class="scroll-indicator absolute bottom-8 left-1/2 transform -translate-x-1/2 opacity-0">
-        <div class="scroll-text text-sm text-gray-400 mb-2 text-center">Scroll</div>
-        <div class="scroll-line w-px h-12 bg-gray-300 mx-auto"></div>
+        <div class="scroll-text text-sm text-gray-400 dark:text-gray-500 mb-2 text-center">Scroll</div>
+        <div class="scroll-line w-px h-12 bg-gray-300 dark:bg-gray-600 mx-auto"></div>
       </div>
     </div>
   </div>
   
   <!-- Decorative elements -->
-  <div class="hero-decoration absolute top-20 right-20 w-32 h-32 bg-blue-50 rounded-full opacity-0"></div>
-  <div class="hero-decoration absolute bottom-32 left-20 w-24 h-24 bg-purple-50 rounded-full opacity-0"></div>
+  <div class="hero-decoration absolute top-20 right-20 w-32 h-32 bg-blue-50 dark:bg-blue-900/20 rounded-full opacity-0"></div>
+  <div class="hero-decoration absolute bottom-32 left-20 w-24 h-24 bg-purple-50 dark:bg-purple-900/20 rounded-full opacity-0"></div>
 </section>

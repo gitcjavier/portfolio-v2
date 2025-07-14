@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -18,15 +18,17 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-white text-gray-900 font-sans antialiased">
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans antialiased transition-colors duration-300">
     <slot />
     
     <script>
       import { initAnimations } from '../scripts/animations.js';
+      import { initThemeToggle } from '../scripts/theme.js';
       
       // Initialize animations when the DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
         initAnimations();
+        initThemeToggle();
       });
     </script>
   </body>
@@ -49,6 +51,11 @@ const { title } = Astro.props;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   
+  .dark header.scrolled {
+    background: rgba(17, 24, 39, 0.95) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
   /* Smooth transitions */
   * {
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
@@ -63,13 +70,25 @@ const { title } = Astro.props;
     background: #f1f5f9;
   }
   
+  .dark ::-webkit-scrollbar-track {
+    background: #374151;
+  }
+  
   ::-webkit-scrollbar-thumb {
     background: #cbd5e1;
     border-radius: 4px;
   }
   
+  .dark ::-webkit-scrollbar-thumb {
+    background: #6b7280;
+  }
+  
   ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
   }
   
   /* Focus styles */
@@ -81,9 +100,21 @@ const { title } = Astro.props;
     outline-offset: 2px;
   }
   
+  .dark button:focus,
+  .dark input:focus,
+  .dark textarea:focus,
+  .dark a:focus {
+    outline: 2px solid #60a5fa;
+  }
+  
   /* Selection styles */
   ::selection {
     background: #3b82f6;
     color: white;
+  }
+  
+  .dark ::selection {
+    background: #60a5fa;
+    color: #111827;
   }
 </style>
