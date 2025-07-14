@@ -1,4 +1,4 @@
-<section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50/30 to-indigo-100/20 relative overflow-hidden">
+<section id="home" class="min-h-screen flex items-center justify-center  relative overflow-hidden">
   <div class="container mx-auto px-6">
     <div class="max-w-4xl mx-auto">
       <div class="text-left">
@@ -6,11 +6,22 @@
           👋 Hello, I'm
         </div>
         
-        <h1 class="hero-name text-6xl md:text-8xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-900 bg-clip-text text-transparent mb-6 leading-tight">
-          <div class="name-line opacity-0">John</div>
-          <div class="name-line opacity-0">Developer</div>
-        </h1>
+        <div class="flex items-center gap-20 mb-12">
+          <h1 class="hero-name text-6xl md:text-8xl font-bold bg-clip-text mb-6 leading-tight">
+            <div class="name-line ">John</div>
+            <div class="name-line ">Developer</div>
+          </h1>
+
+          <div class=" rounded-full overflow-hidden shadow-inner border border-blue-100/30 backdrop-blur-sm flex-shrink-0">
+            <img 
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=200&h=200&dpr=2" 
+              alt="Floating avatar" 
+              class="flex items-center w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        </div>
         
+
         <div class="hero-subtitle text-xl md:text-2xl text-slate-600 mb-8 font-light opacity-0">
           I build digital products & experiences
         </div>
@@ -50,6 +61,10 @@
   </div>
   
   <!-- Decorative elements -->
-  <div class="hero-decoration absolute top-20 right-20 w-32 h-32 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-full opacity-0"></div>
-  <div class="hero-decoration absolute bottom-32 left-20 w-24 h-24 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full opacity-0"></div>
+  <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
+    <div class="bg-gradient-to-r from-blue-100 to-indigo-100 opacity-20 absolute inset-0"></div>
+    <div class="absolute top-10 right-10 w-64 h-64 rounded-full bg-blue-50/30 blur-lg"></div>
+    <div class="absolute bottom-10 left-10 w-64 h-64 rounded-full bg-indigo-50/30 blur-lg"></div>
+    <div class="absolute top-1/2 left-1/2 w-96 h-96 rounded-full bg-blue-100/20 blur-xl transform -translate-x-1/2 -translate-y-1/2"></div>
+  </div>
 </section>

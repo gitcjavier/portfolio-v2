@@ -5,11 +5,7 @@ import { TextPlugin } from 'gsap/TextPlugin';
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 export function initAnimations() {
-  // Header animation
-  gsap.fromTo('header', 
-    { y: -100, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.5 }
-  );
+
 
   // Hero section animations
   const heroTl = gsap.timeline({ delay: 1 });
@@ -247,16 +243,16 @@ export function initAnimations() {
   // Contact items stagger animation
   gsap.utils.toArray('.contact-item').forEach((item, index) => {
     gsap.fromTo(item, 
-      { x: -30, opacity: 0 },
+      { x: -10, opacity: 1 },
       {
         x: 0,
         opacity: 1,
-        duration: 0.8,
+        duration: 1,
         ease: 'power3.out',
         delay: index * 0.1,
         scrollTrigger: {
           trigger: item,
-          start: 'top 90%',
+          start: 'top 95%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -305,7 +301,7 @@ export function initAnimations() {
   });
 
   // Smooth scrolling for navigation links
-  gsap.utils.toArray('a[href^="#"]').forEach((link) => {
+  gsap.utils.toArray('a[href^=""]').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
@@ -332,24 +328,12 @@ export function initAnimations() {
 
   // Header background change on scroll
   ScrollTrigger.create({
-    start: 'top -80',
-    end: 99999,
+    start: 'top -90',
+    end: 10,
     toggleClass: { className: 'scrolled', targets: 'header' }
   });
 
   // Floating image scroll fade effect
-  const floatingImage = document.querySelector('.floating-image');
-  if (floatingImage) {
-    ScrollTrigger.create({
-      start: 'top top',
-      end: 'bottom bottom',
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const opacity = Math.max(0, 1 - progress * 2);
-        gsap.set(floatingImage, { opacity: opacity });
-      }
-    });
-  }
 }
 
 // Initialize animations when DOM is ready
