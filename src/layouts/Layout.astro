@@ -1,25 +1,32 @@
 ---
 export interface Props {
   title: string;
+  description: string;
+  keywords: string;
+  author: string;
+  
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={Astro.props.description} />
+		<meta name="keywords" content={Astro.props.keywords} />
+		<meta name="author" content={Astro.props.author} />
+		<title>{Astro.props.title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
   </head>
-  <body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 text-slate-900 font-sans antialiased">
+  <body class="bg-[#0F0F0F] text-white font-sans antialiased min-h-screen overflow-x-hidden">
     
     <slot />
     
@@ -35,6 +42,9 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
+  	:root {
+		color-scheme: light dark;
+	}
   html {
     scroll-behavior: smooth;
   }
@@ -42,13 +52,8 @@ const { title } = Astro.props;
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
-  }
-  
-  /* Header scroll effect */
-  header.scrolled {
-    background: rgba(248, 250, 252, 0.95) !important;
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+    background: #0F0F0F;
+    color: white;
   }
   
   /* Smooth transitions */
@@ -62,16 +67,16 @@ const { title } = Astro.props;
   }
   
   ::-webkit-scrollbar-track {
-    background: #f8fafc;
+    background: #1a1a1a;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #3b82f6;
+    background: #333;
     border-radius: 4px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #2563eb;
+    background: #444;
   }
   
   /* Focus styles */
@@ -79,13 +84,13 @@ const { title } = Astro.props;
   input:focus,
   textarea:focus,
   a:focus {
-    outline: 2px solid #3b82f6;
+    outline: 2px solid #fff;
     outline-offset: 2px;
   }
   
   /* Selection styles */
   ::selection {
-    background: #3b82f6;
-    color: white;
+    background: #fff;
+    color: #0F0F0F;
   }
 </style>

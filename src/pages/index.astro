@@ -6,15 +6,19 @@ import About from '../components/About.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import FloatingImage from '../components/FloatingImage.astro';
+import "../styles/global.css";
 ---
 
-
-<Layout title="Developer Portfolio">
+<Layout title="Portfolio de Javier Castro Retamal - Desarrollador Web"
+		description="Portfolio de Javier Castro Retamal - Desarrollador Web"
+		keywords="Portfolio, Javier Castro Retamal, Desarrollador Web, Diseño Web, Aplicaciones Web"
+		author="Javier Castro Retamal">
   <Header />
-  <Hero />
-  <About />
-  <Projects />
-  <Contact />
+  <main class="relative">
+    <Hero />
+    <About />
+    <Projects />
+    <Contact />
+  </main>
   <Footer />
 </Layout>
