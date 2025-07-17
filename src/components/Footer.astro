@@ -1,11 +1,11 @@
 ---
 import "../styles/global.css";
 ---
-<footer class="py-8 bg-black">
+<footer class="py-8 bg-black dark:bg-gray-950 transition-colors duration-300">
   <div class="container mx-auto px-4">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-      <p class="text-white/70 animate-fade-in-up">
-        © 2024 Portfolio. Todos los derechos reservados.
+      <p class="text-white/70 dark:text-white/60 animate-fade-in-up transition-colors duration-300">
+        © 2024 Javoru - Portfolio. 
       </p>
 
       <div class="flex space-x-6 animate-fade-in-up delay-1">
@@ -38,7 +38,7 @@ import "../styles/global.css";
         </a>
 
         <a 
-          href="mailto:tu@email.com" 
+          href="mailto:icastroretamal@gmail.com" 
           class="footer-link group"
           aria-label="Email"
         >
@@ -55,10 +55,10 @@ import "../styles/global.css";
 
 <style>
   .footer-link {
-    @apply text-white/70 hover:text-blue-400 transition-colors;
+    @apply text-white/70 dark:text-white/60 hover:text-blue-400 dark:hover:text-blue-300 transition-colors;
   }
 
   .icon-wrapper {
-    @apply p-2 rounded-lg bg-white/10 group-hover:bg-blue-500/20 transform group-hover:scale-110 transition-all;
+    @apply p-2 rounded-lg bg-white/10 dark:bg-white/5 group-hover:bg-blue-500/20 dark:group-hover:bg-blue-500/30 transform group-hover:scale-110 transition-all;
   }
 </style>

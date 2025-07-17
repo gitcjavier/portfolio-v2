@@ -1,0 +1,39 @@
+---
+import ExperienceItem from "./ExperienceItem.astro";
+
+const EXPERIENCE = [
+    {
+        date: "Actualmente...",
+        title: "👨‍💻 Jefe de Soporte IT",
+        description: "Encargado del soporte técnico e implementación de una solución integral de call center (CRM web + Telefonía IP). Capacito usuarios, coordino reuniones y lidero la puesta en marcha de entornos productivos. Desarrollo procedimientos almacenados en Transact-SQL para generar reportes personalizados, y realizo configuraciones avanzadas de Asterisk (SIP, extensiones, reglas de marcado). Trabajo con tecnologías como JavaScript (para integraciones web) y Transact-SQL en bases de datos MS SQL Server.",
+        link: "https://www.google.com",
+    },
+    {
+        date: "Enero 2020 - Noviembre 2023",
+        title: "Data Engineer para LATAM (a través de consultora)",
+        description: "Diseñé y mantuve pipelines de datos para poblar el Data Lake de Google Cloud con información proveniente de múltiples orígenes como Oracle, SQL Server, archivos planos y Excel. Usé herramientas como Git y Bitbucket para versionar los scripts y desplegar DAGs en Apache Airflow, orquestando flujos complejos hacia BigQuery mediante Dataflow. Automaticé procesos clave relacionados con reportes de vuelo, bitácoras y ajustes contables, mejorando la trazabilidad y disponibilidad de datos para el área financiera.",
+        link: "https://www.google.com",
+    },
+    {
+        date: "Marzo 2015 - Agosto 2019",
+        title: "Soporte Técnico IT",
+        description: "Encargado de la atención de incidentes y solicitudes de soporte técnico de usuarios de la empresa. Realicé tareas de instalación, configuración y mantenimiento de software y hardware. También participé en proyectos de mejora de sistemas y ofrecía capacitación a usuarios finales.",
+        link: "https://www.google.com",
+    }
+]
+---
+
+<section class="py-16 px-4 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold text-white mb-4">💼 Experiencia Laboral</h2>
+        <p class="text-gray-300 text-lg">Mi trayectoria profesional en el mundo de la tecnología</p>
+    </div>
+    
+    <ol class="relative border-s border-gray-300 dark:border-gray-600 ml-3">
+        {
+            EXPERIENCE.map((experience) => (
+                <ExperienceItem {...experience} />
+            ))
+        }
+    </ol>
+</section>

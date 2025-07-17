@@ -1,163 +1,72 @@
-<section id="projects" class="py-20 bg-white">
+<section id="projects" class="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
   <div class="container mx-auto px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl font-bold mb-16 text-center">
-        <span class="gradient-text">Mis</span> Proyectos
+        <span class="inline-flex items-center"><svg class="w-8 h-8 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg></span>
+        <span class="text-black dark:text-white transition-colors duration-300">Proyectos</span>
       </h2>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Project 1 -->
-        <div class="project-item opacity-0">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="project-image order-2 md:order-1">
-              <img src="/projects/project1.svg" alt="Analytics Dashboard" class="w-full h-auto rounded-lg shadow-lg"/>
+      <div class="flex flex-col space-y-16">
+        <!-- Project 1: Poster Mob Psycho 100 -->
+        <div class="project-item bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/3 bg-gradient-to-br from-purple-500/20 to-pink-500/20 dark:from-purple-500/10 dark:to-pink-500/10">
+              <img src="/projects/project1.svg" alt="Poster Mob Psycho 100" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" decoding="sync"/>
             </div>
             
-            <div class="project-content order-1 md:order-2">
-              <h3 class="text-2xl md:text-3xl font-bold text-black mb-4">
-                Analytics Dashboard
+            <div class="md:w-2/3 p-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-black dark:text-white transition-colors duration-300 mb-2">
+                Poster Mob Psycho 100
               </h3>
-              <p class="text-black/70 text-lg mb-6 leading-relaxed">
-                A comprehensive analytics platform that helps businesses track their performance 
-                with real-time data visualization and intelligent insights. Built with modern 
-                technologies for optimal performance.
-              </p>
               
-              <div class="tech-stack flex flex-wrap gap-2 mb-6">
-                <span class="px-3 py-1 bg-[#1768E9] text-white rounded-full text-sm font-medium">React</span>
-                <span class="px-3 py-1 bg-black text-white rounded-full text-sm font-medium">Node.js</span>
-                <span class="px-3 py-1 bg-[#1768E9] text-white rounded-full text-sm font-medium">PostgreSQL</span>
-                <span class="px-3 py-1 bg-black text-white rounded-full text-sm font-medium">Chart.js</span>
+              <div class="mb-4">
+                <span class="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium transition-colors duration-300">
+                  <svg class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 15.5L15.5 15.5C15.5 14.12 14.38 13 13 13H11C9.62 13 8.5 14.12 8.5 15.5V15.5C8.5 16.88 9.62 18 11 18H13C14.38 18 15.5 16.88 15.5 15.5ZM20.5 15.5L20.5 15.5C20.5 14.12 19.38 13 18 13H16C14.62 13 13.5 14.12 13.5 15.5V15.5C13.5 16.88 14.62 18 16 18H18C19.38 18 20.5 16.88 20.5 15.5ZM10.5 15.5L10.5 15.5C10.5 14.12 9.38 13 8 13H6C4.62 13 3.5 14.12 3.5 15.5V15.5C3.5 16.88 4.62 18 6 18H8C9.38 18 10.5 16.88 10.5 15.5Z"/></svg>
+                  Photoshop
+                </span>
               </div>
               
-              <div class="project-links flex space-x-4">
-                <a href="#" class="inline-flex items-center text-black hover:text-[#1768E9] transition-colors group">
-                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  View Code
-                  <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-                <a href="#" class="inline-flex items-center text-gray-700 hover:text-gray-900 transition-colors group">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  Live Demo
-                  <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
+              <p class="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed transition-colors duration-300">
+                Poster para el anime Mob Psycho 100
+              </p>
+              
+              <div class="project-links">
+                <a href="#" class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group">
+                  <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12C0 17.31 3.435 21.795 8.205 23.385C8.805 23.49 9.03 23.13 9.03 22.815C9.03 22.53 9.015 21.585 9.015 20.58C6 21.135 5.22 19.845 4.98 19.17C4.845 18.825 4.26 17.76 3.75 17.475C3.33 17.25 2.73 16.695 3.735 16.68C4.68 16.665 5.355 17.55 5.58 17.91C6.66 19.725 8.385 19.215 9.075 18.9C9.18 18.12 9.495 17.595 9.84 17.295C7.17 16.995 4.38 15.96 4.38 11.37C4.38 10.065 4.845 8.985 5.61 8.145C5.49 7.845 5.07 6.615 5.73 4.965C5.73 4.965 6.735 4.65 9.03 6.195C9.99 5.925 11.01 5.79 12.03 5.79C13.05 5.79 14.07 5.925 15.03 6.195C17.325 4.635 18.33 4.965 18.33 4.965C18.99 6.615 18.57 7.845 18.45 8.145C19.215 8.985 19.68 10.05 19.68 11.37C19.68 15.975 16.875 16.995 14.205 17.295C14.64 17.67 15.015 18.39 15.015 19.515C15.015 21.12 15 22.41 15 22.815C15 23.13 15.225 23.505 15.825 23.385C18.2072 22.5807 20.2772 21.0497 21.7437 19.0074C23.2101 16.965 23.9993 14.5143 24 12C24 5.37 18.63 0 12 0Z"/></svg>
+                  Behance
                 </a>
               </div>
             </div>
           </div>
         </div>
         
-        <!-- Project 2 -->
-        <div class="project-item opacity-0">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="project-content">
-              <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                E-commerce Platform
-              </h3>
-              <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                A full-featured e-commerce solution with modern design, secure payments, 
-                and seamless user experience. Includes admin dashboard, inventory management, 
-                and real-time order tracking.
-              </p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6">
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Vue.js</span>
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Express</span>
-                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">MongoDB</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Stripe</span>
-              </div>
-              
-              <div class="project-links flex space-x-4">
-                <a href="#" class="inline-flex items-center text-gray-700 hover:text-gray-900 transition-colors group">
-                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  View Code
-                  <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-                <a href="#" class="inline-flex items-center text-gray-700 hover:text-gray-900 transition-colors group">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  Live Demo
-                  <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-              </div>
+        <!-- Project 2: Chetomi -->
+        <div class="project-item bg-gray-50 dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl">
+          <div class="flex flex-col md:flex-row">
+            <div class="md:w-1/3 bg-gradient-to-br from-blue-500/20 to-green-500/20 dark:from-blue-500/10 dark:to-green-500/10">
+              <img src="/projects/project2.svg" alt="Chetomi" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" decoding="sync"/>
             </div>
             
-            <div class="project-image">
-              <div class="aspect-video bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center shadow-lg">
-                <div class="text-center">
-                  <svg class="w-16 h-16 text-green-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
-                  </svg>
-                  <p class="text-green-600 font-medium">E-commerce Platform</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Project 3 -->
-        <div class="project-item opacity-0">
-          <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="project-image order-2 md:order-1">
-              <div class="aspect-video bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center shadow-lg">
-                <div class="text-center">
-                  <svg class="w-16 h-16 text-purple-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                  </svg>
-                  <p class="text-purple-600 font-medium">Mobile App</p>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content order-1 md:order-2">
-              <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Task Management App
+            <div class="md:w-2/3 p-8">
+              <h3 class="text-2xl md:text-3xl font-bold text-black dark:text-white transition-colors duration-300 mb-2">
+                Chetomi
               </h3>
-              <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                A cross-platform mobile application for team collaboration and task management. 
-                Features real-time synchronization, offline support, and intuitive drag-and-drop 
-                interface for maximum productivity.
+              
+              <div class="mb-4">
+                <span class="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-medium transition-colors duration-300">
+                  <svg class="w-4 h-4 mr-1" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7L12 12L22 7L12 2Z"/><path d="M2 17L12 22L22 17"/><path d="M2 12L12 17L22 12"/></svg>
+                  Jumpseller
+                </span>
+              </div>
+              
+              <p class="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed transition-colors duration-300">
+                Ecommerce de Chetomi - Comida Argentina
               </p>
               
-              <div class="tech-stack flex flex-wrap gap-2 mb-6">
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">React Native</span>
-                <span class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">Firebase</span>
-                <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Redux</span>
-                <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">Expo</span>
-              </div>
-              
-              <div class="project-links flex space-x-4">
-                <a href="#" class="inline-flex items-center text-gray-700 hover:text-gray-900 transition-colors group">
-                  <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  View Code
-                  <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
-                </a>
-                <a href="#" class="inline-flex items-center text-gray-700 hover:text-gray-900 transition-colors group">
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  App Store
-                  <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                  </svg>
+              <div class="project-links">
+                <a href="#" class="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300 group">
+                  <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                  Preview
                 </a>
               </div>
             </div>

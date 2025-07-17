@@ -24,18 +24,36 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link rel="preload" href="/img/javoru2.webp" as="image">
+    <link rel="preload" href="/projects/project1.svg" as="image">
+    <link rel="preload" href="/projects/project2.svg" as="image">
+    <style>
+      .page-content {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .page-loaded .page-content {
+        opacity: 1;
+      }
+    </style>
   </head>
-  <body class="bg-[#0F0F0F] text-white font-sans antialiased min-h-screen overflow-x-hidden">
-    
-    <slot />
+  <body class="font-sans antialiased min-h-screen overflow-x-hidden">
+    <div class="page-content">
+      <slot />
+    </div>
     
     <script>
       import { initAnimations } from '../scripts/animations.js';
       
       // Initialize animations when the DOM is ready
       document.addEventListener('DOMContentLoaded', () => {
-        initAnimations();
+        // Add a small delay to ensure all resources are loaded
+        setTimeout(() => {
+          // Add the loaded class to show the content with fade
+          document.body.classList.add('page-loaded');
+          // Initialize animations
+          initAnimations();
+        }, 100);
       });
     </script>
   </body>
@@ -52,8 +70,7 @@ const { title } = Astro.props;
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
-    background: #0F0F0F;
-    color: white;
+    @apply bg-white dark:bg-[#0F0F0F] text-black dark:text-white transition-colors duration-300;
   }
   
   /* Smooth transitions */
@@ -67,16 +84,15 @@ const { title } = Astro.props;
   }
   
   ::-webkit-scrollbar-track {
-    background: #1a1a1a;
+    @apply bg-gray-100 dark:bg-gray-900;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 4px;
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #444;
+    @apply bg-gray-400 dark:bg-gray-600;
   }
   
   /* Focus styles */
@@ -84,13 +100,11 @@ const { title } = Astro.props;
   input:focus,
   textarea:focus,
   a:focus {
-    outline: 2px solid #fff;
-    outline-offset: 2px;
+    @apply outline-2 outline-blue-500 dark:outline-blue-400 outline-offset-2;
   }
   
   /* Selection styles */
   ::selection {
-    background: #fff;
-    color: #0F0F0F;
+    @apply bg-blue-500 dark:bg-blue-600 text-white;
   }
 </style>

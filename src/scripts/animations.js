@@ -1,73 +1,21 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
 
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 export function initAnimations() {
-
-
-  // Hero section animations
-  const heroTl = gsap.timeline({ delay: 1 });
-  
-  heroTl
-    .fromTo('.hero-greeting', 
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }
-    )
-    .fromTo('.name-line', 
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', stagger: 0.2 }, 
-      '-=0.4'
-    )
-    .fromTo('.hero-subtitle', 
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 
-      '-=0.3'
-    )
-    .fromTo('.hero-description', 
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 
-      '-=0.3'
-    )
-    .fromTo('.hero-buttons', 
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 
-      '-=0.3'
-    )
-    .fromTo('.scroll-indicator', 
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out' }, 
-      '-=0.2'
-    )
-    .fromTo('.hero-decoration', 
-      { scale: 0, opacity: 0 },
-      { scale: 1, opacity: 1, duration: 1, ease: 'back.out(1.7)', stagger: 0.2 }, 
-      '-=0.5'
+  // Función para animar elementos en el viewport inicial con fade
+  function animateInitialViewportElements() {
+    const viewportElements = document.querySelectorAll('.hero-section img, .hero-section h1, .hero-section p, .hero-section .btn');
+    
+    gsap.fromTo(viewportElements, 
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5, ease: 'power2.out', stagger: 0.1 }
     );
-
-  // Typing animation for hero name
-  const names = ['John', 'Developer', 'Creator', 'Problem Solver'];
-  let currentIndex = 0;
-  
-  function typeNextName() {
-    const typingElement = document.querySelector('.typing-text');
-    if (typingElement) {
-      gsap.to(typingElement, {
-        duration: 1,
-        text: names[currentIndex],
-        ease: 'none',
-        onComplete: () => {
-          setTimeout(() => {
-            currentIndex = (currentIndex + 1) % names.length;
-            typeNextName();
-          }, 2000);
-        }
-      });
-    }
   }
-  
-  setTimeout(typeNextName, 2000);
+
+  // Llamar a la función para animar elementos del viewport inicial
+  animateInitialViewportElements();
 
   // Section animations with ScrollTrigger
   gsap.utils.toArray('.section-title').forEach((title) => {
@@ -103,22 +51,6 @@ export function initAnimations() {
     }
   );
 
-  gsap.fromTo('.skills-section', 
-    { y: 50, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: 'power3.out',
-      delay: 0.2,
-      scrollTrigger: {
-        trigger: '.skills-section',
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      }
-    }
-  );
-
   // Skill items stagger animation
   gsap.utils.toArray('.skill-item').forEach((item, index) => {
     gsap.fromTo(item, 
@@ -139,70 +71,18 @@ export function initAnimations() {
   });
 
   // Projects section animations
-  gsap.fromTo('#projects p', 
-    { y: 30, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '#projects p',
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      }
-    }
-  );
-
   gsap.utils.toArray('.project-item').forEach((project, index) => {
-    const isEven = index % 2 === 0;
-    
     gsap.fromTo(project, 
-      { y: 80, opacity: 0 },
+      { y: 30, opacity: 0 },
       {
         y: 0,
         opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
+        duration: 0.5,
+        ease: 'power2.out',
+        delay: index * 0.1,
         scrollTrigger: {
           trigger: project,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-
-    // Animate project content and image separately for better effect
-    const content = project.querySelector('.project-content');
-    const image = project.querySelector('.project-image');
-    
-    gsap.fromTo(content, 
-      { x: isEven ? -50 : 50, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.2,
-        scrollTrigger: {
-          trigger: project,
-          start: 'top 85%',
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-
-    gsap.fromTo(image, 
-      { x: isEven ? 50 : -50, opacity: 0 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        delay: 0.4,
-        scrollTrigger: {
-          trigger: project,
-          start: 'top 85%',
+          start: 'top 90%',
           toggleActions: 'play none none reverse'
         }
       }
@@ -210,21 +90,6 @@ export function initAnimations() {
   });
 
   // Contact section animations
-  gsap.fromTo('.contact-subtitle', 
-    { y: 30, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.contact-subtitle',
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      }
-    }
-  );
-
   gsap.fromTo('.contact-content', 
     { y: 50, opacity: 0 },
     {
@@ -239,25 +104,6 @@ export function initAnimations() {
       }
     }
   );
-
-  // Contact items stagger animation
-  gsap.utils.toArray('.contact-item').forEach((item, index) => {
-    gsap.fromTo(item, 
-      { x: -10, opacity: 1 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        delay: index * 0.1,
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 95%',
-          toggleActions: 'play none none reverse'
-        }
-      }
-    );
-  });
 
   // Form groups stagger animation
   gsap.utils.toArray('.form-group').forEach((group, index) => {
@@ -279,7 +125,7 @@ export function initAnimations() {
   });
 
   // Button hover animations
-  gsap.utils.toArray('.cta-primary, .cta-secondary, .submit-button').forEach((button) => {
+  gsap.utils.toArray('.btn').forEach((button) => {
     button.addEventListener('mouseenter', () => {
       gsap.to(button, { scale: 1.05, duration: 0.3, ease: 'power2.out' });
     });
@@ -289,51 +135,12 @@ export function initAnimations() {
     });
   });
 
-  // Skill item hover animations
-  gsap.utils.toArray('.skill-item').forEach((item) => {
-    item.addEventListener('mouseenter', () => {
-      gsap.to(item, { y: -5, duration: 0.3, ease: 'power2.out' });
-    });
-    
-    item.addEventListener('mouseleave', () => {
-      gsap.to(item, { y: 0, duration: 0.3, ease: 'power2.out' });
-    });
-  });
-
-  // Smooth scrolling for navigation links
-  gsap.utils.toArray('a[href^=""]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        gsap.to(window, {
-          duration: 1,
-          scrollTo: { y: target, offsetY: 80 },
-          ease: 'power3.inOut'
-        });
-      }
-    });
-  });
-
-  // Parallax effect for decorative elements
-  gsap.utils.toArray('.hero-decoration').forEach((decoration, index) => {
-    gsap.to(decoration, {
-      y: -50 * (index + 1),
-      rotation: 360,
-      duration: 20,
-      repeat: -1,
-      ease: 'none'
-    });
-  });
-
   // Header background change on scroll
   ScrollTrigger.create({
     start: 'top -90',
     end: 10,
     toggleClass: { className: 'scrolled', targets: 'header' }
   });
-
-  // Floating image scroll fade effect
 }
 
 // Initialize animations when DOM is ready
