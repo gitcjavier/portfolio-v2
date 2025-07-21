@@ -15,7 +15,8 @@
     padding: 0;
     min-height: 100vh;
     background-color: white;
-    @apply dark:bg-gray-900 transition-colors duration-300;
+    background-color: rgb(17, 24, 32);
+    transition: colors 300ms;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -26,7 +27,7 @@
 }
 
 @layer components {
-  .btn {
+    .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -37,8 +38,6 @@
   }
 
   .btn-primary {
-    background-color: rgb(37, 99, 235);
-    color: white;
     @apply dark:bg-blue-600 dark:hover:bg-blue-700;
   }
   
@@ -53,10 +52,24 @@
   }
 
   .btn-outline:hover {
-    background-color: rgb(37, 99, 235);
-    color: white;
-    @apply dark:bg-blue-600;
+  background-color: rgb(37, 99, 235);
+  color: white;
   }
+
+  .dark  .btn-outline:hover {
+    background-color: rgb(37, 99, 235);
+
+  }
+
+  .glass-card {
+    @apply p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center ;
+  }
+  
+  /* Variaciones si las necesitas */
+  .glass-card-sm {
+    @apply p-2 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center;
+  }
+
 
   .section-title {
     font-size: 2.25rem;
@@ -82,64 +95,23 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     padding: 1.5rem;
     transition: all 300ms;
-    @apply dark:bg-gray-800 dark:text-white dark:shadow-gray-900/30;
+    background-color: rgb(31, 41, 55);
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(17, 24, 39, 0.3);
   }
 
   .card:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
     box-shadow: 0 20px 25px -5px rgba(23, 23, 23, 0.5);
   }
+
+  .fade-up {
+  animation: fade-up 0.8s ease forwards;
+  opacity: 1;
+}
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease forwards;
-}
-
-.animate-slide-in {
-  animation: slideIn 0.6s ease forwards;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.6s ease forwards;
-}
-
-.delay-0 { animation-delay: 0s; }
-.delay-1 { animation-delay: 0.2s; }
-.delay-2 { animation-delay: 0.4s; }
-.delay-3 { animation-delay: 0.6s; }
+/* Animaciones simplificadas usando solo Tailwind CSS */
 
 .gradient-text {
   background-clip: text;
@@ -165,3 +137,4 @@
 .animated-border-button:hover {
   animation: border-animate 4s ease infinite;
 }
+

@@ -1,18 +1,23 @@
-<section id="about" class="py-20 bg-blue-600 dark:bg-blue-900 transition-colors duration-300">
+---
+import { ClientRouter } from "astro:transitions";
+---
+
+
+<section id="about" class="min-h-screen py-20 bg-blue-600 dark:bg-blue-900 transition-colors duration-300 flex items-center">
   <div class="container mx-auto px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold mb-16 text-center">
+    
+      <h2 class="text-4xl font-bold mb-16 py-5 text-center">
         <span class="gradient-text">Sobre</span> <span class="text-white">Mí</span>
       </h2>
       
       <div class="flex text-pretty gap-16 items-center">
-        <div class="space-y-8 animate-fade-in-up">
-          <p class="text-white text-lg leading-relaxed">
+        <div class="space-y-8 opacity-0 animate-fade-in duration-1000">
+          <p class="text-white text-lg leading-relaxed" style="animation-delay: 0.2s;">
             Soy un desarrollador full stack apasionado por crear experiencias web excepcionales. 
             Me especializo en tecnologías modernas y me mantengo constantemente actualizado con las últimas tendencias en desarrollo web.
           </p>
           
-          <p class="flex text-white text-lg leading-relaxed pt-2.5 pb-8 justify-center items-center">
+          <p class="flex text-white text-lg leading-relaxed pt-2.5 pb-8 justify-center items-center" style="animation-delay: 0.2s;">
             Mi enfoque se centra en escribir código limpio y mantenible, 
             crear interfaces intuitivas y asegurar que cada proyecto cumpla 
             con los más altos estándares de calidad y rendimiento.
@@ -29,57 +34,57 @@
             >
               Descargar CV
             </a>
-            <a 
+            <a
+              transition:animate="fade"
+              transition:name="experiences"
+              role="link"
               href="/experiences" 
+              id="experience-btn"
               class="animated-border-button inline-flex bg-transparent text-white items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800/20 dark:hover:bg-gray-900/40 group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ringfocus-visible:ring-offset-2 active:bg-black hover:scale-105"
             >
-              💼 Experiencia
+              💼 Experiencia Laboral
             </a>
       </footer>
         
-        <div class="skills-section animate-fade-in-up delay-3 mt-10">
+        <div class="skills-section opacity-0 animate-fade-in duration-1000 delay-700 mt-10">
           <h3 class="text-2xl font-semibold text-white mb-8">Tecnologías</h3>
           
           <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/Astro_dark.svg" alt="Astro" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110 ">
+              <img src="/icons/Astro_dark.svg" alt="Astro" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/tailwind.svg" alt="Tailwind CSS" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/tailwind.svg" alt="Tailwind CSS" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/css3.svg" alt="CSS3" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/css3.svg" alt="CSS3" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/html5.svg" alt="HTML5" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/html5.svg" alt="HTML5" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/javascript.svg" alt="JavaScript" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/javascript.svg" alt="JavaScript" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/supabase.svg" alt="Supabase" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/supabase.svg" alt="Supabase" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/git.svg" alt="Git" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/git.svg" alt="Git" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/github.svg" alt="GitHub" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/github.svg" alt="GitHub" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/photoshop.svg" alt="Photoshop" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/photoshop.svg" alt="Photoshop" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/illustrator.svg" alt="Illustrator" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/illustrator.svg" alt="Illustrator" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-              <img src="/icons/lightroom.svg" alt="Lightroom" class="w-12 h-12" />
+            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/lightroom.svg" alt="Lightroom" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
       </div>
     </div>
   </div>
