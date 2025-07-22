@@ -6,6 +6,9 @@ import About from '../components/About.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import SectionContainer from '../components/SectionContainer.astro';
+import CodeIcon from '../components/icons/Code.astro';
+
 import "../styles/global.css";
 ---
 
@@ -17,7 +20,13 @@ import "../styles/global.css";
   <main class="relative">
     <Hero />
     <About />
-    <Projects />
+    <SectionContainer id="projects">
+			<h2 class="text-4xl flex gap-x-4 mt-2 justify-center items-center mb-6 fade-up" style="animation-delay: 0.2s;">
+				<CodeIcon class="size-7 " />
+				Proyectos
+			</h2>
+			<Projects />
+		</SectionContainer>
     <Contact />
   </main>
   <Footer />

@@ -7,7 +7,8 @@ import { ClientRouter } from "astro:transitions";
   <div class="container mx-auto px-4">
     
       <h2 class="text-4xl font-bold mb-16 py-5 text-center">
-        <span class="gradient-text">Sobre</span> <span class="text-white">Mí</span>
+        <span class="text-white">Sobre</span> <span class="text-white">Mí</span>
+
       </h2>
       
       <div class="flex text-pretty gap-16 items-center">
@@ -35,26 +36,28 @@ import { ClientRouter } from "astro:transitions";
               Descargar CV
             </a>
             <a
-              transition:animate="fade"
+              
+              transition:animate="none"
               transition:name="experiences"
               role="link"
               href="/experiences" 
               id="experience-btn"
-              class="animated-border-button inline-flex bg-transparent text-white items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800/20 dark:hover:bg-gray-900/40 group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ringfocus-visible:ring-offset-2 active:bg-black hover:scale-105"
+              class="animated-border-button inline-flex bg-transparent text-white items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800/20 dark:hover:bg-gray-900/40 group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 active:bg-black hover:scale-105"
             >
               💼 Experiencia Laboral
             </a>
       </footer>
         
         <div class="skills-section opacity-0 animate-fade-in duration-1000 delay-700 mt-10">
-          <h3 class="text-2xl font-semibold text-white mb-8">Tecnologías</h3>
+          <h3 class="text-2xl font-semibold text-white mb-8 items-center justify-center flex">Tecnologías</h3>
+
           
           <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <div class="glass-card  group transform transition-transform duration-300 hover:scale-110 ">
               <img src="/icons/Astro_dark.svg" alt="Astro" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
             </div>
             <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/tailwind.svg" alt="Tailwind CSS" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
+              <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
             </div>
             <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/css3.svg" alt="CSS3" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />

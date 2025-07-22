@@ -1,52 +1,248 @@
 ---
 import Experience from '../components/Experience.astro';
 import { ClientRouter } from "astro:transitions";
-
+import "../styles/global.css";
 ---
 
 <!doctype html>
-<html lang="es" class="dark">
-  <head>
+<html lang="es">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Experiencia profesional - Desarrollador Full Stack" />
     <meta name="keywords" content="experiencia, desarrollador, full stack, portfolio" />
     <meta name="author" content="Javier" />
     <title>Experiencia - Portfolio</title>
+    <ClientRouter />
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Script para inicializar tema inmediatamente -->
+    <script is:inline>
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark' || !savedTheme) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+    
     <style>
-      body {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        background: radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%);
-        min-height: 100vh;
-      }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(125% 125% at 50% 10%, #000 40%, #63e 100%);
+            min-height: 100vh;
+        }
     </style>
-  </head>
-  <body transition:animate="fade">
-    <div class="min-h-screen h-full w-full items-center px-5 py-1">
-      <div class="container mx-auto px-2 py-2">
-        <div class="mb-2">
-          <a href="/#about"
-		  onclick="if(history.length > 1){  history.back(); }"  
-		  class="inline-flex items-center text-white hover:text-amber-300 transition duration-300">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-            Volver al inicio
-          </a>
+</head>
+<body class="bg-transparent transition-colors duration-300">
+    <!-- HEADER INCLUIDO -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-lg dark:bg-transparent border-gray-800 transition-colors duration-300">
+        <div class="container mx-auto px-4">
+            <nav class="flex items-center justify-between h-16">
+                <a href="/" class="text-xl font-bold">
+                    <span class="gradient-text ">Portfolio</span>
+                </a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/#about" class="nav-link text-black   transition-colors duration-300">Sobre Mí</a>
+                    <a href="/#projects" class="nav-link text-black   transition-colors duration-300">Proyectos</a>
+                    <a href="/#contact" class="nav-link text-black   transition-colors duration-300">Contacto</a>
+                </div>
+                
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" type="button" class="text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-blue-600 rounded-lg text-sm p-2.5 transition-colors duration-300">
+                    <!-- Icono de luna (se muestra por defecto) -->
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <!-- Icono de sol (oculto por defecto) -->
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button 
+                    id="menuBtn"
+                    class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ml-2"
+                    aria-label="Toggle menu"
+                >
+                    <svg 
+                        class="w-6 h-6" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                    >
+                        <path 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round" 
+                            stroke-width="2" 
+                            d="M4 6h16M4 12h16m-7 6h7"
+                        ></path>
+                    </svg>
+                </button>
+            </nav>
         </div>
-        <Experience />
-		<ClientRouter />
-      </div>
+
+        <!-- Mobile menu -->
+        <nav id="menu" class="lg:hidden fixed top-0 right-0 w-full md:w-[300px] h-screen bg-white dark:bg-gray-900 shadow-2xl dark:shadow-gray-950 transform translate-x-full transition-transform light:bg-transparent duration-300 ease-in-out">
+            <div class="p-6">
+                <div class="flex justify-end">
+                    <button id="menu-close" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="mt-8 space-y-4">
+                    <a href="/#about" class="block py-2 text-gray-600 dark:text-gray-300  transition-colors duration-300">Sobre mí</a>
+                    <a href="/#projects" class="block py-2 text-gray-600 dark:text-gray-300  transition-colors duration-300">Proyectos</a>
+                    <a href="/#contact" class="block py-2 text-gray-600 dark:text-gray-300  transition-colors duration-300">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="min-h-screen h-full w-full items-center px-5 py-1 pt-20">
+        <!-- Botón volver fijo en el centro izquierda -->
+        <div class="fixed left-8 top-1/2 transform -translate-y-1/2 z-10">
+            <a href="/#about"
+               onclick="if(history.length > 1){ history.back(); }"
+               class="inline-flex items-center text-white hover:text-amber-300 transition duration-300 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Volver
+            </a>
+        </div>
+                
+        <div class="container mx-auto px-2 py-2">
+            <Experience />
+        </div>
     </div>
-  </body>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Gestión del tema con manejo de transiciones de Astro
+        function initDarkModeHandler() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            const menuBtn = document.getElementById('menuBtn');
+            const menu = document.getElementById('menu');
+            const menuClose = document.getElementById('menu-close');
+            
+            // Función para alternar tema
+            function toggleTheme() {
+                const isDark = document.documentElement.classList.contains('dark');
+                
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+                
+                updateThemeIcons();
+            }
+            
+            // Función para actualizar iconos del tema
+            function updateThemeIcons() {
+                if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
+                
+                const isDark = document.documentElement.classList.contains('dark');
+                
+                if (isDark) {
+                    themeToggleDarkIcon.classList.add('hidden');
+                    themeToggleLightIcon.classList.remove('hidden');
+                } else {
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    themeToggleLightIcon.classList.add('hidden');
+                }
+            }
+            
+            // Función para inicializar tema
+            function initTheme() {
+                const savedTheme = localStorage.getItem('theme');
+                
+                // Limpiar estado anterior
+                document.documentElement.classList.remove('dark');
+                
+                // Aplicar tema guardado o dark por defecto
+                if (savedTheme === 'dark' || !savedTheme) {
+                    document.documentElement.classList.add('dark');
+                    if (!savedTheme) {
+                        localStorage.setItem('theme', 'dark');
+                    }
+                }
+                
+                updateThemeIcons();
+            }
+            
+            // Funciones para el menú móvil
+            function openMenu() {
+                if (menu) {
+                    menu.classList.remove('translate-x-full');
+                }
+            }
+            
+            function closeMenu() {
+                if (menu) {
+                    menu.classList.add('translate-x-full');
+                }
+            }
+            
+            // Limpiar listeners anteriores para evitar duplicados
+            if (themeToggleBtn) {
+                if (themeToggleBtn._themeHandler) {
+                    themeToggleBtn.removeEventListener('click', themeToggleBtn._themeHandler);
+                }
+                themeToggleBtn._themeHandler = toggleTheme;
+                themeToggleBtn.addEventListener('click', toggleTheme);
+            }
+            
+            if (menuBtn) {
+                if (menuBtn._menuHandler) {
+                    menuBtn.removeEventListener('click', menuBtn._menuHandler);
+                }
+                menuBtn._menuHandler = openMenu;
+                menuBtn.addEventListener('click', openMenu);
+            }
+            
+            if (menuClose) {
+                if (menuClose._closeHandler) {
+                    menuClose.removeEventListener('click', menuClose._closeHandler);
+                }
+                menuClose._closeHandler = closeMenu;
+                menuClose.addEventListener('click', closeMenu);
+            }
+            
+            // Inicializar tema
+            initTheme();
+        }
+        
+        // Inicializar en carga de página
+        document.addEventListener('DOMContentLoaded', initDarkModeHandler);
+        
+        // Re-inicializar después de transiciones de Astro
+        document.addEventListener('astro:after-swap', initDarkModeHandler);
+        document.addEventListener('astro:page-load', initDarkModeHandler);
+        
+        // Manejo adicional para navegación del navegador
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                initDarkModeHandler();
+            }
+        });
+    </script>
+</body>
 </html>
-
-

@@ -38,11 +38,15 @@
   }
 
   .btn-primary {
+    border: 2px solid rgb(37, 99, 235);
+    color: white;
+    background-color: rgb(37, 99, 235);
     @apply dark:bg-blue-600 dark:hover:bg-blue-700;
   }
   
   .btn-primary:hover {
     background-color: rgb(29, 78, 216);
+   
   }
 
   .btn-outline {
@@ -107,7 +111,7 @@
 
   .fade-up {
   animation: fade-up 0.8s ease forwards;
-  opacity: 1;
+  opacity: 2;
 }
 }
 
@@ -127,7 +131,7 @@
   z-index: 1;
   border: double 2px transparent;
   border-radius: 14px;
-  background-image: linear-gradient(rgb(13, 17, 23), rgb(13, 17, 23)), 
+  background-image: linear-gradient(rgb(11, 58, 127), rgb(47, 80, 129)), 
     linear-gradient(90deg, #60a5fa, #f472b6, #60a5fa);
   background-origin: border-box;
   background-clip: padding-box, border-box;
