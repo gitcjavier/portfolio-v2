@@ -151,26 +151,31 @@ function updateHeaderBackground() {
         }
     });
     
-    if (currentSection && header) {
-        const sectionId = currentSection.id;
-        
+    if (header) {
         // Remover todas las clases de sección anteriores
         header.classList.remove('header-hero', 'header-about', 'header-projects', 'header-contact');
         
-        // Agregar clase específica según la sección
-        switch(sectionId) {
-            case 'about':
-                header.classList.add('header-about');
-                break;
-            case 'projects':
-                header.classList.add('header-projects');
-                break;
-            case 'contact':
-                header.classList.add('header-contact');
-                break;
-            default:
-                header.classList.add('header-hero');
-                break;
+        if (currentSection) {
+            const sectionId = currentSection?.id;
+            
+            // Agregar clase específica según la sección
+            switch(sectionId) {
+                case 'about':
+                    header.classList.add('header-about');
+                    break;
+                case 'projects':
+                    header.classList.add('header-projects');
+                    break;
+                case 'contact':
+                    header.classList.add('header-contact');
+                    break;
+                default:
+                    header.classList.add('header-hero');
+                    break;
+            }
+        } else {
+            // Aplicar clase por defecto si no hay sección actual
+            header.classList.add('header-hero');
         }
     }
 }
