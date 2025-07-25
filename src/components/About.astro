@@ -4,9 +4,14 @@ import { ClientRouter } from "astro:transitions";
 
 <style>
   .image-container {
-    animation: reveal both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 30%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .image-container.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 </style>
 
@@ -18,7 +23,7 @@ import { ClientRouter } from "astro:transitions";
 
       </h2>
       
-      <div class="flex flex-col items-start">
+      <div class="flex flex-col items-start image-container">
         <div class="flex items-start gap-8 w-full">
           <div class="w-full md:w-1/2 opacity-0 animate-fade-in duration-1000">
             <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out">Diseño</h3>
@@ -33,7 +38,7 @@ import { ClientRouter } from "astro:transitions";
           </div>
         </div>       
         <div class="w-full md:w-1/2 md:self-end opacity-0 animate-fade-in duration-1000 image-container" style="animation-delay: 0.4s;">
-          <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out">Ingeniería</h3>
+          <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out image-container">Ingeniería</h3>
           <p class="text-white text-lg leading-relaxed pt-2.5 pb-8 image-container duration-1000 ease-in-out" style="animation-delay: 0.2s;">
             Mi enfoque se centra en escribir código limpio y mantenible, 
             crear interfaces intuitivas y asegurar que cada proyecto cumpla 
@@ -109,3 +114,29 @@ import { ClientRouter } from "astro:transitions";
     </div>
   </div>
 </section>
+
+<script>
+  // Intersection Observer para animar elementos cada vez que entran/salen del viewport
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observar todos los elementos con clase image-container
+  document.addEventListener('DOMContentLoaded', () => {
+    const imageContainers = document.querySelectorAll('.image-container');
+    imageContainers.forEach(container => {
+      observer.observe(container);
+    });
+  });
+</script>
