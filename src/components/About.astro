@@ -2,6 +2,13 @@
 import { ClientRouter } from "astro:transitions";
 ---
 
+<style>
+  .image-container {
+    animation: reveal both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+</style>
 
 <section id="about" class="min-h-screen py-20 bg-blue-600 dark:bg-blue-900 transition-colors duration-300 flex items-center">
   <div class="container mx-auto px-4">
@@ -14,9 +21,9 @@ import { ClientRouter } from "astro:transitions";
       <div class="flex flex-col items-start">
         <div class="flex items-start gap-8 w-full">
           <div class="w-full md:w-1/2 opacity-0 animate-fade-in duration-1000">
-            <h3 class="text-white font-bold text-7xl mb-2">Diseño</h3>
-            <p class="text-white text-lg leading-relaxed text-balance" style="animation-delay: 0.2s;">
-              Soy un desarrollador full stack apasionado por crear experiencias web excepcionales. 
+            <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out">Diseño</h3>
+            <p class="text-white text-lg leading-relaxed text-balance image-container" style="animation-delay: 0.2s;">
+              Soy un desarrollador Frontend apasionado por crear experiencias web excepcionales. 
               Me especializo en tecnologías modernas y me mantengo constantemente actualizado con las últimas tendencias en desarrollo web.
             </p>
           </div>
@@ -25,9 +32,9 @@ import { ClientRouter } from "astro:transitions";
             </svg>
           </div>
         </div>       
-        <div class="w-full md:w-1/2 md:self-end opacity-0 animate-fade-in duration-1000" style="animation-delay: 0.4s;">
-          <h3 class="text-white font-bold text-7xl mb-2">Ingeniería</h3>
-          <p class="text-white text-lg leading-relaxed pt-2.5 pb-8" style="animation-delay: 0.2s;">
+        <div class="w-full md:w-1/2 md:self-end opacity-0 animate-fade-in duration-1000 image-container" style="animation-delay: 0.4s;">
+          <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out">Ingeniería</h3>
+          <p class="text-white text-lg leading-relaxed pt-2.5 pb-8 image-container duration-1000 ease-in-out" style="animation-delay: 0.2s;">
             Mi enfoque se centra en escribir código limpio y mantenible, 
             crear interfaces intuitivas y asegurar que cada proyecto cumpla 
             con los más altos estándares de calidad y rendimiento.
@@ -40,24 +47,25 @@ import { ClientRouter } from "astro:transitions";
               target="_blank"
               role="link"
               href="/resume.pdf" 
-              class="animated-border-button inline-flex bg-transparent text-white items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800/20 dark:hover:bg-gray-900/40 group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ringfocus-visible:ring-offset-2 active:bg-black hover:scale-105"
+              class="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
             >
-              Descargar CV
+              <span class="absolute inset-0 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0"></span>
+              <span class="relative z-10">Descargar CV</span>
             </a>
             <a
-              
               transition:animate="none"
               transition:name="experiences"
               role="link"
               href="/experiences" 
               id="experience-btn"
-              class="animated-border-button inline-flex bg-transparent text-white items-center justify-center gap-2 px-3 py-2 space-x-2 text-base transition focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800/20 dark:hover:bg-gray-900/40 group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-offset-2 active:bg-black hover:scale-105"
+              class="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
             >
-              💼 Experiencia Laboral
+              <span class="absolute inset-0 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0"></span>
+              <span class="relative z-10">💼 Experiencia Laboral</span>
             </a>
       </footer>
         
-        <div class="skills-section opacity-0 animate-fade-in duration-1000 delay-700 mt-10">
+        <div class="skills-section opacity-0 animate-fade-in duration-1000 delay-700 mt-10 image-container">
           <h3 class="text-2xl font-semibold text-white mb-8 items-center justify-center flex">Tecnologías</h3>
 
           

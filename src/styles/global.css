@@ -24,6 +24,12 @@
     letter-spacing: -0.025em;
     @apply dark:text-white transition-colors duration-300;
   }
+  img {
+    animation: reveal both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+
 }
 
 @layer components {
@@ -121,18 +127,17 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  background-image: linear-gradient(to right, rgb(37, 99, 235), rgb(96, 165, 250));
-  background-image: linear-gradient(to right, #60a5fa, #93c5fd);
+  background-image: linear-gradient(to right, rgb(123, 233, 60), rgb(216, 221, 228));
+  background-image: linear-gradient(to right, #37e119, #0857b0);
 }
 
 .animated-border-button {
   position: relative;
-  background: transparent;
+  background: black;
   z-index: 1;
   border: double 2px transparent;
   border-radius: 14px;
-  background-image: linear-gradient(rgb(11, 58, 127), rgb(47, 80, 129)), 
-    linear-gradient(90deg, #60a5fa, #f472b6, #60a5fa);
+  background-image: black;
   background-origin: border-box;
   background-clip: padding-box, border-box;
   background-size: 200% 200%;
@@ -142,3 +147,13 @@
   animation: border-animate 4s ease infinite;
 }
 
+@keyframes reveal {
+  from {
+     opacity: 0;
+     translate: 0 100px;
+  }
+  to {
+     opacity: 1;
+     translate: 0;
+  }
+}

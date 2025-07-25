@@ -45,7 +45,7 @@ import "../styles/global.css";
         <div class="container mx-auto px-4">
             <nav class="flex items-center justify-between h-16">
                 <a href="/" class="text-xl font-bold">
-                    <span class="gradient-text ">Portfolio</span>
+                    <span class="gradient-text ">Javier</span>
                 </a>
                 
                 <!-- Desktop Navigation -->
@@ -58,11 +58,11 @@ import "../styles/global.css";
                 <!-- Theme Toggle Button -->
                 <button id="theme-toggle" type="button" class="text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-blue-600 rounded-lg text-sm p-2.5 transition-colors duration-300">
                     <!-- Icono de luna (se muestra por defecto) -->
-                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
                     <!-- Icono de sol (oculto por defecto) -->
-                    <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg id="theme-toggle-light-icon" class="w-5 h-5" fill="none" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
                     </svg>
                 </button>
@@ -130,7 +130,10 @@ import "../styles/global.css";
     </div>
 
     <!-- SCRIPTS -->
-    <script>
+<script>
+        // Variable global para controlar si ya se inicializó
+        let darkModeInitialized = false;
+        
         // Gestión del tema con manejo de transiciones de Astro
         function initDarkModeHandler() {
             const themeToggleBtn = document.getElementById('theme-toggle');
@@ -140,8 +143,14 @@ import "../styles/global.css";
             const menu = document.getElementById('menu');
             const menuClose = document.getElementById('menu-close');
             
+            // Si los elementos no existen, salir
+            if (!themeToggleBtn || !themeToggleDarkIcon || !themeToggleLightIcon) {
+                return;
+            }
+            
             // Función para alternar tema
-            function toggleTheme() {
+            function toggleTheme(e: Event) {
+                e.preventDefault();
                 const isDark = document.documentElement.classList.contains('dark');
                 
                 if (isDark) {
@@ -157,16 +166,23 @@ import "../styles/global.css";
             
             // Función para actualizar iconos del tema
             function updateThemeIcons() {
-                if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
+                // Verificar que los elementos existan antes de usarlos
+                const darkIcon = document.getElementById('theme-toggle-dark-icon');
+                const lightIcon = document.getElementById('theme-toggle-light-icon');
+                
+                if (!darkIcon || !lightIcon) {
+                    console.warn('Iconos del theme toggle no encontrados');
+                    return;
+                }
                 
                 const isDark = document.documentElement.classList.contains('dark');
                 
                 if (isDark) {
-                    themeToggleDarkIcon.classList.add('hidden');
-                    themeToggleLightIcon.classList.remove('hidden');
+                    darkIcon.classList.add('hidden');
+                    lightIcon.classList.remove('hidden');
                 } else {
-                    themeToggleDarkIcon.classList.remove('hidden');
-                    themeToggleLightIcon.classList.add('hidden');
+                    darkIcon.classList.remove('hidden');
+                    lightIcon.classList.add('hidden');
                 }
             }
             
@@ -189,58 +205,97 @@ import "../styles/global.css";
             }
             
             // Funciones para el menú móvil
-            function openMenu() {
-                if (menu) {
-                    menu.classList.remove('translate-x-full');
+           function openMenu(e: Event) {
+                if (e) e.preventDefault();
+                const menuElement = document.getElementById('menu');
+                if (menuElement) {
+                    menuElement.classList.remove('translate-x-full');
                 }
             }
             
-            function closeMenu() {
-                if (menu) {
-                    menu.classList.add('translate-x-full');
+            function closeMenu(e: Event) {
+                if (e) e.preventDefault();
+                const menuElement = document.getElementById('menu');
+                if (menuElement) {
+                    menuElement.classList.add('translate-x-full');
                 }
             }
             
-            // Limpiar listeners anteriores para evitar duplicados
-            if (themeToggleBtn) {
-                if (themeToggleBtn._themeHandler) {
-                    themeToggleBtn.removeEventListener('click', themeToggleBtn._themeHandler);
-                }
-                themeToggleBtn._themeHandler = toggleTheme;
-                themeToggleBtn.addEventListener('click', toggleTheme);
+            // Remover todos los listeners existentes clonando los elementos
+            if (themeToggleBtn.parentNode) {
+                const newThemeToggleBtn = themeToggleBtn.cloneNode(true);
+                themeToggleBtn.parentNode.replaceChild(newThemeToggleBtn, themeToggleBtn);
+                // Agregar listener al botón de tema
+                newThemeToggleBtn.addEventListener('click', toggleTheme);
             }
             
-            if (menuBtn) {
-                if (menuBtn._menuHandler) {
-                    menuBtn.removeEventListener('click', menuBtn._menuHandler);
-                }
-                menuBtn._menuHandler = openMenu;
-                menuBtn.addEventListener('click', openMenu);
+            // Agregar listener al botón de tema
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            
+            // Manejo del menú móvil
+            if (menuBtn && menuBtn.parentNode) {
+                const newMenuBtn = menuBtn.cloneNode(true);
+                menuBtn.parentNode.replaceChild(newMenuBtn, menuBtn);
+                newMenuBtn.addEventListener('click', openMenu);
             }
             
             if (menuClose) {
-                if (menuClose._closeHandler) {
-                    menuClose.removeEventListener('click', menuClose._closeHandler);
+                const parentNode = menuClose.parentNode;
+                if (parentNode) {
+                    const newMenuClose = menuClose.cloneNode(true);
+                    parentNode.replaceChild(newMenuClose, menuClose);
+                    newMenuClose.addEventListener('click', closeMenu);
                 }
-                menuClose._closeHandler = closeMenu;
-                menuClose.addEventListener('click', closeMenu);
             }
             
             // Inicializar tema
             initTheme();
+            darkModeInitialized = true;
+        }
+        
+        // Función simplificada para solo actualizar iconos
+        function updateIconsOnly() {
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            
+            if (!themeToggleDarkIcon || !themeToggleLightIcon) return;
+            
+            const isDark = document.documentElement.classList.contains('dark');
+            
+            if (isDark) {
+                themeToggleDarkIcon.classList.add('hidden');
+                themeToggleLightIcon.classList.remove('hidden');
+            } else {
+                themeToggleDarkIcon.classList.remove('hidden');
+                themeToggleLightIcon.classList.add('hidden');
+            }
         }
         
         // Inicializar en carga de página
-        document.addEventListener('DOMContentLoaded', initDarkModeHandler);
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!darkModeInitialized) {
+                initDarkModeHandler();
+            }
+        });
         
         // Re-inicializar después de transiciones de Astro
-        document.addEventListener('astro:after-swap', initDarkModeHandler);
-        document.addEventListener('astro:page-load', initDarkModeHandler);
+        document.addEventListener('astro:after-swap', function() {
+            darkModeInitialized = false;
+            setTimeout(initDarkModeHandler, 100);
+        });
+        
+        document.addEventListener('astro:page-load', function() {
+            if (!darkModeInitialized) {
+                setTimeout(initDarkModeHandler, 100);
+            } else {
+                updateIconsOnly();
+            }
+        });
         
         // Manejo adicional para navegación del navegador
         window.addEventListener('pageshow', function(event) {
-            if (event.persisted) {
-                initDarkModeHandler();
+            if (event.persisted && !darkModeInitialized) {
+                setTimeout(initDarkModeHandler, 100);
             }
         });
     </script>

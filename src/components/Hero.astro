@@ -1,4 +1,4 @@
-<section class="hero-section min-h-screen flex items-center bg-white/95 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+<section id="hero" class="hero-section min-h-screen flex items-center bg-white/95 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
   <!-- Decorative elements -->
   <div class="absolute top-20 left-10 w-64 h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
   <div class="absolute bottom-20 right-10 w-64 h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
@@ -8,8 +8,8 @@
       <!-- Content -->
       <div class="space-y-8">
         <h1 class="text-6xl lg:text-7xl font-bold leading-tight opacity-0 animate-fade-in duration-1000 fade-up " style="animation-delay: 0.2s;">
-          <span class="text-blue-900 dark:text-white transition-colors duration-1000 delay-300 " >Desarrollador</span>
-          <span class="block text-blue-900 dark:text-white mt-2 transition-colors duration-1000 delay-300">Full Stack
+          <span class="text-blue-900 dark:text-white transition-colors duration-1000 delay-300 image-container" >Frontend</span>
+          <span class="block text-blue-900 dark:text-white mt-2 transition-colors duration-1000 delay-300">Developer
           <span class="text-8xl text-[#ccf381]">.</span>
           </span>
         </h1>
@@ -35,6 +35,7 @@
       <div class="relative" style="animation-delay: 0.3s;">
         <div class="flex rounded-full border-2 border-blue-600/20 p-2 mx-auto max-w-md fade-up" style="animation-delay: 0.3s;">
          <img 
+         
             src="/img/javoru2.webp" 
             alt="Javoru face" 
             class="rounded-full w-full h-full opacity-0 animate-fade-in duration-1000 delay-500"
@@ -60,3 +61,11 @@
   <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-600/10 dark:bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
   <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-400/10 dark:bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse delay-1000"></div>
 </section>
+
+<style>
+	  .image-container {
+    animation: reveal both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
+  }
+</style>

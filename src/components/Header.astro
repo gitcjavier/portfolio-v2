@@ -9,6 +9,7 @@ import "../styles/global.css";
       
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center space-x-8 font-bold">
+        <a href="#hero" class="nav-link">Inicio</a>
         <a href="#about" class="nav-link">Sobre Mí</a>
         <a href="#projects" class="nav-link">Proyectos</a>
         <a href="#contact" class="nav-link">Contacto</a>
@@ -87,11 +88,14 @@ import "../styles/global.css";
 </header>
 
 <script>
-// Elementos
+// Elementos - Con verificaciones de null
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 const header = document.querySelector('header');
+const menuBtn = document.getElementById('menuBtn');
+const menu = document.getElementById('menu');
+const menuClose = document.getElementById('menu-close');
 
 // Función para cambiar tema
 function toggleTheme() {
@@ -108,16 +112,22 @@ function toggleTheme() {
 
 // Función para actualizar iconos
 function updateThemeIcons() {
+    // Verificar que los elementos existan
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+    
+    if (!darkIcon || !lightIcon) return;
+    
     if (document.documentElement.classList.contains('dark')) {
-        themeToggleDarkIcon?.classList.add('hidden');
-        themeToggleLightIcon?.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+        lightIcon.classList.remove('hidden');
     } else {
-        themeToggleDarkIcon?.classList.remove('hidden');
-        themeToggleLightIcon?.classList.add('hidden');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
     }
 }
 
-// Función para inicializar tema (simplificada)
+// Función para inicializar tema
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
     
@@ -138,61 +148,114 @@ function initTheme() {
 function updateHeaderBackground() {
     const sections = document.querySelectorAll('section');
     const scrollY = window.scrollY;
-    const headerHeight = header?.offsetHeight || 64;
+    const headerElement = document.querySelector('header');
+    const headerHeight = headerElement ? headerElement.offsetHeight : 64;
     
-    let currentSection = null;
+    let currentSection: HTMLElement | null = null;
     
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
-        if (scrollY >= sectionTop - headerHeight && scrollY < sectionTop + sectionHeight - headerHeight) {
-            currentSection = section;
+        if (section instanceof HTMLElement) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollY >= sectionTop - headerHeight && scrollY < sectionTop + sectionHeight - headerHeight) {
+                currentSection = section;
+            }
         }
     });
     
-    if (header) {
+    if (headerElement) {
         // Remover todas las clases de sección anteriores
-        header.classList.remove('header-hero', 'header-about', 'header-projects', 'header-contact');
+        headerElement.classList.remove('header-hero', 'header-about', 'header-projects', 'header-contact');
         
-        if (currentSection) {
-            const sectionId = currentSection?.id;
+        // Verificar que currentSection sea un HTMLElement y tenga id
+        if (currentSection !== null && currentSection.hasAttribute('id')) {
+            const sectionId = currentSection!.id;
             
             // Agregar clase específica según la sección
             switch(sectionId) {
                 case 'about':
-                    header.classList.add('header-about');
+                    headerElement.classList.add('header-about');
                     break;
                 case 'projects':
-                    header.classList.add('header-projects');
+                    headerElement.classList.add('header-projects');
                     break;
                 case 'contact':
-                    header.classList.add('header-contact');
+                    headerElement.classList.add('header-contact');
                     break;
                 default:
-                    header.classList.add('header-hero');
+                    headerElement.classList.add('header-hero');
                     break;
             }
         } else {
             // Aplicar clase por defecto si no hay sección actual
-            header.classList.add('header-hero');
+            headerElement.classList.add('header-hero');
         }
     }
 }
 
-// Inicializar tema siempre (eliminamos la verificación problemática)
+// Funciones para el menú móvil
+function openMenu() {
+    const menuElement = document.getElementById('menu');
+    if (menuElement) {
+        menuElement.classList.remove('translate-x-full');
+    }
+}
+
+function closeMenu() {
+    const menuElement = document.getElementById('menu');
+    if (menuElement) {
+        menuElement.classList.add('translate-x-full');
+    }
+}
+
+// Inicializar tema
 initTheme();
 
-// Event listeners
-themeToggleBtn?.addEventListener('click', toggleTheme);
+// Event listeners - Con verificaciones de null
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+}
+
+if (menuBtn) {
+    menuBtn.addEventListener('click', openMenu);
+}
+
+if (menuClose) {
+    menuClose.addEventListener('click', closeMenu);
+}
+
+// Event listeners para scroll y carga
 window.addEventListener('scroll', updateHeaderBackground);
 window.addEventListener('load', updateHeaderBackground);
 
-// También puedes agregar este listener para detectar cambios en localStorage
-// desde otras pestañas (opcional)
+// Listener para cambios en localStorage desde otras pestañas
 window.addEventListener('storage', function(e) {
     if (e.key === 'theme') {
         initTheme();
+    }
+});
+
+// Cerrar menú al hacer click en enlaces (móvil)
+document.addEventListener('click', function(e) {
+    if (e.target && e.target instanceof HTMLElement) {
+        const target = e.target;
+        
+        // Si es un enlace dentro del menú móvil, cerrar el menú
+        if (target.matches('#menu a[href^="#"]')) {
+            closeMenu();
+        }
+        
+        // Si se hace click fuera del menú, cerrarlo
+        const menuElement = document.getElementById('menu');
+        const menuBtnElement = document.getElementById('menuBtn');
+        
+        if (menuElement && menuBtnElement && 
+            !menuElement.contains(target) && 
+            !menuBtnElement.contains(target) &&
+            !menuElement.classList.contains('translate-x-full')) {
+            closeMenu();
+        }
     }
 });
 </script>
@@ -288,4 +351,3 @@ window.addEventListener('storage', function(e) {
   }
 
 </style>
-
