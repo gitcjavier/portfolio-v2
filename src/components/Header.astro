@@ -2,13 +2,13 @@
 import "../styles/global.css";
 ---
 
-<header class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-lg  dark:bg-transparent  transition-colors duration-300">
+<header id="landing-header" class="fixed top-0 left-[150px] w-full z-50 bg-transparent backdrop-blur-lg  dark:bg-transparent  transition-colors duration-500 items-center justify-center">
   <div class="container mx-auto px-4">
     <nav class="flex items-center justify-evenly h-16">
      
       
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8 font-bold">
+      <div class="hidden md:flex items-center space-x-8 font-bold justify-center">
         <a href="#hero" class="nav-link">Inicio</a>
         <a href="#about" class="nav-link">Sobre Mí</a>
         <a href="#projects" class="nav-link">Proyectos</a>
@@ -68,7 +68,7 @@ import "../styles/global.css";
       <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
         <h3 class="text-sm font-medium text-gray-400 dark:text-gray-300 mb-4">CONTACTO</h3>
         <div class="space-y-4">
-          <a href="mailto:hello@example.com" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">hello@example.com</a>
+          <a href="mailto:hello@example.com" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">icastroretamal@gmail.com</a>
           <div class="flex space-x-4">
             <a href="#" class="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -85,14 +85,29 @@ import "../styles/global.css";
       </div>
     </div>
   </nav>
+
+<div
+    id="menu-backdrop"
+    class="absolute bg-black/10 backdrop-blur-lg rounded
+    translate-x-[var(--left)] translate-y-[var(--top)] w-[var(--width)] h-[var(--height)]
+    transition-all duration-500 ease-in-out  opacity-0 -z-10 top-0 bottom-0 dark:bg-white/10
+    "
+    />
+
 </header>
+
+
+
+
+
+
 
 <script>
 // Elementos - Con verificaciones de null
 const themeToggleBtn = document.getElementById('theme-toggle');
 const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
 const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-const header = document.querySelector('header');
+
 const menuBtn = document.getElementById('menuBtn');
 const menu = document.getElementById('menu');
 const menuClose = document.getElementById('menu-close');
@@ -261,8 +276,10 @@ document.addEventListener('click', function(e) {
 </script>
 
 <style>
+
+
   header {
-    transition: all 0.3s ease-in-out;
+    transition: all 0.8s ease-in-out;
   }
 
   /* Estilos por defecto del header */
@@ -302,11 +319,11 @@ document.addEventListener('click', function(e) {
   }
 
   .header-contact .nav-link {
-    @apply text-gray-900 dark:text-white;
+    @apply text-white dark:text-white;
   }
 
   .header-contact #theme-toggle {
-    @apply text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800;
+    @apply text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800;
   }
 
   .nav-link {
@@ -317,18 +334,19 @@ document.addEventListener('click', function(e) {
     font-size: 1rem bold;
     display: flex;
     align-items: center;
-    font-weight: lighter;
-    cursor: pointer;
+    font-weight: 400;
+    cursor: grab;
     text-decoration: none;
     @apply text-blue-900 dark:text-white;
   }
   
   .nav-link:hover {
-    background-color: rgba(23, 104, 233, 0.08);
-    transform: translateX(4px);
-    box-shadow: 0 4px 8px rgba(254, 254, 254, 0.1);
+    background-color: rgba(6, 101, 254, 0.391);
+    transform: translateX(2px);
+    box-shadow: 0 4px 8px rgba(184, 6, 6, 0.1);
     opacity: 1;
-    @apply dark:bg-blue-500/10 dark:shadow-blue-900/20;
+    @apply dark:bg-blue-500/40 dark:shadow-blue-900/20;
+    
   }
 
   .nav-link::after {
@@ -347,7 +365,9 @@ document.addEventListener('click', function(e) {
 
   .nav-link:hover::after {
     transform: scaleX(1);
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
   }
+
+ 
 
 </style>
