@@ -1,7 +1,10 @@
 ---
 const { className, id } = Astro.props;
+import CodeIcon from "./icons/Code.astro";
 ---
 
-<section id={id} class={`${className} ${id === 'projects' ? 'min-h-screen pt-20 w-full' : 'min-h-screen py-20 w-full mx-auto lg:w-[740px] pb-24'}`}>
+<section
+    id="projects"
+    class="projects-section min-h-screen flex items-center bg-black dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
     <slot />
 </section>

@@ -5,13 +5,20 @@ import { ClientRouter } from "astro:transitions";
 <style>
   .image-container {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   }
-  
   .image-container.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Ocultar tecnologías MacBook por defecto */
+  .tech-macbook { display: none; }
+  /* Mostrar solo en resoluciones MacBook y ocultar el default */
+  @media (min-width: 1512px) and (max-width: 1512px) and (min-height: 982px) and (max-height: 982px) {
+    .tech-macbook { display: flex; }
+    .tech-default { display: none; }
   }
 </style>
 
@@ -46,7 +53,9 @@ import { ClientRouter } from "astro:transitions";
           </p>
         </div>
       </div>
-          
+
+          <!-- Tecnologías solo visible en MacBook -->
+           
       <footer class="flex items-end justify-start mt-4 gap-x-4">
             <a 
               target="_blank"
@@ -70,43 +79,43 @@ import { ClientRouter } from "astro:transitions";
             </a>
       </footer>
         
-        <div class="skills-section opacity-0 animate-fade-in duration-1000 delay-700 mt-10 image-container">
+        <!-- Sección original de tecnologías para otras resoluciones -->
+        <div class="tech-default skills-section opacity-0 animate-fade-in duration-500 delay-100 mt-10 image-container">
           <h3 class="text-2xl font-semibold text-white mb-8 items-center justify-center flex">Tecnologías</h3>
 
-          
           <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110 ">
-              <img src="/icons/Astro_dark.svg" alt="Astro" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/Astro_dark.svg" alt="Astro" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/css3.svg" alt="CSS3" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110 " />
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
+              <img src="/icons/css3.svg" alt="CSS3" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/html5.svg" alt="HTML5" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/javascript.svg" alt="JavaScript" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/supabase.svg" alt="Supabase" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/git.svg" alt="Git" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/github.svg" alt="GitHub" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/photoshop.svg" alt="Photoshop" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
+            <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/illustrator.svg" alt="Illustrator" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
-            <div class="glass-card  group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/lightroom.svg" alt="Lightroom" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+            <div class="glass-card group transform transition-transform duration-100 hover:scale-110">
+              <img src="/icons/lightroom.svg" alt="Lightroom" class="w-12 h-12 transition-transform duration-100 group-hover:scale-110" />
             </div>
           </div>
         </div>
@@ -118,8 +127,8 @@ import { ClientRouter } from "astro:transitions";
 <script>
   // Intersection Observer para animar elementos cada vez que entran/salen del viewport
   const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    threshold: 0.5,
+    rootMargin: '0px 0px -300px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {

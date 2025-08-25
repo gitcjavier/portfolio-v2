@@ -2,82 +2,152 @@
 import "../styles/global.css";
 ---
 
-<header id="landing-header" class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-lg  dark:bg-transparent  transition-colors duration-500 items-center justify-center">
+<header
+  id="landing-header"
+  class="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-lg dark:bg-transparent transition-colors duration-500 items-center justify-center"
+>
   <div class="container mx-auto px-4">
     <nav class="flex items-center justify-evenly h-16">
-     
-      
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8 font-bold justify-center">
+      <div
+        class="hidden md:flex items-center space-x-8 font-bold justify-center"
+      >
         <a href="#hero" class="nav-link">Inicio</a>
         <a href="#about" class="nav-link">Sobre Mí</a>
         <a href="#projects" class="nav-link">Proyectos</a>
         <a href="#contact" class="nav-link">Contacto</a>
       </div>
-      <button id="theme-toggle" type="button" class="text-blue-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-blue-600 rounded-lg text-sm p-2.5 transition-colors duration-300 " >
-    <!-- Icono de luna (se muestra por defecto) -->
-    <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-    </svg>
-    <!-- Icono de sol (oculto por defecto) -->
-    <svg id="theme-toggle-light-icon" class=" w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" >
-        <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-    </svg>
-</button>
+      <button
+        id="theme-toggle"
+        type="button"
+        class="text-blue-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-blue-600 rounded-lg text-sm p-2.5 transition-colors duration-300"
+      >
+        <!-- Icono de luna (se muestra por defecto) -->
+        <svg
+          id="theme-toggle-dark-icon"
+          class="hidden w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+          ></path>
+        </svg>
+        <!-- Icono de sol (oculto por defecto) -->
+        <svg
+          id="theme-toggle-light-icon"
+          class="w-5 h-5"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+            fill-rule="evenodd"
+            clip-rule="evenodd"></path>
+        </svg>
+      </button>
       <!-- Mobile Menu Button -->
-      <button 
+      <button
         id="menuBtn"
         class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         aria-label="Toggle menu"
       >
-        <svg 
-          class="w-6 h-6" 
-          fill="none" 
-          stroke="currentColor" 
+        <svg
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path 
-            stroke-linecap="round" 
-            stroke-linejoin="round" 
-            stroke-width="2" 
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
       </button>
     </nav>
   </div>
 
   <!-- Mobile menu -->
-  <nav id="menu" class="lg:hidden fixed top-0 right-0 w-full md:w-[300px] h-screen bg-white dark:bg-gray-900 shadow-2xl dark:shadow-gray-950 transform translate-x-full transition-transform duration-300 ease-in-out overflow-hidden">
+  <nav
+    id="menu"
+    class="lg:hidden fixed top-0 right-0 w-full md:w-[300px] h-screen bg-white dark:bg-gray-900 shadow-2xl dark:shadow-gray-950 transform translate-x-full transition-transform duration-300 ease-in-out overflow-hidden"
+  >
     <div class="p-6">
       <div class="flex justify-end">
-        <button id="menu-close" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        <button
+          id="menu-close"
+          class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
       </div>
 
       <div class="mt-8 space-y-4">
-        <a href="#about" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Sobre mí</a>
-        <a href="#projects" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Proyectos</a>
-        <a href="#contact" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Contacto</a>
-        <a href="#resume" class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">Curriculum</a>
+        <a
+          href="#about"
+          class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+          >Sobre mí</a
+        >
+        <a
+          href="#projects"
+          class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+          >Proyectos</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+          >Contacto</a
+        >
+        <a
+          href="#resume"
+          class="block py-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+          >Curriculum</a
+        >
       </div>
 
       <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <h3 class="text-sm font-medium text-gray-400 dark:text-gray-300 mb-4">CONTACTO</h3>
+        <h3 class="text-sm font-medium text-gray-400 dark:text-gray-300 mb-4">
+          CONTACTO
+        </h3>
         <div class="space-y-4">
-          <a href="mailto:hello@example.com" class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">icastroretamal@gmail.com</a>
+          <a
+            href="mailto:hello@example.com"
+            class="block text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >icastroretamal@gmail.com</a
+          >
           <div class="flex space-x-4">
-            <a href="#" class="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+            <a
+              href="#"
+              class="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                ></path>
               </svg>
             </a>
-            <a href="#" class="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
+            <a
+              href="#"
+              class="text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                ></path>
               </svg>
             </a>
           </div>
@@ -86,288 +156,455 @@ import "../styles/global.css";
     </div>
   </nav>
 
-<div
+  <div
     id="menu-backdrop"
     class="absolute bg-black/10 backdrop-blur-lg rounded
     translate-x-[var(--left)] translate-y-[var(--top)] w-[var(--width)] h-[var(--height)]
-    transition-all duration-500 ease-in-out  opacity-0 -z-10 top-0 bottom-0 dark:bg-white/10
-    "
-    />
-
+    transition-all duration-500 ease-in-out opacity-0 -z-10 top-0 bottom-0 dark:bg-white/10"
+  >
+  </div>
 </header>
 
-
-
-
-
-
-
 <script>
-// Elementos - Con verificaciones de null
-const themeToggleBtn = document.getElementById('theme-toggle');
-const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+  // Elementos - Con verificaciones de null
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  const themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+  const themeToggleLightIcon = document.getElementById(
+    "theme-toggle-light-icon",
+  );
 
-const menuBtn = document.getElementById('menuBtn');
-const menu = document.getElementById('menu');
-const menuClose = document.getElementById('menu-close');
+  const menuBtn = document.getElementById("menuBtn");
+  const menu = document.getElementById("menu");
+  const menuClose = document.getElementById("menu-close");
 
-// Función para cambiar tema
-function toggleTheme() {
-    document.documentElement.classList.toggle('dark');
+  // Función para cambiar tema
+  function toggleTheme() {
+    document.documentElement.classList.toggle("dark");
     updateThemeIcons();
-    
+
     // Guardar preferencia
-    if (document.documentElement.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
+    if (document.documentElement.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
     } else {
-        localStorage.setItem('theme', 'light');
+      localStorage.setItem("theme", "light");
     }
-}
+  }
 
-// Función para actualizar iconos
-function updateThemeIcons() {
+  // Función para actualizar iconos
+  function updateThemeIcons() {
     // Verificar que los elementos existan
-    const darkIcon = document.getElementById('theme-toggle-dark-icon');
-    const lightIcon = document.getElementById('theme-toggle-light-icon');
-    
+    const darkIcon = document.getElementById("theme-toggle-dark-icon");
+    const lightIcon = document.getElementById("theme-toggle-light-icon");
+
     if (!darkIcon || !lightIcon) return;
-    
-    if (document.documentElement.classList.contains('dark')) {
-        darkIcon.classList.add('hidden');
-        lightIcon.classList.remove('hidden');
-    } else {
-        darkIcon.classList.remove('hidden');
-        lightIcon.classList.add('hidden');
-    }
-}
 
-// Función para inicializar tema
-function initTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    
+    if (document.documentElement.classList.contains("dark")) {
+      darkIcon.classList.add("hidden");
+      lightIcon.classList.remove("hidden");
+    } else {
+      darkIcon.classList.remove("hidden");
+      lightIcon.classList.add("hidden");
+    }
+  }
+
+  // Función para inicializar tema
+  function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+
     // Aplicar el tema guardado o dark por defecto
-    if (savedTheme === 'dark' || !savedTheme) {
-        document.documentElement.classList.add('dark');
-        if (!savedTheme) {
-            localStorage.setItem('theme', 'dark');
-        }
+    if (savedTheme === "dark" || !savedTheme) {
+      document.documentElement.classList.add("dark");
+      if (!savedTheme) {
+        localStorage.setItem("theme", "dark");
+      }
     } else {
-        document.documentElement.classList.remove('dark');
+      document.documentElement.classList.remove("dark");
     }
-    
+
     updateThemeIcons();
-}
+  }
 
-// Función para cambiar el fondo del header según la sección
-function updateHeaderBackground() {
-    const sections = document.querySelectorAll('section');
-    const scrollY = window.scrollY;
-    const headerElement = document.querySelector('header');
-    const headerHeight = headerElement ? headerElement.offsetHeight : 64;
-    
-    let currentSection: HTMLElement | null = null;
-    
-    sections.forEach(section => {
-        if (section instanceof HTMLElement) {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            
-            if (scrollY >= sectionTop - headerHeight && scrollY < sectionTop + sectionHeight - headerHeight) {
-                currentSection = section;
-            }
+  // Nueva implementación usando Intersection Observer para cambiar color y marcar enlaces activos
+  function setupHeaderColorChange() {
+    const headerElement = document.querySelector("header");
+    const sections = [
+      { id: "hero", className: "header-hero", linkSelector: 'a[href="#hero"]' },
+      {
+        id: "about",
+        className: "header-about",
+        linkSelector: 'a[href="#about"]',
+      },
+      {
+        id: "projects",
+        className: "header-projects",
+        linkSelector: 'a[href="#projects"]',
+      },
+      {
+        id: "contact",
+        className: "header-contact",
+        linkSelector: 'a[href="#contact"]',
+      },
+      {
+        id: "experiences",
+        className: "header-experiences",
+        linkSelector: 'a[href="#experiences"]',
+      },
+    ];
+
+    // Salir si no hay header
+    if (!headerElement) return;
+
+    // Configurar el Intersection Observer
+    const observerOptions = {
+      // rootMargin negativo para activar un poco antes de llegar a la sección
+      rootMargin: "-60px 0px -40% 0px",
+      threshold: [0.05, 0.1, 0.2, 0.5], // Múltiples umbrales para mejor detección
+    };
+
+    let currentSection = "hero"; // Sección por defecto
+
+    // Función para actualizar los enlaces activos
+    function updateActiveLinks(sectionId) {
+      // Quitar la clase 'active' de todos los enlaces
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.classList.remove("active");
+      });
+
+      // Encontrar la configuración para esta sección
+      const sectionConfig = sections.find(
+        (section) => section.id === sectionId,
+      );
+
+      // Añadir la clase 'active' al enlace correspondiente si existe
+      if (sectionConfig && sectionConfig.linkSelector) {
+        const activeLink = document.querySelector(sectionConfig.linkSelector);
+        if (activeLink) {
+          activeLink.classList.add("active");
         }
-    });
-    
-   /* if (headerElement) {
-        // Remover todas las clases de sección anteriores
-        headerElement.classList.remove('header-hero', 'header-about', 'header-projects', 'header-contact');
-        
-        // Verificar que currentSection sea un HTMLElement y tenga id
-        if (currentSection !== null && currentSection.hasAttribute('id')) {
-            const sectionId = currentSection!.id;
-            
-            // Agregar clase específica según la sección
-            switch(sectionId) {
-                case 'about':
-                    headerElement.classList.add('header-about');
-                    break;
-                case 'projects':
-                    headerElement.classList.add('header-projects');
-                    break;
-                case 'contact':
-                    headerElement.classList.add('header-contact');
-                    break;
-                default:
-                    headerElement.classList.add('header-hero');
-                    break;
-            }
+      }
+    }
+
+    // Callback para el observer
+    const observerCallback = (entries) => {
+      // Ordenar entradas por su ratio de intersección (mayor a menor)
+      const visibleEntries = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+      // Usar la entrada con mayor ratio de intersección
+      if (visibleEntries.length > 0) {
+        const mostVisibleEntry = visibleEntries[0];
+        const sectionId = mostVisibleEntry.target.id;
+
+        // No hacer nada si ya estamos en esta sección
+        if (sectionId === currentSection) return;
+
+        // Actualizar sección actual
+        currentSection = sectionId;
+
+        console.log(
+          `Sección visible: ${sectionId} (${mostVisibleEntry.intersectionRatio.toFixed(2)})`,
+        );
+
+        // Remover todas las clases de sección
+        sections.forEach((section) => {
+          headerElement.classList.remove(section.className);
+        });
+
+        // Encontrar la configuración para esta sección
+        const sectionConfig = sections.find(
+          (section) => section.id === sectionId,
+        );
+
+        // Aplicar la clase correspondiente
+        if (sectionConfig) {
+          headerElement.classList.add(sectionConfig.className);
         } else {
-            // Aplicar clase por defecto si no hay sección actual
-            headerElement.classList.add('header-hero');
+          // Si no encuentra la sección en nuestra configuración, usar la clase hero por defecto
+          headerElement.classList.add("header-hero");
         }
-    }*/
-}
 
-// Funciones para el menú móvil
-function openMenu() {
-    const menuElement = document.getElementById('menu');
+        // Actualizar enlaces activos
+        updateActiveLinks(sectionId);
+      }
+    };
+
+    // Crear el observer
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions,
+    );
+
+    // Observar todas las secciones disponibles
+    sections.forEach((section) => {
+      const element = document.getElementById(section.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Establecer la sección inicial basada en la posición actual
+    function setInitialSection() {
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      // Encontrar la sección visible actualmente
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (!element) continue;
+
+        const rect = element.getBoundingClientRect();
+        const absoluteTop = window.scrollY + rect.top;
+        const absoluteBottom = window.scrollY + rect.bottom;
+
+        if (scrollPosition >= absoluteTop && scrollPosition <= absoluteBottom) {
+          headerElement.classList.add(section.className);
+          currentSection = section.id;
+          updateActiveLinks(section.id);
+          console.log(`Sección inicial: ${section.id}`);
+          return;
+        }
+      }
+
+      // Si no se encuentra ninguna sección visible, usar hero por defecto
+      headerElement.classList.add("header-hero");
+      updateActiveLinks("hero");
+    }
+
+    // Establecer la sección inicial
+    setInitialSection();
+
+    return observer;
+  }
+
+  // Funciones para el menú móvil
+  function openMenu() {
+    const menuElement = document.getElementById("menu");
     if (menuElement) {
-        menuElement.classList.remove('translate-x-full');
+      menuElement.classList.remove("translate-x-full");
     }
-}
+  }
 
-function closeMenu() {
-    const menuElement = document.getElementById('menu');
+  function closeMenu() {
+    const menuElement = document.getElementById("menu");
     if (menuElement) {
-        menuElement.classList.add('translate-x-full');
+      menuElement.classList.add("translate-x-full");
     }
-}
+  }
 
-// Inicializar tema
-initTheme();
+  // Inicializar tema
+  initTheme();
 
-// Event listeners - Con verificaciones de null
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', toggleTheme);
-}
+  // Event listeners - Con verificaciones de null
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", toggleTheme);
+  }
 
-if (menuBtn) {
-    menuBtn.addEventListener('click', openMenu);
-}
+  if (menuBtn) {
+    menuBtn.addEventListener("click", openMenu);
+  }
 
-if (menuClose) {
-    menuClose.addEventListener('click', closeMenu);
-}
+  if (menuClose) {
+    menuClose.addEventListener("click", closeMenu);
+  }
 
-// Event listeners para scroll y carga
-window.addEventListener('scroll', updateHeaderBackground);
-window.addEventListener('load', updateHeaderBackground);
+  // Event listeners para carga
+  window.addEventListener("load", () => {
+    // Iniciar el observer para las secciones
+    const sectionObserver = setupHeaderColorChange();
 
-// Listener para cambios en localStorage desde otras pestañas
-window.addEventListener('storage', function(e) {
-    if (e.key === 'theme') {
-        initTheme();
+    console.log(
+      "Página cargada - Observer configurado para detectar secciones",
+    );
+  });
+
+  // Listener para cambios en localStorage desde otras pestañas
+  window.addEventListener("storage", function (e) {
+    if (e.key === "theme") {
+      initTheme();
     }
-});
+  });
 
-// Cerrar menú al hacer click en enlaces (móvil)
-document.addEventListener('click', function(e) {
+  // Cerrar menú al hacer click en enlaces (móvil)
+  document.addEventListener("click", function (e) {
     if (e.target && e.target instanceof HTMLElement) {
-        const target = e.target;
-        
-        // Si es un enlace dentro del menú móvil, cerrar el menú
-        if (target.matches('#menu a[href^="#"]')) {
-            closeMenu();
-        }
-        
-        // Si se hace click fuera del menú, cerrarlo
-        const menuElement = document.getElementById('menu');
-        const menuBtnElement = document.getElementById('menuBtn');
-        
-        if (menuElement && menuBtnElement && 
-            !menuElement.contains(target) && 
-            !menuBtnElement.contains(target) &&
-            !menuElement.classList.contains('translate-x-full')) {
-            closeMenu();
-        }
+      const target = e.target;
+
+      // Si es un enlace dentro del menú móvil, cerrar el menú
+      if (target.matches('#menu a[href^="#"]')) {
+        closeMenu();
+      }
+
+      // Si se hace click fuera del menú, cerrarlo
+      const menuElement = document.getElementById("menu");
+      const menuBtnElement = document.getElementById("menuBtn");
+
+      if (
+        menuElement &&
+        menuBtnElement &&
+        !menuElement.contains(target) &&
+        !menuBtnElement.contains(target) &&
+        !menuElement.classList.contains("translate-x-full")
+      ) {
+        closeMenu();
+      }
     }
-});
+  });
 </script>
 
 <style>
-
-
   header {
-    transition: all 0.8s ease-in-out;
+    transition:
+      background-color 0.5s ease-in-out,
+      backdrop-filter 0.5s ease-in-out,
+      transform 0.3s ease;
   }
 
-  /* Estilos por defecto del header */
-  .header-hero {
-    @apply bg-transparent backdrop-blur-lg;
+  /* Estilos comunes para todos los headers */
+  header {
+    @apply backdrop-blur-lg bg-transparent;
   }
 
-  /* Header en sección About (azul) */
-  .header-about {
-    @apply bg-transparent dark:bg-transparent backdrop-blur-lg  ;
+  /* Color de texto por defecto (sección Hero) */
+  header .nav-link {
+    @apply text-blue-900 dark:text-white;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease,
+      transform 0.3s ease,
+      text-shadow 0.3s ease;
   }
 
-  .header-about .nav-link {
-    @apply text-white dark:text-blue-100;
+  header #theme-toggle {
+    @apply text-blue-900 dark:text-white;
+    transition:
+      color 0.3s ease,
+      background-color 0.3s ease;
   }
 
-  .header-about #theme-toggle {
-    @apply text-white dark:text-blue-100 hover:bg-gray-200 dark:hover:bg-blue-800  duration-75;
+  /* Estilos para secciones específicas (todas excepto Hero) */
+  header.header-about .nav-link,
+  header.header-projects .nav-link,
+  header.header-contact .nav-link,
+  header.header-experiences .nav-link {
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    animation: textPulse 1.5s ease-out;
   }
 
-  /* Header en sección Projects (oscuro) */
-  .header-projects {
-    @apply bg-transparent dark:bg-transparent backdrop-blur-lg;
+  header.header-about #theme-toggle,
+  header.header-projects #theme-toggle,
+  header.header-contact #theme-toggle,
+  header.header-experiences #theme-toggle {
+    color: white !important;
+    -webkit-text-fill-color: white !important;
+    @apply hover:bg-white/20 dark:hover:bg-blue-800 duration-75;
+    animation: textPulse 1.5s ease-out;
   }
 
-  .header-projects .nav-link {
-    @apply text-white;
+  /* Animación suave de cambio de color */
+  @keyframes textPulse {
+    0% {
+      text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    }
+    50% {
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+    }
   }
 
-  .header-projects #theme-toggle {
-    @apply text-white hover:bg-gray-700;
+  /* Estilos específicos para cada sección */
+  header.header-hero {
+    @apply bg-transparent;
   }
 
-  /* Header en sección Contact */
-  .header-contact {
-    @apply bg-transparent dark:bg-transparent backdrop-blur-lg ;
+  /* Se puede personalizar cada sección si es necesario */
+  header.header-about {
+    @apply bg-transparent dark:bg-transparent;
   }
 
-  .header-contact .nav-link {
-    @apply text-white dark:text-white;
+  header.header-projects {
+    @apply bg-transparent dark:bg-transparent;
   }
 
-  .header-contact #theme-toggle {
-    @apply text-white dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800;
+  header.header-experiences {
+    @apply bg-transparent dark:bg-transparent;
+  }
+
+  header.header-contact {
+    @apply bg-transparent dark:bg-transparent;
+  }
+
+  /* Efecto de cambio de sección */
+  header.header-about,
+  header.header-projects,
+  header.header-contact,
+  header.header-experiences {
+    animation: headerTransition 0.4s ease-out;
+  }
+
+  @keyframes headerTransition {
+    0% {
+      transform: translateY(-2px);
+    }
+    50% {
+      transform: translateY(1px);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 
   .nav-link {
     position: relative;
     padding: 0.75rem;
     border-radius: 0.75rem;
-    transition: all 0.5s ease-in-out;
-    font-size: 1rem bold;
+    transition: all 0.4s ease;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     font-weight: 400;
-    cursor: grab;
+    cursor: pointer;
     text-decoration: none;
-    @apply text-blue-900 dark:text-white;
-  }
-  
-  .nav-link:hover {
-    background-color: rgba(6, 101, 254, 0.391);
-    transform: translateX(2px);
-    box-shadow: 0 4px 8px rgba(184, 6, 6, 0.1);
-    opacity: 1;
-    @apply dark:bg-blue-500/40 dark:shadow-blue-900/20;
-    
   }
 
+  .dark .nav-link {
+    color: white;
+  }
+
+  .nav-link:hover {
+    background-color: rgba(6, 101, 254, 0.25);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    @apply dark:bg-blue-500/30 dark:shadow-blue-900/20;
+  }
+
+  /* Indicador activo bajo los enlaces */
   .nav-link::after {
-    display: none;
-    content: '';
+    content: "";
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #0c57cf;
-    transform: scaleX(5);
-    transition: transform 0.5s ease;
-    @apply dark:bg-blue-400;
+    bottom: 0.6rem;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform: translateX(-50%);
+    opacity: 0.5;
+    transition:
+      width 0.3s ease-out,
+      opacity 0.4s ease-out;
   }
 
   .nav-link:hover::after {
-    transform: scaleX(1);
-    transition: transform 0.5s ease-in-out;
+    width: 60%;
+    opacity: 1;
   }
 
- 
-
+  /* Estilo de enlace activo */
+  .nav-link.active::after {
+    width: 60%;
+    opacity: 1;
+  }
 </style>

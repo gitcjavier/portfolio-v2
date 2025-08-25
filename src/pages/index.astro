@@ -1,42 +1,55 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Projects from '../components/Projects.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import SectionContainer from '../components/SectionContainer.astro';
-import CodeIcon from '../components/icons/Code.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import CodeIcon from "../components/icons/Code.astro";
 
 import "../styles/global.css";
 ---
 
-<Layout title="Portfolio de Javier Castro Retamal - Desarrollador Web"
-		description="Portfolio de Javier Castro Retamal - Desarrollador Web"
-		keywords="Portfolio, Javier Castro Retamal, Desarrollador Web, Diseño Web, Aplicaciones Web"
-		author="Javier Castro Retamal">
-    
-    <Header />
-    <main class="relative">
-    <Hero />
-    <About />
-    <SectionContainer id="projects">
-			<h2 class="text-4xl dark:text-[#ccf381]  text-[#ccf381] flex gap-x-4 mt-2 justify-center items-center mb-6 fade-up image-container" style="animation-delay: 0.2s;">
-				<CodeIcon class="size-7 " />
-				Proyectos
-			</h2>
-			<Projects />
-		</SectionContainer>
-    <Contact />
+<Layout
+  title="Portfolio de Javier Castro Retamal - Desarrollador Web"
+  description="Portfolio de Javier Castro Retamal - Desarrollador Web"
+  keywords="Portfolio, Javier Castro Retamal, Desarrollador Web, Diseño Web, Aplicaciones Web"
+  author="Javier Castro Retamal"
+>
+  <Header />
+  <main
+    class="relative snap-y snap-mandatory h-screen w-full overflow-y-scroll overflow-x-hidden"
+  >
+    <div class="snap-center h-screen">
+      <Hero />
+    </div>
+    <div class="snap-center h-screen">
+      <About />
+    </div>
+    <div class="snap-center h-screen">
+      <SectionContainer>
+        <Projects />
+      </SectionContainer>
+    </div>
+    <div class="snap-center h-screen dark:bg-gray-950 bg-black">
+      <Contact />
+    </div>
+    <div class="snap-center h-screen items-center">
+      <Footer />
+    </div>
   </main>
-  <Footer />
 </Layout>
 
 <style>
-	  .image-container {
+  .image-container {
     animation: reveal both;
     animation-timeline: view();
     animation-range: entry 20% cover 30%;
+  }
+
+  * {
+    scrollbar-width: none;
   }
 </style>
