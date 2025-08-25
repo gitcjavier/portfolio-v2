@@ -22,31 +22,31 @@ import { ClientRouter } from "astro:transitions";
   }
 </style>
 
-<section id="about" class="min-h-screen py-20 bg-blue-600 dark:bg-blue-900 transition-colors duration-300 flex items-center">
-  <div class="container mx-auto px-4">
+<section id="about" class="min-h-screen mobile-py bg-blue-600 dark:bg-blue-900 transition-colors duration-300 flex items-center">
+  <div class="container mx-auto mobile-px">
     
-      <h2 class="text-4xl font-bold mb-16 py-5 text-center">
+      <h2 class="mobile-text-3xl xs:mobile-text-4xl sm:mobile-text-4xl font-bold mobile-mb py-5 text-center">
         <span class="text-[#ccf381]">/Self</span>
 
       </h2>
       
       <div class="flex flex-col items-start image-container animate-fade-in">
-        <div class="flex items-start gap-8 w-full animate-fade-in ">
-          <div class="w-full md:w-1/2 opacity-0 animate-fade-in duration-1000 " >
-            <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out animate-fade-in">Diseño</h3>
-            <p class="text-white text-lg leading-relaxed text-balance image-container animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="flex flex-col lg:flex-row items-start gap-6 xs:gap-8 w-full animate-fade-in">
+          <div class="w-full lg:w-1/2 opacity-0 animate-fade-in duration-1000" >
+            <h3 class="text-white font-bold mobile-text-4xl xs:mobile-text-5xl sm:mobile-text-6xl lg:mobile-text-7xl mobile-mb image-container duration-1000 ease-in-out animate-fade-in">Diseño</h3>
+            <p class="text-white mobile-text-base xs:mobile-text-lg leading-relaxed text-balance image-container animate-fade-in" style="animation-delay: 0.2s;">
               Soy un desarrollador Frontend apasionado por crear experiencias web excepcionales. 
               Me especializo en tecnologías modernas y me mantengo constantemente actualizado con las últimas tendencias en desarrollo web.
             </p>
           </div>
-          <div class="flex-shrink-0 ">
+          <div class="flex-shrink-0 hidden lg:block">
             <svg xmlns="http://www.w3.org/2000/svg" width="200" height="120" viewBox="0 0 325 193" data-shape="true" aria-hidden="true" id="cs-pattern-left"><path fill="none" stroke="#ffffff" stroke-miterlimit="50" stroke-width="2" d="M17.053 9.57a7.891 7.891 0 11-15.782 0 7.891 7.891 0 0115.782 0zM45.122 9.57a7.891 7.891 0 11-15.782 0 7.891 7.891 0 0115.782 0zM73.19 9.57a7.891 7.891 0 11-15.781 0 7.891 7.891 0 0115.782 0zM101.26 9.57a7.891 7.891 0 11-15.782 0 7.891 7.891 0 0115.782 0zM129.329 9.57a7.891 7.891 0 11-15.783 0 7.891 7.891 0 0115.783 0zM238.083 103.963v0l-.561 22.259v0l22.259-.561v0l-.561 22.258v0l22.259-.56v0l-.561 22.258v0l22.259-.56v0l-.559 22.26v0l22.26-.56v0"></path>
             </svg>
           </div>
         </div>       
-        <div class="w-full md:w-1/2 md:self-end opacity-0 animate-fade-in duration-1000 image-container " style="animation-delay: 0.4s;">
-          <h3 class="text-white font-bold text-7xl mb-2 image-container duration-1000 ease-in-out image-container animate-fade-in">Ingeniería</h3>
-          <p class="text-white text-lg leading-relaxed pt-2.5 pb-8 image-container duration-1000 ease-in-out animate-fade-in"  style="animation-delay: 0.2s;">
+        <div class="w-full lg:w-1/2 lg:self-end opacity-0 animate-fade-in duration-1000 image-container mobile-mt" style="animation-delay: 0.4s;">
+          <h3 class="text-white font-bold mobile-text-4xl xs:mobile-text-5xl sm:mobile-text-6xl lg:mobile-text-7xl mobile-mb image-container duration-1000 ease-in-out image-container animate-fade-in">Ingeniería</h3>
+          <p class="text-white mobile-text-base xs:mobile-text-lg leading-relaxed pt-2.5 pb-8 image-container duration-1000 ease-in-out animate-fade-in"  style="animation-delay: 0.2s;">
             Mi enfoque se centra en escribir código limpio y mantenible, 
             crear interfaces intuitivas y asegurar que cada proyecto cumpla 
             con los más altos estándares de calidad y rendimiento.
@@ -56,12 +56,12 @@ import { ClientRouter } from "astro:transitions";
 
           <!-- Tecnologías solo visible en MacBook -->
            
-      <footer class="flex items-end justify-start mt-4 gap-x-4">
+      <footer class="flex flex-col xs:flex-row items-center xs:items-end justify-center xs:justify-start mobile-mt gap-4 xs:gap-x-4">
             <a 
               target="_blank"
               role="link"
               href="/resume.pdf" 
-              class="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+              class="relative inline-flex items-center justify-center gap-2 px-4 xs:px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 w-full xs:w-auto text-center"
             >
               <span class="absolute inset-0 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0"></span>
               <span class="relative z-10">Descargar CV</span>
@@ -72,7 +72,7 @@ import { ClientRouter } from "astro:transitions";
               role="link"
               href="/experiences" 
               id="experience-btn"
-              class="relative inline-flex items-center justify-center gap-2 px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2"
+              class="relative inline-flex items-center justify-center gap-2 px-4 xs:px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 w-full xs:w-auto text-center"
             >
               <span class="absolute inset-0 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0"></span>
               <span class="relative z-10">💼 Experiencia Laboral</span>
@@ -80,42 +80,42 @@ import { ClientRouter } from "astro:transitions";
       </footer>
         
         <!-- Sección original de tecnologías para otras resoluciones -->
-        <div class="tech-default skills-section opacity-0 animate-fade-in duration-500 delay-100 mt-10 image-container">
-          <h3 class="text-2xl font-semibold text-white mb-8 items-center justify-center flex">Tecnologías</h3>
+        <div class="tech-default skills-section opacity-0 animate-fade-in duration-500 delay-100 mobile-mt image-container">
+          <h3 class="mobile-text-xl xs:mobile-text-2xl font-semibold text-white mobile-mb items-center justify-center flex">Tecnologías</h3>
 
-          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 xs:gap-4">
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/Astro_dark.svg" alt="Astro" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/Astro_dark.svg" alt="Astro" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/css3.svg" alt="CSS3" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/css3.svg" alt="CSS3" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/html5.svg" alt="HTML5" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/html5.svg" alt="HTML5" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/javascript.svg" alt="JavaScript" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/javascript.svg" alt="JavaScript" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/supabase.svg" alt="Supabase" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/supabase.svg" alt="Supabase" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/git.svg" alt="Git" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/git.svg" alt="Git" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/github.svg" alt="GitHub" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/github.svg" alt="GitHub" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/photoshop.svg" alt="Photoshop" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/photoshop.svg" alt="Photoshop" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
-              <img src="/icons/illustrator.svg" alt="Illustrator" class="w-12 h-12 transition-transform duration-300 group-hover:scale-110" />
+              <img src="/icons/illustrator.svg" alt="Illustrator" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
             <div class="glass-card group transform transition-transform duration-100 hover:scale-110">
-              <img src="/icons/lightroom.svg" alt="Lightroom" class="w-12 h-12 transition-transform duration-100 group-hover:scale-110" />
+              <img src="/icons/lightroom.svg" alt="Lightroom" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-100 hover:scale-110" />
             </div>
           </div>
         </div>

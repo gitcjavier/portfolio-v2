@@ -7,6 +7,14 @@ export default {
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
       },
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
       animation: {
         'slide-up': 'slide-up 0.8s cubic-bezier(0.5, 0, 0.1, 1) forwards',
         'slow-spin': 'slow-spin 20s linear infinite',

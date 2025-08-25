@@ -32,7 +32,7 @@
   img {
     animation: reveal both;
     animation-timeline: view() ;
-    animation-range: entry 20% cover 20%;
+    animation-range: entry 20% cover 10%;
   }
 
 }
@@ -87,20 +87,26 @@
 
 
   .section-title {
-    font-size: 2.25rem;
+    font-size: 1.875rem; /* 3xl */
     font-weight: bold;
     margin-bottom: 2rem;
   }
 
+  @media (min-width: 640px) {
+    .section-title {
+      font-size: 2.25rem; /* 4xl */
+    }
+  }
+
   @media (min-width: 768px) {
     .section-title {
-      font-size: 3rem;
+      font-size: 3rem; /* 5xl */
     }
   }
 
   @media (min-width: 1024px) {
     .section-title {
-      font-size: 3.75rem;
+      font-size: 3.75rem; /* 6xl */
     }
   }
 
@@ -124,6 +130,76 @@
   animation: fade-up 0.8s ease forwards;
   opacity: 2;
 }
+
+  /* Clases responsivas para móviles */
+  .mobile-text-xs {
+    @apply text-xs xs:text-sm sm:text-base;
+  }
+
+  .mobile-text-sm {
+    @apply text-sm xs:text-base sm:text-lg;
+  }
+
+  .mobile-text-base {
+    @apply text-base xs:text-lg sm:text-xl;
+  }
+
+  .mobile-text-lg {
+    @apply text-lg xs:text-xl sm:text-2xl;
+  }
+
+  .mobile-text-xl {
+    @apply text-xl xs:text-2xl sm:text-3xl;
+  }
+
+  .mobile-text-2xl {
+    @apply text-2xl xs:text-3xl sm:text-4xl;
+  }
+
+  .mobile-text-3xl {
+    @apply text-3xl xs:text-4xl sm:text-5xl;
+  }
+
+  .mobile-text-4xl {
+    @apply text-4xl xs:text-5xl sm:text-6xl;
+  }
+
+  .mobile-text-5xl {
+    @apply text-5xl xs:text-6xl sm:text-7xl;
+  }
+
+  .mobile-text-6xl {
+    @apply text-6xl xs:text-7xl sm:text-8xl;
+  }
+
+  .mobile-text-7xl {
+    @apply text-7xl xs:text-8xl sm:text-9xl;
+  }
+
+  .mobile-text-8xl {
+    @apply text-8xl xs:text-9xl sm:text-9xl;
+  }
+
+  /* Padding responsivo */
+  .mobile-px {
+    @apply px-4 xs:px-6 sm:px-8;
+  }
+
+  .mobile-py {
+    @apply py-8 xs:py-12 sm:py-16;
+  }
+
+  .mobile-gap {
+    @apply gap-4 xs:gap-6 sm:gap-8;
+  }
+
+  .mobile-mb {
+    @apply mb-4 xs:mb-6 sm:mb-8;
+  }
+
+  .mobile-mt {
+    @apply mt-4 xs:mt-6 sm:mt-8;
+  }
 }
 
 /* Animaciones simplificadas usando solo Tailwind CSS */
@@ -160,5 +236,64 @@
   to {
      opacity: 1;
      translate: 0;
+  }
+}
+
+/* Mejoras para móviles */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ajustar tamaños de texto para móviles muy pequeños */
+  @media (max-width: 393px) {
+    .mobile-text-xs {
+      font-size: 0.75rem;
+    }
+    
+    .mobile-text-sm {
+      font-size: 0.875rem;
+    }
+    
+    .mobile-text-base {
+      font-size: 1rem;
+    }
+    
+    .mobile-text-lg {
+      font-size: 1.125rem;
+    }
+    
+    .mobile-text-xl {
+      font-size: 1.25rem;
+    }
+    
+    .mobile-text-2xl {
+      font-size: 1.5rem;
+    }
+    
+    .mobile-text-3xl {
+      font-size: 1.875rem;
+    }
+    
+    .mobile-text-4xl {
+      font-size: 2.25rem;
+    }
+    
+    .mobile-text-5xl {
+      font-size: 3rem;
+    }
+    
+    .mobile-text-6xl {
+      font-size: 3.75rem;
+    }
+    
+    .mobile-text-7xl {
+      font-size: 4.5rem;
+    }
+    
+    .mobile-text-8xl {
+      font-size: 6rem;
+    }
   }
 }

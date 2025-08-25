@@ -1,10 +1,10 @@
 <section id="hero" class="hero-section min-h-screen flex items-center bg-white/95 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
   <!-- Decorative elements -->
-  <div class="absolute top-20 left-10 w-64 h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-20 right-10 w-64 h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
+  <div class="absolute top-20 left-10 w-32 h-32 xs:w-48 xs:h-48 sm:w-64 sm:h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-20 right-10 w-32 h-32 xs:w-48 xs:h-48 sm:w-64 sm:h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
 
-  <div class="container mx-auto px-4 py-32 relative">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+  <div class="container mx-auto mobile-px py-16 xs:py-20 sm:py-24 lg:py-32 relative">
+    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 xs:gap-12 sm:gap-16 items-center">
       <!-- Content -->
       <div class="space-y-8">
         <h1 class="text-6xl lg:text-7xl font-bold leading-tight opacity-0 animate-fade-in duration-1000 fade-up " style="animation-delay: 0.2s;">
@@ -18,22 +18,22 @@
           Creo aplicaciones web modernas y experiencias digitales únicas, combinando diseño atractivo con código limpio y eficiente.
         </p>
 
-        <div class="relative flex flex-wrap gap-4 opacity-0 animate-fade-in duration-1000 delay-500 fade-up z-10" style="animation-delay: 0.6s;">
-          <a href="#projects" class="relative z-20 btn btn-primary">
+        <div class="relative flex flex-col xs:flex-row gap-4 justify-center lg:justify-start opacity-0 animate-fade-in duration-1000 delay-500 fade-up z-10" style="animation-delay: 0.6s;">
+          <a href="#projects" class="relative z-20 btn btn-primary w-full xs:w-auto">
             Ver Proyectos
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
           </a>
-          <a href="#contact" class="relative z-20 btn btn-outline fade-up">
+          <a href="#contact" class="relative z-20 btn btn-outline fade-up w-full xs:w-auto">
             Contactar
           </a>
         </div>
       </div>
 
       <!-- Image -->
-      <div class="relative" style="animation-delay: 0.3s;">
-        <div class="flex rounded-full border-2 border-blue-600/20 p-2 mx-auto max-w-md fade-up" style="animation-delay: 0.3s;">
+      <div class="relative order-first lg:order-last" style="animation-delay: 0.3s;">
+        <div class="flex rounded-full border-2 border-blue-600/20 p-2 mx-auto max-w-[280px] xs:max-w-[320px] sm:max-w-md fade-up" style="animation-delay: 0.3s;">
          <img 
          
             src="/img/javoru2.webp" 
@@ -42,25 +42,24 @@
           />
         </div>
 
-        <!-- Tech stack floating elements -->
-        <div class="absolute -top-4 -left-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in  delay-100 hover:scale-110 transition-all duration-300">
-          <img src="/icons/Astro_light.svg" alt="Astro" class="w-8 h-8 block dark:hidden duration-300" />
-          <img src="/icons/Astro_dark.svg" alt="Astro" class="w-8 h-8 hidden dark:block duration-300" />
+        <!-- Tech stack floating elements - Responsive positioning -->
+        <div class="absolute -top-2 -left-2 xs:-top-4 xs:-left-4 p-2 xs:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in delay-100 hover:scale-110 transition-all duration-300">
+          <img src="/icons/Astro_light.svg" alt="Astro" class="w-6 h-6 xs:w-8 xs:h-8 block dark:hidden duration-300" />
+          <img src="/icons/Astro_dark.svg" alt="Astro" class="w-6 h-6 xs:w-8 xs:h-8 hidden dark:block duration-300" />
         </div>
-        <div class="absolute top-1/2 -right-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in  delay-100 hover:scale-110 transition-all duration-300">
-          <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-8 h-8" />
+        <div class="absolute top-1/2 -right-2 xs:-right-4 p-2 xs:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in delay-100 hover:scale-110 transition-all duration-300">
+          <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-6 h-6 xs:w-8 xs:h-8" />
         </div>
-        <div class="absolute -bottom-4 left-1/4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in  delay-100 hover:scale-110 transition-all duration-300">
-          <img src="/icons/css3.svg" alt="CSS3" class="w-8 h-8" />
+        <div class="absolute -bottom-2 left-1/4 xs:-bottom-4 p-2 xs:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in delay-100 hover:scale-110 transition-all duration-300">
+          <img src="/icons/css3.svg" alt="CSS3" class="w-6 h-6 xs:w-8 xs:h-8" />
         </div>
       </div>
     </div>
   </div>
-</section>
 
   <!-- Decorative elements -->
-  <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-600/20 dark:bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
-  <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-blue-400/20 dark:bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse delay-1000"></div>
+  <div class="absolute top-1/4 right-1/4 w-48 h-48 xs:w-64 xs:h-64 sm:w-96 sm:h-96 bg-blue-600/20 dark:bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
+  <div class="absolute bottom-1/4 left-1/4 w-48 h-48 xs:w-64 xs:h-64 sm:w-96 sm:h-96 bg-blue-400/20 dark:bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse delay-1000"></div>
 </section>
 
 <style>
@@ -68,5 +67,22 @@
     animation: reveal both;
     animation-timeline: scroll();
     animation-range: entry 20% cover 30%;
+  }
+
+  /* Mejoras específicas para móviles muy pequeños */
+  @media (max-width: 393px) {
+    .hero-section {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    
+    .hero-section h1 {
+      line-height: 1.1;
+    }
+    
+    .hero-section .btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
   }
 </style>

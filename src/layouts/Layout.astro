@@ -16,7 +16,7 @@ const { title } = Astro.props;
   <head>
 <meta charset="UTF-8" />
     
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="description" content={Astro.props.description} />
 		<meta name="keywords" content={Astro.props.keywords} />
@@ -40,18 +40,24 @@ const { title } = Astro.props;
 </html>
 
 <style is:global>
+  @import '../styles/mobile.css';
+  
   	:root {
 		color-scheme: dark light;
 	}
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
   }
   
   body {
     font-family: Onest, Geneva, Tahoma, sans-serif;
     line-height: 1.6;
     scroll-behavior: smooth;
-    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   /* Smooth transitions */
@@ -61,11 +67,13 @@ const { title } = Astro.props;
   
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   
-
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
   
   ::-webkit-scrollbar-thumb {
     @apply bg-gray-300 dark:bg-gray-700 rounded-full;
@@ -86,5 +94,38 @@ const { title } = Astro.props;
   /* Selection styles */
   ::selection {
     @apply bg-blue-500 dark:bg-blue-600 text-white;
+  }
+
+  /* Mejoras para móviles */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+    
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+
+  /* Mejoras específicas para móviles muy pequeños */
+  @media (max-width: 393px) {
+    html {
+      font-size: 13px;
+    }
+    
+    body {
+      font-size: 15px;
+      line-height: 1.4;
+    }
+  }
+
+  /* Prevenir zoom en inputs en iOS */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    select,
+    textarea,
+    input {
+      font-size: 16px;
+    }
   }
 </style>

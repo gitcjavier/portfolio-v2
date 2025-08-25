@@ -52,4 +52,24 @@ import "../styles/global.css";
   * {
     scrollbar-width: none;
   }
+
+  /* Mejoras para móviles */
+  @media (max-width: 640px) {
+    main {
+      scroll-snap-type: y mandatory;
+    }
+    
+    .snap-center {
+      scroll-snap-align: center;
+      min-height: 100vh;
+    }
+  }
+
+  /* Mejoras específicas para móviles muy pequeños */
+  @media (max-width: 393px) {
+    .snap-center {
+      min-height: 100vh;
+      padding: 1rem 0;
+    }
+  }
 </style>

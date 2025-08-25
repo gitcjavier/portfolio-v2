@@ -77,63 +77,63 @@ import "../styles/global.css";
 </style>
 <div class="w-full h-full flex flex-col">
   <h2
-    class="text-4xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-4 mt-2  justify-center items-center fade-up image-container pt-14"
+    class="mobile-text-3xl xs:mobile-text-4xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-2 xs:gap-x-4 mt-2 justify-center items-center fade-up image-container pt-8 xs:pt-12 sm:pt-14"
     style="animation-delay: 0.2s;"
   >
-    <CodeIcon class="size-7" />
+    <CodeIcon class="size-5 xs:size-6 sm:size-7" />
     Proyectos
   </h2>
-  <div class="flex justify-center items-center py-8">
-    <h2 class="text-4xl font-bold text-white mb-4"></h2>
+  <div class="flex justify-center items-center py-6 xs:py-8">
+    <h2 class="mobile-text-3xl xs:mobile-text-4xl font-bold text-white mobile-mb"></h2>
   </div>
-  <div class="flex-1 flex flex-col gap-8 px-8 pb-8 max-w-4xl mx-auto">
+  <div class="flex-1 flex flex-col gap-6 xs:gap-8 mobile-px pb-8 max-w-4xl mx-auto">
     {
       projects.map(({ image, title, description, tags, link, github }) => (
-        <article class="flex flex-col md:flex-row gap-6 group bg-gray-900/50 rounded-xl p-6 border border-gray-800 hover:border-gray-700 hover:bg-gray-800/50 transition-all duration-300 image-container">
-          <div class="w-full md:w-1/2 image-container">
+        <article class="flex flex-col lg:flex-row gap-4 xs:gap-6 group bg-gray-900/50 rounded-xl p-4 xs:p-6 border border-gray-800 hover:border-gray-700 hover:bg-gray-800/50 transition-all duration-300 image-container">
+          <div class="w-full lg:w-1/2 image-container">
             <div class="relative overflow-hidden rounded-lg image-container">
               <img
                 alt={title}
                 loading="lazy"
                 src={image}
-                class="w-full h-auto object-contain transition-transform duration-500 md:group-hover:scale-105"
+                class="w-full h-auto object-contain transition-transform duration-500 lg:group-hover:scale-105"
               />
             </div>
           </div>
 
-          <div class="w-full md:w-1/2 flex flex-col justify-center">
-            <h3 class="text-2xl font-bold text-gray-100">{title}</h3>
-            <div class="flex flex-wrap mt-2">
-              <ul class="flex flex-row mb-2 gap-x-2">
+          <div class="w-full lg:w-1/2 flex flex-col justify-center">
+            <h3 class="mobile-text-xl xs:mobile-text-2xl font-bold text-gray-100">{title}</h3>
+            <div class="flex flex-wrap mobile-mt">
+              <ul class="flex flex-row mobile-mb gap-x-2">
                 {tags.map((tag) => (
                   <li>
                     <span
                       class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
                     >
-                      <tag.icon class="size-4" />
+                      <tag.icon class="size-3 xs:size-4" />
                       {tag.name}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div class="mb mt-2 text-gray-400">{description}</div>
-              <footer class="flex items-end justify-start mt-4 gap-x-4">
+              <div class="mobile-mb text-gray-400 mobile-text-sm xs:mobile-text-base">{description}</div>
+              <footer class="flex flex-col xs:flex-row items-start xs:items-end justify-start mobile-mt gap-3 xs:gap-4">
                 {link && link.includes("behance") && (
                   <LinkButton href={link}>
-                    <Behance class="size-6" />
+                    <Behance class="size-5 xs:size-6" />
                     Behance
                   </LinkButton>
                 )}
                 {github && (
                   <LinkButton href={github}>
-                    <GitHub class="size-6" />
+                    <GitHub class="size-5 xs:size-6" />
                     GitHub
                   </LinkButton>
                 )}
                 {link && !link.includes("behance") && (
                   <LinkButton href={link}>
-                    <Link class="size-4" />
+                    <Link class="size-4 xs:size-4" />
                     Preview
                   </LinkButton>
                 )}

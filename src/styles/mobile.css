@@ -1,0 +1,193 @@
+/* Estilos específicos para móviles muy pequeños (393x852 y similares) */
+@media (max-width: 393px) {
+  /* Ajustes generales */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Header optimizado para móviles pequeños */
+  header {
+    height: 3.5rem;
+  }
+
+  header .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  /* Hero optimizado */
+  .hero-section h1 {
+    line-height: 0.9;
+    word-spacing: -0.05em;
+  }
+
+  .hero-section .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    min-height: 2.5rem;
+  }
+
+  /* About optimizado */
+  .tech-default .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .tech-default .glass-card {
+    padding: 0.5rem;
+  }
+
+  .tech-default .glass-card img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  /* Projects optimizado */
+  .projects-section article {
+    padding: 0.75rem;
+  }
+
+  .projects-section .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  /* Contact optimizado */
+  .contact-item .contact-icon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .contact-item .contact-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Footer optimizado */
+  .footer-link .icon-wrapper {
+    padding: 0.5rem;
+  }
+
+  .footer-link svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Ajustes de espaciado */
+  .mobile-px {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .mobile-py {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .mobile-mb {
+    margin-bottom: 1rem;
+  }
+
+  .mobile-mt {
+    margin-top: 1rem;
+  }
+
+  /* Ajustes de texto */
+  .mobile-text-xs {
+    font-size: 0.75rem;
+  }
+
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+
+  .mobile-text-base {
+    font-size: 1rem;
+  }
+
+  .mobile-text-lg {
+    font-size: 1.125rem;
+  }
+
+  .mobile-text-xl {
+    font-size: 1.25rem;
+  }
+
+  .mobile-text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .mobile-text-3xl {
+    font-size: 1.875rem;
+  }
+
+  .mobile-text-4xl {
+    font-size: 2.25rem;
+  }
+
+  .mobile-text-5xl {
+    font-size: 3rem;
+  }
+
+  .mobile-text-6xl {
+    font-size: 3.75rem;
+  }
+
+  .mobile-text-7xl {
+    font-size: 4.5rem;
+  }
+
+  .mobile-text-8xl {
+    font-size: 6rem;
+  }
+}
+
+/* Optimizaciones para móviles en general */
+@media (max-width: 640px) {
+  /* Mejorar el scroll en móviles */
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Optimizar animaciones en móviles */
+  * {
+    transition-duration: 0.2s;
+  }
+
+  /* Mejorar el rendimiento táctil */
+  button, a, .btn {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Optimizar imágenes */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Mejorar la legibilidad del texto */
+  p, span, div {
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
+  }
+}
+
+/* Optimizaciones para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Mejorar la calidad de las fuentes en pantallas Retina */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Optimizaciones para dispositivos con notch */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
