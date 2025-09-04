@@ -26,8 +26,6 @@ const { title } = Astro.props;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
     <link rel="preload" href="/img/javoru2.webp" as="image">
-    
-    
   </head>
   <body>
     
@@ -35,9 +33,14 @@ const { title } = Astro.props;
       <ClientRouter />
       <slot />
     </div>
+    
 
+    <script src="/src/scripts/smooth-scroll.js"></script>
   </body>
 </html>
+
+
+
 
 <style is:global>
   @import '../styles/mobile.css';
