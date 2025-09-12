@@ -52,6 +52,18 @@
     padding: 0.5rem 0.75rem;
     font-size: 0.875rem;
   }
+  
+  /* Optimizar secciones principales */
+  section {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  /* Mejorar espaciado de contenedores */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 
   /* Contact optimizado */
   .contact-item .contact-icon {
@@ -81,8 +93,8 @@
   }
 
   .mobile-py {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
   .mobile-mb {
@@ -203,6 +215,13 @@
     height: 100dvh !important;
   }
   
+  /* Secciones principales optimizadas */
+  section {
+    min-height: 100dvh !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
   /* Padding adicional para compensar safe areas */
   .safe-area-padding {
     padding-top: max(1rem, env(safe-area-inset-top));
@@ -213,8 +232,8 @@
   
   /* Optimizar contenido para aprovechar mejor el espacio */
   .container {
-    padding-left: max(0.5rem, env(safe-area-inset-left));
-    padding-right: max(0.5rem, env(safe-area-inset-right));
+    padding-left: max(0.75rem, env(safe-area-inset-left));
+    padding-right: max(0.75rem, env(safe-area-inset-right));
     max-width: 100%;
   }
   
@@ -228,6 +247,31 @@
   .mobile-text-compact {
     line-height: 1.3;
     letter-spacing: -0.01em;
+  }
+  
+  /* Optimizar espaciado entre elementos */
+  .space-y-6 > * + * {
+    margin-top: 1rem !important;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem !important;
+  }
+  
+  /* Mejorar padding de contenedores */
+  .px-4 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  .py-8 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
   }
 }
 
@@ -251,6 +295,24 @@
     /* Evitar que el contenido se oculte detrás del notch */
     header {
       padding-top: max(0.5rem, env(safe-area-inset-top));
+    }
+    
+    /* Asegurar que todas las secciones usen el viewport completo */
+    #hero, #about, #projects, #contact {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    /* Optimizar contenedores de secciones */
+    #hero .container,
+    #about .container,
+    #projects .container,
+    #contact .container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+      width: 100%;
     }
   }
 }

@@ -74,21 +74,73 @@ import "../styles/global.css";
     animation-timeline: view();
     animation-range: entry 20% cover 30%;
   }
+
+  /* Optimizaciones específicas para iPhone 14 Pro y móviles similares */
+  @media (max-width: 393px) {
+    #projects {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      min-height: 100dvh;
+    }
+    
+    #projects .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    #projects h2 {
+      font-size: 1.75rem;
+      padding-top: 1rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    #projects article {
+      padding: 1rem;
+      gap: 1rem;
+    }
+    
+    #projects h1 {
+      font-size: 1.25rem;
+      line-height: 1.3;
+    }
+    
+    #projects .text-gray-400 {
+      font-size: 0.875rem;
+      line-height: 1.4;
+    }
+    
+    #projects .flex-1 {
+      gap: 1.5rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+  /* Mejoras adicionales para pantallas muy pequeñas */
+  @media (max-width: 360px) {
+    #projects h2 {
+      font-size: 1.5rem;
+    }
+    
+    #projects h1 {
+      font-size: 1.125rem;
+    }
+  }
 </style>
+<section id="projects" class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 flex flex-col justify-center py-8">
 <div class="w-full h-full flex flex-col">
   <h2
-    class="mobile-text-3xl xs:mobile-text-xl sm:mobile-text-2xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-2 xs:gap-x-4 mt-2 justify-center items-center fade-up image-container pt-10 pb-10 xs:pt-12 sm:pt-14"
+    class="text-2xl xs:text-3xl sm:text-4xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-2 xs:gap-x-4 mt-2 justify-center items-center fade-up image-container pt-6 xs:pt-10 pb-6 xs:pb-10 font-bold"
     style="animation-delay: 0.2s;"
   >
-    <CodeIcon class="size-6 xs:size-5 sm:size-6" />
+    <CodeIcon class="size-6 xs:size-7 sm:size-8" />
     Proyectos
   </h2>
   <div
-    class="flex-1 flex flex-col gap-6 xs:gap-8 mobile-px pb-8 max-w-4xl mx-auto"
+    class="flex-1 flex flex-col gap-4 xs:gap-6 px-4 xs:px-6 pb-6 xs:pb-8 max-w-4xl mx-auto"
   >
     {
       projects.map(({ image, title, description, tags, link, github }) => (
-        <article class="flex flex-col lg:flex-row gap-4 xs:gap-6 group bg-gray-900/50 rounded-xl p-4 xs:p-6   hover:border-gray-700 hover:bg-gray-800/50 transition-all duration-300 image-container">
+        <article class="flex flex-col lg:flex-row gap-3 xs:gap-4 group bg-gray-900/50 dark:bg-gray-800/50 rounded-xl p-3 xs:p-4 hover:border-gray-700 hover:bg-gray-800/50 dark:hover:bg-gray-700/50 transition-all duration-300 image-container border border-gray-800/30">
           <div class="w-full lg:w-1/2 image-container">
             <div class="relative overflow-hidden rounded-lg image-container">
               <img
@@ -101,7 +153,7 @@ import "../styles/global.css";
           </div>
 
           <div class="w-full md:w-1/2 md:max-w-lg">
-            <h1 class="text-xl font-bold text-gray-100">{title}</h1>
+            <h1 class="text-lg xs:text-xl font-bold text-gray-100 mb-2">{title}</h1>
             <div class="flex flex-wrap mt-2">
               <ul class="flex flex-row mb-2 gap-x-2">
                 {tags.map((tag) => (
@@ -115,7 +167,7 @@ import "../styles/global.css";
                   </li>
                 ))}
               </ul>
-              <div class="mb-2 mt-2 text-gray-400">{description}</div>
+              <div class="mb-3 mt-2 text-gray-400 text-sm xs:text-base leading-relaxed">{description}</div>
               <footer class="flex items-center mt-1 gap-4">
                 {link && link.includes("behance") && (
                   <LinkButton href={link}>
@@ -143,3 +195,4 @@ import "../styles/global.css";
     }
   </div>
 </div>
+</section>
