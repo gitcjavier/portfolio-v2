@@ -20,21 +20,97 @@ import { ClientRouter } from "astro:transitions";
     .tech-macbook { display: flex; }
     .tech-default { display: none; }
   }
+
+  /* Optimizaciones específicas para iPhone 14 Pro y móviles similares */
+  @media (max-width: 393px) {
+    #about {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      min-height: 100dvh;
+    }
+    
+    #about .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    #about h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1.5rem;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+    }
+    
+    #about h1 {
+      font-size: 1.875rem;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    
+    #about p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    #about .flex.flex-col.lg\\:flex-row {
+      gap: 1.5rem;
+    }
+    
+    #about .mt-8 {
+      margin-top: 1.5rem;
+    }
+    
+    #about .pt-8 {
+      padding-top: 1.5rem;
+    }
+    
+    #about .gap-3 {
+      gap: 0.75rem;
+    }
+    
+    #about .grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+    
+    #about .glass-card {
+      padding: 0.5rem;
+    }
+    
+    #about .glass-card img {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+
+  /* Mejoras adicionales para pantallas muy pequeñas */
+  @media (max-width: 360px) {
+    #about h2 {
+      font-size: 1.5rem;
+    }
+    
+    #about h1 {
+      font-size: 1.625rem;
+    }
+    
+    #about p {
+      font-size: 0.875rem;
+    }
+  }
 </style>
 
 <section id="about" class="min-h-screen mobile-py bg-blue-600 dark:bg-blue-900 transition-colors duration-300 flex items-center">
   <div class="container mx-auto mobile-px">
     
-      <h2 class="mobile-text-3xl xs:mobile-text-xl sm:mobile-text-2xl font-bold mobile-mb py-5 text-center">
+      <h2 class="text-2xl xs:text-3xl sm:text-4xl font-bold mb-6 xs:mb-8 py-3 xs:py-5 text-center">
         <span class="text-[#ccf381]">/Self</span>
-
       </h2>
       
       <div class="flex flex-col items-start image-container animate-fade-in">
         <div class="flex flex-col lg:flex-row items-start gap-6 xs:gap-8 w-full animate-fade-in">
           <div class="w-full lg:w-1/2 opacity-0 animate-fade-in duration-1000" >
-            <h1 class="text-white font-bold text-xl xs:mobile-text-5xl sm:mobile-text-6xl lg:mobile-text-4xl image-container duration-1000 ease-in-out animate-fade-in">Diseño</h1>
-            <p class="text-white mobile-text-base xs:mobile-text-base leading-relaxed text-balance image-container animate-fade-in pt-4" style="animation-delay: 0.4s;">
+            <h1 class="text-white font-bold text-2xl xs:text-3xl sm:text-4xl lg:text-5xl image-container duration-1000 ease-in-out animate-fade-in mb-4">Diseño</h1>
+            <p class="text-white text-base xs:text-lg leading-relaxed text-balance image-container animate-fade-in" style="animation-delay: 0.4s;">
               Soy un desarrollador Frontend apasionado por crear experiencias web excepcionales. 
               Me especializo en tecnologías modernas y me mantengo constantemente actualizado con las últimas tendencias en desarrollo web.
             </p>
@@ -44,9 +120,9 @@ import { ClientRouter } from "astro:transitions";
             </svg>
           </div>
         </div>       
-        <div class="w-full lg:w-1/2 lg:self-end opacity-0 animate-fade-in duration-1000 image-container mobile-mt" style="animation-delay: 0.4s;">
-          <h1 class="text-white font-bold text-xl xs:mobile-text-5xl sm:mobile-text-6xl lg:mobile-text-4xl image-container duration-1000 ease-in-out image-container animate-fade-in">Ingeniería</h1>
-          <p class="text-white mobile-text-base xs:mobile-text-base leading-relaxed image-container duration-1000 ease-in-out animate-fade-in"  style="animation-delay: 0.2s;">
+        <div class="w-full lg:w-1/2 lg:self-end opacity-0 animate-fade-in duration-1000 image-container mt-8 lg:mt-0" style="animation-delay: 0.4s;">
+          <h1 class="text-white font-bold text-2xl xs:text-3xl sm:text-4xl lg:text-5xl image-container duration-1000 ease-in-out animate-fade-in mb-4">Ingeniería</h1>
+          <p class="text-white text-base xs:text-lg leading-relaxed image-container duration-1000 ease-in-out animate-fade-in"  style="animation-delay: 0.2s;">
             Mi enfoque se centra en escribir código limpio y mantenible, 
             crear interfaces intuitivas y asegurar que cada proyecto cumpla 
             con los más altos estándares de calidad y rendimiento.
@@ -56,12 +132,12 @@ import { ClientRouter } from "astro:transitions";
 
           <!-- Tecnologías solo visible en MacBook -->
            
-      <div class="flex flex-col xs:flex-row items-center xs:items-end justify-center pt-10 xs:justify-start gap-4 xs:gap-x-4 z-50">
+      <div class="flex flex-col xs:flex-row items-center xs:items-end justify-center pt-8 xs:pt-10 xs:justify-start gap-3 xs:gap-4 z-50">
             <a 
               target="_blank"
               role="link"
               href="/resume.pdf" 
-              class="relative inline-flex items-center justify-center gap-2 px-4 xs:px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 w-full xs:w-auto text-center"
+              class="relative inline-flex items-center justify-center gap-2 px-5 xs:px-6 py-3.5 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 w-full xs:w-auto text-center text-sm xs:text-base font-medium"
             >
               <span class="absolute inset-0 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0"></span>
               <span class="relative z-10">Descargar CV</span>
@@ -72,7 +148,7 @@ import { ClientRouter } from "astro:transitions";
               role="link"
               href="/experiences" 
               id="experience-btn"
-              class="relative inline-flex items-center justify-center gap-2 px-4 xs:px-6 py-3 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 w-full xs:w-auto text-center"
+              class="relative inline-flex items-center justify-center gap-2 px-5 xs:px-6 py-3.5 text-white border border-white bg-transparent transition-all duration-300 ease-in-out overflow-hidden group hover:text-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 w-full xs:w-auto text-center text-sm xs:text-base font-medium"
             >
               <span class="absolute inset-0 bg-white transform -translate-x-full transition-transform duration-300 ease-in-out group-hover:translate-x-0"></span>
               <span class="relative z-10">💼 Experiencia Laboral</span>
@@ -80,10 +156,10 @@ import { ClientRouter } from "astro:transitions";
       </div>
         
         <!-- Sección original de tecnologías para otras resoluciones -->
-        <div class="tech-default skills-section opacity-0 animate-fade-in duration-500 delay-100 mobile-mt image-container">
-          <h3 class="mobile-text-xl xs:mobile-text-2xl font-semibold text-white mobile-mb items-center justify-center flex">Tecnologías</h3>
+        <div class="tech-default skills-section opacity-0 animate-fade-in duration-500 delay-100 mt-8 xs:mt-10 image-container">
+          <h3 class="text-xl xs:text-2xl font-semibold text-white mb-6 items-center justify-center flex">Tecnologías</h3>
 
-          <div class="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3 xs:gap-4">
+          <div class="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-6 gap-3 xs:gap-4">
             <div class="glass-card group transform transition-transform duration-300 hover:scale-110">
               <img src="/icons/Astro_dark.svg" alt="Astro" class="w-8 h-8 xs:w-10 xs:h-10 sm:w-12 sm:h-12 transition-transform duration-300 group-hover:scale-110" />
             </div>
