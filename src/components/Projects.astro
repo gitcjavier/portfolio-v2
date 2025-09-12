@@ -78,8 +78,8 @@ import "../styles/global.css";
   /* Optimizaciones específicas para iPhone 14 Pro y móviles similares */
   @media (max-width: 393px) {
     #projects {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
       min-height: 100dvh;
     }
     
@@ -90,8 +90,9 @@ import "../styles/global.css";
     
     #projects h2 {
       font-size: 1.75rem;
-      padding-top: 1rem;
-      padding-bottom: 1.5rem;
+      padding-top: 0rem;
+      padding-bottom: 0.5rem;
+      margin-top: 0rem;
     }
     
     #projects article {
@@ -113,6 +114,15 @@ import "../styles/global.css";
       gap: 1.5rem;
       padding-bottom: 1rem;
     }
+    
+    #projects .image-container {
+      max-height: 12rem;
+    }
+    
+    #projects img {
+      max-height: 12rem;
+      object-fit: cover;
+    }
   }
 
   /* Mejoras adicionales para pantallas muy pequeñas */
@@ -126,10 +136,10 @@ import "../styles/global.css";
     }
   }
 </style>
-<section id="projects" class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 flex flex-col justify-center py-8">
-<div class="w-full h-full flex flex-col">
+<section id="projects" class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 pt-16 flex flex-col justify-center lg:justify-center">
+<div class="w-full flex flex-col lg:justify-center lg:items-center lg:min-h-screen lg:pt-0">
   <h2
-    class="text-2xl xs:text-3xl sm:text-4xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-2 xs:gap-x-4 mt-2 justify-center items-center fade-up image-container pt-6 xs:pt-10 pb-6 xs:pb-10 font-bold"
+    class="text-2xl xs:text-3xl sm:text-4xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-2 xs:gap-x-4 mt-0 justify-center items-center fade-up image-container pt-0 pb-4 xs:pb-6 font-bold"
     style="animation-delay: 0.2s;"
   >
     <CodeIcon class="size-6 xs:size-7 sm:size-8" />
@@ -142,12 +152,12 @@ import "../styles/global.css";
       projects.map(({ image, title, description, tags, link, github }) => (
         <article class="flex flex-col lg:flex-row gap-3 xs:gap-4 group bg-gray-900/50 dark:bg-gray-800/50 rounded-xl p-3 xs:p-4 hover:border-gray-700 hover:bg-gray-800/50 dark:hover:bg-gray-700/50 transition-all duration-300 image-container border border-gray-800/30">
           <div class="w-full lg:w-1/2 image-container">
-            <div class="relative overflow-hidden rounded-lg image-container">
+            <div class="relative overflow-hidden rounded-lg image-container max-h-48 xs:max-h-56">
               <img
                 alt={title}
                 loading="lazy"
                 src={image}
-                class="w-full h-auto object-contain transition-transform duration-500 lg:group-hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-500 lg:group-hover:scale-105"
               />
             </div>
           </div>

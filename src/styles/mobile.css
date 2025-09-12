@@ -53,10 +53,37 @@
     font-size: 0.875rem;
   }
   
+  /* Optimizar imágenes de proyectos en móviles */
+  #projects .image-container {
+    max-height: 10rem;
+  }
+  
+  #projects img {
+    max-height: 10rem;
+    object-fit: cover;
+    width: 100%;
+  }
+  
+  #projects article {
+    padding: 0.75rem;
+  }
+  
   /* Optimizar secciones principales */
   section {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  
+  /* Ajustar espaciado específico para Projects */
+  #projects {
+    padding-top: 0rem;
+    padding-bottom: 0.25rem;
+  }
+  
+  #projects h2 {
+    padding-top: 0rem;
     padding-bottom: 1rem;
+    margin-top: 0rem;
   }
   
   /* Mejorar espaciado de contenedores */
