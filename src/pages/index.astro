@@ -20,23 +20,23 @@ import "../styles/global.css";
 >
   <Header />
   <main
-    class="relative snap-y snap-mandatory h-screen w-full overflow-y-scroll overflow-x-hidden"
+    class="relative snap-y snap-mandatory mobile-full-height w-full overflow-y-scroll overflow-x-hidden safe-area-padding"
   >
-    <div class="snap-center h-screen">
+    <div class="snap-center mobile-full-height safe-top">
       <Hero />
     </div>
-    <div class="snap-center h-screen">
+    <div class="snap-center mobile-full-height">
       <About />
     </div>
-    <div class="snap-center h-screen">
+    <div class="snap-center mobile-full-height">
       <SectionContainer>
         <Projects />
       </SectionContainer>
     </div>
-    <div class="snap-center h-screen dark:bg-gray-950 bg-black">
+    <div class="snap-center mobile-full-height dark:bg-gray-950 bg-black">
       <Contact />
     </div>
-    <div class="snap-center h-screen items-center">
+    <div class="snap-center mobile-full-height items-center safe-bottom">
       <Footer />
     </div>
   </main>
