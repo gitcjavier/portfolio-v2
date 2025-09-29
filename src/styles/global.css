@@ -202,8 +202,8 @@
 
   /* Utilidades para viewport dinámico */
   .mobile-full-height {
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
   }
 
   .safe-area-padding {
@@ -273,6 +273,12 @@
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  
+  /* Mejorar espaciado entre secciones */
+  section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   
   /* Ajustar tamaños de texto para móviles muy pequeños */

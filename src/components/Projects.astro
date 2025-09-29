@@ -74,8 +74,69 @@ import "../styles/global.css";
     animation-timeline: view();
     animation-range: entry 20% cover 30%;
   }
+  
+  /* Mejoras para móviles */
+  @media (max-width: 640px) {
+    .projects-section {
+      padding: 2rem 0;
+    }
+    
+    .projects-section article {
+      padding: 1rem;
+      gap: 1rem;
+    }
+    
+    .projects-section h2 {
+      font-size: 1.75rem;
+      padding: 1rem 0;
+    }
+    
+    .projects-section h1 {
+      font-size: 1.125rem;
+    }
+    
+    .projects-section .text-gray-400 {
+      font-size: 0.875rem;
+    }
+  }
+  
+  /* Mejoras específicas para móviles muy pequeños */
+  @media (max-width: 393px) {
+    .projects-section {
+      padding: 1.5rem 0;
+    }
+    
+    .projects-section article {
+      padding: 0.75rem;
+      gap: 0.75rem;
+    }
+    
+    .projects-section h2 {
+      font-size: 1.5rem;
+      padding: 0.75rem 0;
+    }
+    
+    .projects-section h1 {
+      font-size: 1rem;
+    }
+    
+    .projects-section .text-gray-400 {
+      font-size: 0.8125rem;
+    }
+  }
+  
+  /* Mejoras para escritorio */
+  @media (min-width: 1024px) {
+    .projects-section {
+      padding: 3rem 0;
+    }
+    
+    .projects-section article {
+      padding: 2rem;
+    }
+  }
 </style>
-<div class="w-full h-full flex flex-col">
+<div class="w-full h-full flex flex-col projects-section">
   <h2
     class="mobile-text-3xl xs:mobile-text-xl sm:mobile-text-2xl dark:text-[#ccf381] text-[#ccf381] flex gap-x-2 xs:gap-x-4 mt-2 justify-center items-center fade-up image-container pt-10 pb-10 xs:pt-12 sm:pt-14"
     style="animation-delay: 0.2s;"

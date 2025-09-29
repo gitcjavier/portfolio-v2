@@ -1,4 +1,4 @@
-<section id="hero" class="hero-section min-h-screen flex items-center bg-white/95 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
+<div id="hero" class="hero-section w-full h-full flex items-center bg-white/95 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
   <!-- Decorative elements -->
   <div class="absolute top-20 left-10 w-32 h-32 xs:w-48 xs:h-48 sm:w-64 sm:h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
   <div class="absolute bottom-20 right-10 w-32 h-32 xs:w-48 xs:h-48 sm:w-64 sm:h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
@@ -60,7 +60,7 @@
   <!-- Decorative elements -->
   <div class="absolute top-1/4 right-1/4 w-48 h-48 xs:w-64 xs:h-64 sm:w-96 sm:h-96 bg-blue-600/20 dark:bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
   <div class="absolute bottom-1/4 left-1/4 w-48 h-48 xs:w-64 xs:h-64 sm:w-96 sm:h-96 bg-blue-400/20 dark:bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse delay-1000"></div>
-</section>
+</div>
 
 <style>
 	  .image-container {
@@ -69,35 +69,58 @@
     animation-range: entry 20% cover 30%;
   }
 
-  /* Mejoras específicas para móviles muy pequeños */
-  @media (max-width: 393px) {
+  /* Mejoras para móviles */
+  @media (max-width: 640px) {
     .hero-section {
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      padding: 1rem 0;
+      min-height: 100vh;
       min-height: 100dvh;
     }
     
     .hero-section .container {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+      padding: 1rem;
     }
     
     .hero-section h1 {
-      line-height: 1.1;
       font-size: 2.5rem;
+      line-height: 1.1;
+    }
+    
+    .hero-section .btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Mejoras específicas para móviles muy pequeños */
+  @media (max-width: 393px) {
+    .hero-section {
+      padding: 0.75rem 0;
+    }
+    
+    .hero-section .container {
+      padding: 0.75rem;
+    }
+    
+    .hero-section h1 {
+      font-size: 2rem;
+      line-height: 1.1;
     }
     
     .hero-section .btn {
       padding: 0.5rem 1rem;
       font-size: 0.875rem;
     }
-    
-    .hero-section .space-y-4 {
-      gap: 1rem;
+  }
+  
+  /* Mejoras para escritorio */
+  @media (min-width: 1024px) {
+    .hero-section {
+      padding: 2rem 0;
     }
     
-    .hero-section .grid {
-      gap: 1rem;
+    .hero-section .container {
+      padding: 2rem;
     }
   }
 </style>

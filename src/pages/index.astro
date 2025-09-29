@@ -20,25 +20,25 @@ import "../styles/global.css";
 >
   <Header />
   <main
-    class="relative snap-y snap-mandatory mobile-full-height w-full overflow-y-scroll overflow-x-hidden safe-area-padding"
+    class="relative w-full overflow-x-hidden"
   >
-    <div class="snap-center mobile-full-height safe-top">
+    <section class="h-screen w-screen flex items-center justify-center safe-top">
       <Hero />
-    </div>
-    <div class="snap-center mobile-full-height">
+    </section>
+    <section class="h-screen w-screen flex items-center justify-center">
       <About />
-    </div>
-    <div class="snap-center mobile-full-height">
+    </section>
+    <section class="h-screen w-screen flex items-center justify-center">
       <SectionContainer>
         <Projects />
       </SectionContainer>
-    </div>
-    <div class="snap-center mobile-full-height dark:bg-gray-950 bg-black">
+    </section>
+    <section class="h-screen w-screen flex items-center justify-center dark:bg-gray-950 bg-black">
       <Contact />
-    </div>
-    <div class="snap-center mobile-full-height items-center safe-bottom">
+    </section>
+    <section class="h-screen w-screen flex items-center justify-center safe-bottom">
       <Footer />
-    </div>
+    </section>
   </main>
 </Layout>
 
@@ -56,23 +56,32 @@ import "../styles/global.css";
     scrollbar-width: none;
   }
 
+  /* Asegurar que las secciones ocupen todo el viewport */
+  section {
+    height: 100vh;
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
   /* Mejoras para móviles */
   @media (max-width: 640px) {
-    main {
-      scroll-snap-type: y mandatory;
-    }
-    
-    .snap-center {
-      scroll-snap-align: center;
-      min-height: 100vh;
+    section {
+      height: 100vh;
+      height: 100dvh;
+      width: 100vw;
+      padding: 0;
     }
   }
 
   /* Mejoras específicas para móviles muy pequeños */
   @media (max-width: 393px) {
-    .snap-center {
-      min-height: 100vh;
-      padding: 1rem 0;
+    section {
+      height: 100vh;
+      height: 100dvh;
+      width: 100vw;
+      padding: 0;
     }
   }
 

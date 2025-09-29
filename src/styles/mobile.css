@@ -193,14 +193,13 @@
   }
   
   /* Ajustar secciones para usar viewport dinámico */
-  .snap-center {
-    height: 100dvh !important;
-    min-height: 100dvh !important;
+  section {
+    min-height: 100dvh;
   }
   
   /* Contenedor principal optimizado */
   main {
-    height: 100dvh !important;
+    min-height: 100vh;
   }
   
   /* Padding adicional para compensar safe areas */
