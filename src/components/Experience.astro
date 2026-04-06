@@ -1,41 +1,30 @@
 ---
-import { ClientRouter } from "astro:transitions";
 import ExperienceItem from "./ExperienceItem.astro";
 
 const EXPERIENCE = [
-    {
-        date: "Actualmente...",
-        title: "👨‍💻 Jefe de Soporte IT",
-        description: "Encargado del soporte técnico e implementación de una solución integral de call center (CRM web + Telefonía IP). Capacito usuarios, coordino reuniones y lidero la puesta en marcha de entornos productivos. Desarrollo procedimientos almacenados en Transact-SQL para generar reportes personalizados, y realizo configuraciones avanzadas de Asterisk (SIP, extensiones, reglas de marcado). Trabajo con tecnologías como JavaScript (para integraciones web) y Transact-SQL en bases de datos MS SQL Server.",
-        link: "https://www.google.com",
-    },
-    {
-        date: "Enero 2020 - Noviembre 2023",
-        title: "👨‍💻 Data Engineer para LATAM (a través de consultora)",
-        description: "Diseñé y mantuve pipelines de datos para poblar el Data Lake de Google Cloud con información proveniente de múltiples orígenes como Oracle, SQL Server, archivos planos y Excel. Usé herramientas como Git y Bitbucket para versionar los scripts y desplegar DAGs en Apache Airflow, orquestando flujos complejos hacia BigQuery mediante Dataflow. Automaticé procesos clave relacionados con reportes de vuelo, bitácoras y ajustes contables, mejorando la trazabilidad y disponibilidad de datos para el área financiera.",
-        link: "https://www.google.com",
-    },
-    {
-        date: "Marzo 2015 - Agosto 2019",
-        title: "👨‍💻 Soporte Técnico IT",
-        description: "Encargado de la atención de incidentes y solicitudes de soporte técnico de usuarios de la empresa. Realicé tareas de instalación, configuración y mantenimiento de software y hardware. También participé en proyectos de mejora de sistemas y ofrecía capacitación a usuarios finales.",
-        link: "https://www.google.com",
-    }
-]
+  {
+    date: "Actualmente",
+    title: "Jefe de Soporte IT",
+    description: "Encargado del soporte técnico e implementación de una solución integral de call center (CRM web + Telefonía IP). Capacito usuarios, coordino reuniones y lidero la puesta en marcha de entornos productivos. Desarrollo procedimientos almacenados en Transact-SQL para generar reportes personalizados, y realizo configuraciones avanzadas de Asterisk (SIP, extensiones, reglas de marcado). Trabajo con tecnologías como JavaScript y Transact-SQL en bases de datos MS SQL Server.",
+    link: "",
+  },
+  {
+    date: "Enero 2020 — Noviembre 2023",
+    title: "Data Engineer para LATAM",
+    description: "Diseñé y mantuve pipelines de datos para poblar el Data Lake de Google Cloud con información proveniente de múltiples orígenes como Oracle, SQL Server, archivos planos y Excel. Usé Git y Bitbucket para versionar scripts y desplegar DAGs en Apache Airflow, orquestando flujos complejos hacia BigQuery mediante Dataflow. Automaticé procesos clave relacionados con reportes de vuelo, bitácoras y ajustes contables.",
+    link: "",
+  },
+  {
+    date: "Marzo 2015 — Agosto 2019",
+    title: "Soporte Técnico IT",
+    description: "Atención de incidentes y solicitudes de soporte técnico de usuarios corporativos. Instalación, configuración y mantenimiento de software y hardware. Participé en proyectos de mejora de sistemas y capacitación a usuarios finales.",
+    link: "",
+  },
+];
 ---
 
-<section class="mobile mobile-px max-w-4xl mx-auto">
-    <div class="text-center mobile-mb">
-        <h2  class="mobile-text-1xl xs:mobile-text-2xl font-bold text-white mobile-mb" 
-        transition:name="experiences">💼 Experiencia Laboral</h2>
-        <p class="text-gray-300 mobile-text-base xs:mobile-text-sm">Mi trayectoria profesional en el mundo de la tecnología</p>
-    </div>
-    
-    <ol class="relative border-s border-gray-300 ml-3">
-        {
-            EXPERIENCE.map((experience) => (
-                <ExperienceItem {...experience} />
-            ))
-        }
-    </ol>
-</section>
+<div class="max-w-3xl gsap-stagger-parent">
+  <ol class="relative border-l-2 border-charcoal/10 ml-2">
+    {EXPERIENCE.map(exp => <ExperienceItem {...exp} />)}
+  </ol>
+</div>

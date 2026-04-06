@@ -1,334 +1,185 @@
-/* Import Tailwind base styles */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 @layer base {
- 
-  
   body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: white;
-    background-color: rgb(17, 24, 32);
-    transition: colors 300ms;
+    background-color: #FFF8F0;
+    color: #2D2D2D;
     overflow-x: hidden;
     width: 100%;
   }
-
- 
 
   * {
     box-sizing: border-box;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    letter-spacing: -0.025em;
-    @apply dark:text-white transition-colors duration-300;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #2D2D2D;
   }
-  img {
-    animation: reveal both;
-    animation-timeline: view() ;
-    animation-range: entry 20% cover 10%;
-  }
-
 }
 
 @layer components {
-    .btn {
+
+  /* ── Buttons ── */
+  .btn-vibrant {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 500;
-    transition: all 300ms;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: #FF6B6B;
+    color: #ffffff;
+    border: 2px solid #FF6B6B;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-vibrant:hover {
+    background-color: #e85555;
+    border-color: #e85555;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(255, 107, 107, 0.4);
   }
 
-  .btn-primary {
-    border: 2px solid rgb(37, 99, 235);
-    color: white;
-    background-color: rgb(37, 99, 235);
-    @apply dark:bg-blue-600 dark:hover:bg-blue-700;
+  .btn-outline-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    background-color: transparent;
+    color: #2D2D2D;
+    border: 2px solid #2D2D2D;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
   }
-  
-  .btn-primary:hover {
-    background-color: rgb(29, 78, 216);
-   
-  }
-
-  .btn-outline {
-    border: 2px solid rgb(37, 99, 235);
-    color: rgb(37, 99, 235);
-    @apply dark:border-blue-500 dark:text-blue-400;
-  }
-
-  .btn-outline:hover {
-  background-color: rgb(37, 99, 235);
-  color: white;
-  }
-
-  .dark  .btn-outline:hover {
-    background-color: rgb(37, 99, 235);
-
+  .btn-outline-dark:hover {
+    background-color: #2D2D2D;
+    color: #FFF8F0;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(45, 45, 45, 0.25);
   }
 
-  .glass-card {
-    @apply p-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-xl hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center ;
+  .btn-outline-white {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
   }
-  
-  /* Variaciones si las necesitas */
-  .glass-card-sm {
-    @apply p-2 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 flex items-center justify-center;
-  }
-
-
-  .section-title {
-    font-size: 1.875rem; /* 3xl */
-    font-weight: bold;
-    margin-bottom: 2rem;
-  }
-
-  @media (min-width: 640px) {
-    .section-title {
-      font-size: 2.25rem; /* 4xl */
-    }
-  }
-
-  @media (min-width: 768px) {
-    .section-title {
-      font-size: 3rem; /* 5xl */
-    }
+  .btn-outline-white:hover {
+    background-color: #ffffff;
+    color: #FF6B6B;
+    transform: translateY(-2px);
   }
 
-  @media (min-width: 1024px) {
-    .section-title {
-      font-size: 3.75rem; /* 6xl */
-    }
+  /* ── Tech Pill ── */
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  .tech-pill:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
   }
 
-  .card {
-    background-color: white;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-    transition: all 300ms;
-    background-color: rgb(31, 41, 55);
-    color: white;
-    box-shadow: 0 10px 15px -3px rgba(17, 24, 39, 0.3);
+  /* ── Section Heading ── */
+  .section-heading {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
   }
 
-  .card:hover {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 20px 25px -5px rgba(23, 23, 23, 0.5);
+  /* ── GSAP Initial State ── */
+  .gsap-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .gsap-reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  .gsap-reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  .gsap-scale-in {
+    opacity: 0;
+    transform: scale(0.85);
   }
 
-  .fade-up {
-  animation: fade-up 0.8s ease forwards;
-  opacity: 2;
-}
-
-  /* Clases responsivas para móviles */
-  .mobile-text-xs {
-    @apply text-xs xs:text-sm sm:text-base;
-  }
-
-  .mobile-text-sm {
-    @apply text-sm xs:text-base sm:text-lg;
-  }
-
-  .mobile-text-base {
-    @apply text-base xs:text-lg sm:text-xl;
-  }
-
-  .mobile-text-lg {
-    @apply text-lg xs:text-xl sm:text-2xl;
-  }
-
-  .mobile-text-xl {
-    @apply text-xl xs:text-2xl sm:text-3xl;
-  }
-
-  .mobile-text-2xl {
-    @apply text-2xl xs:text-3xl sm:text-4xl;
-  }
-
-  .mobile-text-3xl {
-    @apply text-3xl xs:text-4xl sm:text-5xl;
-  }
-
-  .mobile-text-4xl {
-    @apply text-4xl xs:text-5xl sm:text-6xl;
-  }
-
-  .mobile-text-5xl {
-    @apply text-5xl xs:text-6xl sm:text-7xl;
-  }
-
-  .mobile-text-6xl {
-    @apply text-6xl xs:text-7xl sm:text-8xl;
-  }
-
-  .mobile-text-7xl {
-    @apply text-7xl xs:text-8xl sm:text-9xl;
-  }
-
-  .mobile-text-8xl {
-    @apply text-8xl xs:text-9xl sm:text-9xl;
-  }
-
-  /* Padding responsivo */
+  /* ── Utility: Mobile spacing ── */
   .mobile-px {
     @apply px-4 xs:px-6 sm:px-8;
   }
-
   .mobile-py {
-    @apply py-8 xs:py-12 sm:py-16;
+    @apply py-8 xs:py-10 sm:py-14;
   }
-
   .mobile-gap {
     @apply gap-4 xs:gap-6 sm:gap-8;
   }
-
   .mobile-mb {
     @apply mb-4 xs:mb-6 sm:mb-8;
   }
-
   .mobile-mt {
     @apply mt-4 xs:mt-6 sm:mt-8;
   }
-
-  /* Utilidades para viewport dinámico */
   .mobile-full-height {
     min-height: 100vh;
     min-height: 100dvh;
   }
-
   .safe-area-padding {
     padding-top: env(safe-area-inset-top);
     padding-bottom: env(safe-area-inset-bottom);
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
   }
-
   .safe-top {
     padding-top: env(safe-area-inset-top);
   }
-
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
   }
 
-  .mobile-compact {
-    @apply py-2 px-3;
+  /* ── Geometric dot grid pattern ── */
+  .dot-pattern {
+    background-image: radial-gradient(circle, rgba(45,45,45,0.12) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
-
-  .mobile-text-compact {
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-  }
-}
-
-/* Animaciones simplificadas usando solo Tailwind CSS */
-
-.gradient-text {
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(to right, rgb(123, 233, 60), rgb(216, 221, 228));
-  background-image: linear-gradient(to right, #37e119, #0857b0);
-}
-
-.animated-border-button {
-  position: relative;
-  background: black;
-  z-index: 1;
-  border: double 2px transparent;
-  border-radius: 14px;
-  background-image: black;
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  background-size: 200% 200%;
-}
-
-.animated-border-button:hover {
-  animation: border-animate 4s ease infinite;
-}
-
-@keyframes reveal {
-  from {
-     opacity: 0;
-     translate: 0 100px;
-  }
-  to {
-     opacity: 1;
-     translate: 0;
-  }
-}
-
-/* Mejoras para móviles */
-@media (max-width: 640px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  /* Mejorar espaciado entre secciones */
-  section {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  
-  /* Ajustar tamaños de texto para móviles muy pequeños */
-  @media (max-width: 393px) {
-    .mobile-text-xs {
-      font-size: 0.75rem;
-    }
-    
-    .mobile-text-sm {
-      font-size: 0.875rem;
-    }
-    
-    .mobile-text-base {
-      font-size: 1rem;
-    }
-    
-    .mobile-text-lg {
-      font-size: 1.125rem;
-    }
-    
-    .mobile-text-xl {
-      font-size: 1.25rem;
-    }
-    
-    .mobile-text-2xl {
-      font-size: 1.5rem;
-    }
-    
-    .mobile-text-3xl {
-      font-size: 1.875rem;
-    }
-    
-    .mobile-text-4xl {
-      font-size: 2.25rem;
-    }
-    
-    .mobile-text-5xl {
-      font-size: 3rem;
-    }
-    
-    .mobile-text-6xl {
-      font-size: 3.75rem;
-    }
-    
-    .mobile-text-7xl {
-      font-size: 4.5rem;
-    }
-    
-    .mobile-text-8xl {
-      font-size: 6rem;
-    }
+  .dot-pattern-white {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }

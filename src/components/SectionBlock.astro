@@ -1,0 +1,24 @@
+---
+export interface Props {
+  id?: string;
+  bg?: string;       // Tailwind bg class or inline color
+  class?: string;
+  fullHeight?: boolean;
+}
+
+const { id, bg = 'bg-cream', class: className = '', fullHeight = false } = Astro.props;
+---
+
+<section
+  id={id}
+  class:list={[
+    'relative w-full overflow-hidden',
+    fullHeight ? 'min-h-screen flex items-center' : 'py-24 md:py-32 lg:py-40',
+    bg,
+    className,
+  ]}
+>
+  <div class="container mx-auto mobile-px w-full">
+    <slot />
+  </div>
+</section>

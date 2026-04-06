@@ -1,0 +1,96 @@
+---
+export type Shape = 'circle' | 'dots' | 'zigzag' | 'triangle' | 'ring' | 'cross';
+export type Size  = 'sm' | 'md' | 'lg' | 'xl';
+
+export interface Props {
+  shape?: Shape;
+  color?: string;   // hex or CSS color
+  size?:  Size;
+  class?: string;
+  opacity?: number;
+  animate?: boolean;
+}
+
+const {
+  shape   = 'circle',
+  color   = '#FF6B6B',
+  size    = 'md',
+  class: className = '',
+  opacity = 0.7,
+  animate = true,
+} = Astro.props;
+
+const sizes: Record<Size, number> = { sm: 32, md: 64, lg: 96, xl: 128 };
+const px = sizes[size];
+
+const floatClass = animate ? 'geo-float' : '';
+---
+
+<span
+  class:list={['geo-deco pointer-events-none select-none', floatClass, className]}
+  aria-hidden="true"
+  style={`opacity: ${opacity};`}
+>
+  {shape === 'circle' && (
+    <svg width={px} height={px} viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="46" fill={color} />
+    </svg>
+  )}
+
+  {shape === 'ring' && (
+    <svg width={px} height={px} viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="42" stroke={color} stroke-width="10" />
+    </svg>
+  )}
+
+  {shape === 'triangle' && (
+    <svg width={px} height={px} viewBox="0 0 100 100" fill="none">
+      <polygon points="50,8 94,88 6,88" fill={color} />
+    </svg>
+  )}
+
+  {shape === 'dots' && (
+    <svg width={px} height={px} viewBox="0 0 80 80" fill="none">
+      {[0,1,2,3].map(row =>
+        [0,1,2,3].map(col => (
+          <circle cx={10 + col * 20} cy={10 + row * 20} r="5" fill={color} />
+        ))
+      )}
+    </svg>
+  )}
+
+  {shape === 'zigzag' && (
+    <svg width={px} height={px / 2} viewBox="0 0 120 40" fill="none">
+      <polyline
+        points="0,30 20,10 40,30 60,10 80,30 100,10 120,30"
+        stroke={color}
+        stroke-width="6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        fill="none"
+      />
+    </svg>
+  )}
+
+  {shape === 'cross' && (
+    <svg width={px} height={px} viewBox="0 0 100 100" fill="none">
+      <line x1="50" y1="10" x2="50" y2="90" stroke={color} stroke-width="12" stroke-linecap="round" />
+      <line x1="10" y1="50" x2="90" y2="50" stroke={color} stroke-width="12" stroke-linecap="round" />
+    </svg>
+  )}
+</span>
+
+<style>
+  .geo-deco {
+    display: inline-block;
+  }
+  .geo-float {
+    animation: geoFloat 6s ease-in-out infinite;
+  }
+  /* Stagger variants via delay utilities applied by parent */
+  @keyframes geoFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33%       { transform: translateY(-14px) rotate(3deg); }
+    66%       { transform: translateY(7px) rotate(-2deg); }
+  }
+</style>

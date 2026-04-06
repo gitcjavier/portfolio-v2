@@ -5,129 +5,73 @@ export interface Props {
   description: string;
   keywords: string;
   author: string;
-  
 }
-
-const { title } = Astro.props;
+const { title, description, keywords, author } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" class="dark" transition:persist="true">
+<html lang="es" transition:persist="true">
   <head>
-<meta charset="UTF-8" />
-    
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="description" content={Astro.props.description} />
-		<meta name="keywords" content={Astro.props.keywords} />
-		<meta name="author" content={Astro.props.author} />
-		<title>{Astro.props.title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="preload" href="/img/javoru2.webp" as="image">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="preload" href="/img/javoru2.webp" as="image" />
   </head>
   <body>
-    
     <div class="page-content">
       <ClientRouter />
       <slot />
     </div>
-    
-
   </body>
 </html>
 
-
-
-
 <style is:global>
   @import '../styles/mobile.css';
-  
-  	:root {
-		color-scheme: dark light;
-	}
+
+  :root {
+    color-scheme: light;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
   }
-  
+
   body {
-    font-family: Onest, Geneva, Tahoma, sans-serif;
+    font-family: Onest, system-ui, sans-serif;
     line-height: 1.6;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    background-color: #FFF8F0;
+    color: #2D2D2D;
   }
-  
-  /* Smooth transitions */
-  * {
-    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-  }
-  
+
   /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    @apply bg-gray-100 dark:bg-gray-800;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-gray-400 dark:bg-gray-600;
-  }
-  
-  /* Focus styles */
-  button:focus,
-  input:focus,
-  textarea:focus,
-  a:focus {
-    @apply outline-2 outline-blue-500 dark:outline-blue-400 outline-offset-2;
-  }
-  
-  /* Selection styles */
-  ::selection {
-    @apply bg-blue-500 dark:bg-blue-600 text-white;
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #FFF8F0; }
+  ::-webkit-scrollbar-thumb { background: #FF6B6B; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #e85555; }
+
+  /* Selection */
+  ::selection { background: #FF6B6B; color: #ffffff; }
+
+  /* Focus */
+  button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
+    outline: 2px solid #FF6B6B;
+    outline-offset: 2px;
   }
 
-  /* Mejoras para móviles */
-  @media (max-width: 640px) {
-    html {
-      font-size: 14px;
-    }
-    
-    body {
-      font-size: 16px;
-      line-height: 1.5;
-    }
-  }
-
-  /* Mejoras específicas para móviles muy pequeños */
-  @media (max-width: 393px) {
-    html {
-      font-size: 13px;
-    }
-    
-    body {
-      font-size: 15px;
-      line-height: 1.4;
-    }
-  }
-
-  /* Prevenir zoom en inputs en iOS */
-  @media screen and (-webkit-min-device-pixel-ratio: 0) {
-    select,
-    textarea,
-    input {
-      font-size: 16px;
-    }
-  }
+  /* Prevent horizontal scroll */
+  * { box-sizing: border-box; }
+  body { overflow-x: hidden; }
 </style>

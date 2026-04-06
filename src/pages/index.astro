@@ -5,85 +5,42 @@ import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Projects from "../components/Projects.astro";
 import Contact from "../components/Contact.astro";
-import Footer from "../components/Footer.astro";
-import SectionContainer from "../components/SectionContainer.astro";
-
-
+import SectionBlock from "../components/SectionBlock.astro";
 import "../styles/global.css";
+
 ---
 
 <Layout
-  title="Portfolio de Javier Castro Retamal - Desarrollador Web"
-  description="Portfolio de Javier Castro Retamal - Desarrollador Web"
-  keywords="Portfolio, Javier Castro Retamal, Desarrollador Web, Diseño Web, Aplicaciones Web"
+  title="Javier Castro — Frontend Developer"
+  description="Portfolio de Javier Castro Retamal - Desarrollador Frontend"
+  keywords="Portfolio, Javier Castro Retamal, Desarrollador Web, Diseño Web, Frontend"
   author="Javier Castro Retamal"
 >
   <Header />
-  <main
-    class="relative w-full overflow-x-hidden"
-  >
-    <section class="h-screen w-screen flex items-center justify-center safe-top">
+  <main class="relative w-full">
+    <!-- Hero: cream background, full-height — pt-16 offsets the fixed header -->
+    <SectionBlock id="hero" bg="bg-cream" fullHeight={true} class="pt-16">
       <Hero />
-    </section>
-    <section class="h-screen w-screen flex items-center justify-center">
+    </SectionBlock>
+
+    <!-- About: coral background -->
+    <SectionBlock id="about" bg="bg-coral">
       <About />
-    </section>
-    <section class="h-screen w-screen flex items-center justify-center">
-      <SectionContainer>
-        <Projects />
-      </SectionContainer>
-    </section>
-    <section class="h-screen w-screen flex items-center justify-center dark:bg-gray-950 bg-black">
+    </SectionBlock>
+
+    <!-- Projects: cream background -->
+    <SectionBlock id="projects" bg="bg-cream">
+      <Projects />
+    </SectionBlock>
+
+    <!-- Contact: plum background -->
+    <SectionBlock id="contact" bg="bg-plum">
       <Contact />
-    </section>
-    <!-- <section class="h-screen w-screen flex items-center justify-center safe-bottom">
-      <Footer />
-    </section> -->
+    </SectionBlock>
   </main>
+
+  <!-- GSAP animations -->
+  <script>
+    import '../scripts/gsap-animations.js';
+  </script>
 </Layout>
-
-
-
-
-<style>
-  .image-container {
-    animation: reveal both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 30%;
-  }
-
-  * {
-    scrollbar-width: none;
-  }
-
-  /* Asegurar que las secciones ocupen todo el viewport */
-  section {
-    height: 100vh;
-    width: 100vw;
-    max-width: 100vw;
-    max-height: 100vh;
-    overflow: hidden;
-  }
-
-  /* Mejoras para móviles */
-  @media (max-width: 640px) {
-    section {
-      height: 100vh;
-      height: 100dvh;
-      width: 100vw;
-      padding: 0;
-    }
-  }
-
-  /* Mejoras específicas para móviles muy pequeños */
-  @media (max-width: 393px) {
-    section {
-      height: 100vh;
-      height: 100dvh;
-      width: 100vw;
-      padding: 0;
-    }
-  }
-
-
-</style>

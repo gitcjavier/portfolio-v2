@@ -1,126 +1,143 @@
-<div id="hero" class="hero-section w-full h-full flex items-center bg-white/95 dark:bg-gray-900 relative overflow-hidden transition-colors duration-300">
-  <!-- Decorative elements -->
-  <div class="absolute top-20 left-10 w-32 h-32 xs:w-48 xs:h-48 sm:w-64 sm:h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-20 right-10 w-32 h-32 xs:w-48 xs:h-48 sm:w-64 sm:h-64 bg-blue-600/10 dark:bg-blue-500/20 rounded-full blur-3xl"></div>
-
-  <div class="container mx-auto mobile-px py-8 xs:py-12 sm:py-16 lg:py-32 relative">
-    <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-6 xs:gap-8 sm:gap-12 items-center">
-      <!-- Content -->
-      <div class="space-y-4 xs:space-y-6 sm:space-y-8">
-        <h1 class="text-4xl xs:text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight opacity-0 animate-fade-in duration-1000 fade-up " style="animation-delay: 0.2s;">
-          <span class="text-blue-900 dark:text-white transition-colors duration-1000 delay-300 image-container" >Frontend</span>
-          <span class="block text-blue-900 dark:text-white mt-1 xs:mt-2 transition-colors duration-1000 delay-300">Developer
-          <span class="text-5xl xs:text-6xl sm:text-7xl lg:text-8xl text-[#ccf381]">.</span>
-          </span>
-        </h1>
-
-        <p class="text-base xs:text-lg sm:text-xl text-balance text-blue-900 dark:text-gray-300 leading-relaxed opacity-0 animate-fade-in duration-1000 delay-300 transition-colors fade-up" style="animation-delay: 0.4s;">
-          Creo aplicaciones web modernas y experiencias digitales únicas, combinando diseño atractivo con código limpio y eficiente.
-        </p>
-
-        <div class="relative flex flex-col xs:flex-row gap-4 justify-center lg:justify-start opacity-0 animate-fade-in duration-1000 delay-500 fade-up z-10" style="animation-delay: 0.6s;">
-          <a href="#projects" class="relative z-20 btn btn-primary w-full xs:w-auto">
-            Ver Proyectos
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
-          </a>
-          <a href="#contact" class="relative z-20 btn btn-outline fade-up w-full xs:w-auto">
-            Contactar
-          </a>
-        </div>
-      </div>
-
-      <!-- Image -->
-      <div class="relative order-first lg:order-last" style="animation-delay: 0.3s;">
-        <div class="flex rounded-full border-2 border-blue-600/20 p-2 mx-auto max-w-[200px] xs:max-w-[240px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-md fade-up" style="animation-delay: 0.3s;">
-         <img 
-         
-            src="/img/javoru2.webp" 
-            alt="Javoru face" 
-            class="rounded-full w-full h-full opacity-0 animate-fade-in duration-1000 delay-500"
-          />
-        </div>
-
-        <!-- Tech stack floating elements - Responsive positioning -->
-        <div class="absolute -top-2 -left-2 xs:-top-4 xs:-left-4 p-2 xs:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in delay-100 hover:scale-110 transition-all duration-300">
-          <img src="/icons/Astro_light.svg" alt="Astro" class="w-6 h-6 xs:w-8 xs:h-8 block dark:hidden duration-300" />
-          <img src="/icons/Astro_dark.svg" alt="Astro" class="w-6 h-6 xs:w-8 xs:h-8 hidden dark:block duration-300" />
-        </div>
-        <div class="absolute top-1/2 -right-2 xs:-right-4 p-2 xs:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in delay-100 hover:scale-110 transition-all duration-300">
-          <img src="/icons/tailwindcss.svg" alt="Tailwind CSS" class="w-6 h-6 xs:w-8 xs:h-8" />
-        </div>
-        <div class="absolute -bottom-2 left-1/4 xs:-bottom-4 p-2 xs:p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg dark:shadow-gray-900/50 opacity-0 animate-fade-in delay-100 hover:scale-110 transition-all duration-300">
-          <img src="/icons/css3.svg" alt="CSS3" class="w-6 h-6 xs:w-8 xs:h-8" />
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Decorative elements -->
-  <div class="absolute top-1/4 right-1/4 w-48 h-48 xs:w-64 xs:h-64 sm:w-96 sm:h-96 bg-blue-600/20 dark:bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse"></div>
-  <div class="absolute bottom-1/4 left-1/4 w-48 h-48 xs:w-64 xs:h-64 sm:w-96 sm:h-96 bg-blue-400/20 dark:bg-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse delay-1000"></div>
-</div>
+---
+import GeometricDecoration from "./GeometricDecoration.astro";
+---
 
 <style>
-	  .image-container {
-    animation: reveal both;
-    animation-timeline: scroll();
-    animation-range: entry 20% cover 30%;
+  /* Initial hidden state for hero elements — controlled exclusively by GSAP hero timeline.
+     NOT using the global .gsap-reveal class to avoid double-animation conflicts. */
+  #hero-greeting,
+  #hero-subtitle,
+  #hero-body,
+  #hero-cta,
+  #hero-photo,
+  .hero-badge {
+    opacity: 0;
   }
-
-  /* Mejoras para móviles */
-  @media (max-width: 640px) {
-    .hero-section {
-      padding: 1rem 0;
-      min-height: 100vh;
-      min-height: 100dvh;
-    }
-    
-    .hero-section .container {
-      padding: 1rem;
-    }
-    
-    .hero-section h1 {
-      font-size: 2.5rem;
-      line-height: 1.1;
-    }
-    
-    .hero-section .btn {
-      padding: 0.75rem 1.25rem;
-      font-size: 0.9rem;
-    }
-  }
-  
-  /* Mejoras específicas para móviles muy pequeños */
-  @media (max-width: 393px) {
-    .hero-section {
-      padding: 0.75rem 0;
-    }
-    
-    .hero-section .container {
-      padding: 0.75rem;
-    }
-    
-    .hero-section h1 {
-      font-size: 2rem;
-      line-height: 1.1;
-    }
-    
-    .hero-section .btn {
-      padding: 0.5rem 1rem;
-      font-size: 0.875rem;
-    }
-  }
-  
-  /* Mejoras para escritorio */
-  @media (min-width: 1024px) {
-    .hero-section {
-      padding: 2rem 0;
-    }
-    
-    .hero-section .container {
-      padding: 2rem;
+  /* Fallback: if JS is disabled or GSAP fails, show everything */
+  @media (prefers-reduced-motion: reduce) {
+    #hero-greeting,
+    #hero-subtitle,
+    #hero-body,
+    #hero-cta,
+    #hero-photo,
+    .hero-badge {
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 </style>
+
+<div class="w-full relative flex items-center">
+
+  <!-- ── Geometric decorations ─────────────────────────────────────── -->
+  <GeometricDecoration
+    shape="circle"
+    color="#FF6B6B"
+    size="lg"
+    class="absolute top-10 right-8 md:right-16 opacity-15 hidden sm:block"
+    animate={true}
+  />
+  <GeometricDecoration
+    shape="dots"
+    color="#4ECDC4"
+    size="md"
+    class="absolute top-16 left-4 md:left-8 opacity-30"
+    animate={true}
+  />
+  <GeometricDecoration
+    shape="ring"
+    color="#9B59B6"
+    size="md"
+    class="absolute bottom-24 right-4 md:right-12 opacity-20 hidden xs:block"
+    animate={true}
+  />
+  <GeometricDecoration
+    shape="zigzag"
+    color="#F7DC6F"
+    size="md"
+    class="absolute bottom-16 left-8 md:left-20 opacity-40 hidden md:block"
+    animate={false}
+  />
+  <GeometricDecoration
+    shape="triangle"
+    color="#4A90D9"
+    size="sm"
+    class="absolute top-1/3 right-1/4 opacity-20 hidden lg:block"
+    animate={true}
+  />
+
+  <!-- ── Content grid ───────────────────────────────────────────────── -->
+  <div class="w-full grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+    <!-- Left: Text -->
+    <div class="space-y-6 order-2 lg:order-1">
+
+      <p id="hero-greeting" class="text-slate font-semibold text-lg tracking-wide uppercase">
+        Hola, soy —
+      </p>
+
+      <h1 id="hero-title" class="leading-none font-extrabold" style="font-size: clamp(3rem, 8vw, 6rem); letter-spacing: -0.04em;">
+        <span class="word block text-charcoal">Javier</span>
+        <span class="word block text-charcoal">Castro</span>
+      </h1>
+
+      <p id="hero-subtitle" class="font-extrabold text-coral" style="font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: -0.02em;">
+        Frontend Developer.
+      </p>
+
+      <p id="hero-body" class="text-slate leading-relaxed max-w-md" style="font-size: clamp(1rem, 2vw, 1.125rem);">
+        Creo aplicaciones web modernas y experiencias digitales únicas,
+        combinando diseño atractivo con código limpio y eficiente.
+      </p>
+
+      <div id="hero-cta" class="flex flex-col xs:flex-row gap-3 pt-2">
+        <a href="#projects" class="btn-vibrant">
+          Ver Proyectos
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+        <a href="#contact" class="btn-outline-dark">
+          Contactar
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Photo -->
+    <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
+      <div class="relative">
+        <!-- Background rings -->
+        <div class="absolute inset-0 rounded-full bg-coral/15 scale-110 -z-10"></div>
+        <div class="absolute inset-0 rounded-full border-4 border-mint/30" style="transform: scale(1.18);" class="-z-10"></div>
+
+        <div
+          id="hero-photo"
+          class="relative rounded-full overflow-hidden border-4 border-coral/30 shadow-2xl"
+          style="width: clamp(200px, 35vw, 360px); height: clamp(200px, 35vw, 360px);"
+        >
+          <img
+            src="/img/javoru2.webp"
+            alt="Javier Castro"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+
+        <!-- Floating tech badges -->
+        <div class="hero-badge absolute -top-3 -left-6 bg-coral text-white px-3 py-2 rounded-xl shadow-lg flex items-center gap-2 font-bold text-sm">
+          <img src="/icons/Astro_dark.svg" alt="Astro" class="w-5 h-5 brightness-0 invert" />
+          Astro
+        </div>
+        <div class="hero-badge absolute top-1/2 -right-6 -translate-y-1/2 bg-ocean text-white px-3 py-2 rounded-xl shadow-lg flex items-center gap-2 font-bold text-sm">
+          <img src="/icons/tailwindcss.svg" alt="Tailwind" class="w-5 h-5" />
+          Tailwind
+        </div>
+        <div class="hero-badge absolute -bottom-3 left-1/4 bg-mint text-white px-3 py-2 rounded-xl shadow-lg flex items-center gap-2 font-bold text-sm">
+          <img src="/icons/css3.svg" alt="CSS3" class="w-5 h-5" />
+          CSS3
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
