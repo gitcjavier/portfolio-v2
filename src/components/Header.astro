@@ -59,25 +59,24 @@ import "../styles/global.css";
 </header>
 
 <script>
-  let _scrollHandler: EventListener | null = null;
-  let _observer: IntersectionObserver | null = null;
+  let _scrollHandler = null;
+  let _observer = null;
 
   function initHeader() {
     // ── Scroll: add backdrop when scrolled ──────────────────────────────────
     const header = document.getElementById('landing-header');
 
     if (_scrollHandler) window.removeEventListener('scroll', _scrollHandler);
-    function handleScroll() {
+    _scrollHandler = () => {
       if (!header) return;
       if (window.scrollY > 20) {
         header.classList.add('bg-cream/90', 'backdrop-blur-md', 'shadow-sm');
       } else {
         header.classList.remove('bg-cream/90', 'backdrop-blur-md', 'shadow-sm');
       }
-    }
-    _scrollHandler = handleScroll;
+    };
     window.addEventListener('scroll', _scrollHandler, { passive: true });
-    handleScroll();
+    _scrollHandler();
 
     // ── Mobile menu ─────────────────────────────────────────────────────────
     const menuBtn    = document.getElementById('menuBtn');
@@ -116,7 +115,7 @@ import "../styles/global.css";
     const sectionIds = ['hero', 'about', 'projects', 'contact'];
     const navLinks   = document.querySelectorAll('.nav-link');
 
-    const observer = new IntersectionObserver(
+    _observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -129,11 +128,10 @@ import "../styles/global.css";
       },
       { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
     );
-    _observer = observer;
 
     sectionIds.forEach(id => {
       const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      if (el) _observer.observe(el);
     });
   }
 
