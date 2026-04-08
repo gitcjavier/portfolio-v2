@@ -42,7 +42,7 @@ import "../styles/global.css";
   <!-- Mobile menu overlay -->
   <nav
     id="mobileMenu"
-    class="md:hidden fixed inset-0 bg-cream z-40 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300"
+    class="md:hidden fixed inset-0 bg-cream z-50 flex flex-col items-center justify-center gap-8 opacity-0 pointer-events-none transition-all duration-300"
   >
     <a href="#hero"     class="mobile-nav-link" id="mn-inicio">Inicio</a>
     <a href="#about"    class="mobile-nav-link" id="mn-about">Sobre Mí</a>
@@ -135,8 +135,7 @@ import "../styles/global.css";
     });
   }
 
-  // Run on initial load and after every View Transition navigation
-  initHeader();
+  // astro:page-load fires on initial load AND after every View Transition navigation
   document.addEventListener('astro:page-load', initHeader);
 </script>
 
