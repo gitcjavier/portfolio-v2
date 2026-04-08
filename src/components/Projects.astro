@@ -229,14 +229,15 @@ const projects: Project[] = [
               opacity: 0, scale: 0.92,
               duration: 0.3, ease: 'power2.in',
             });
-            gsap.to(starCursor, { opacity: 0, duration: 0.15, onComplete: () => blinkTl.pause() });
+            gsap.to(starCursor, { opacity: 0, duration: 0.15, onComplete: () => { blinkTl.pause(); } });
           }
         }, 40);
       });
 
       // Star follows cursor, preview stays centered
       row.addEventListener('mousemove', e => {
-        gsap.set(starCursor, { x: e.clientX - 12, y: e.clientY - 12 });
+        const me = e as MouseEvent;
+        gsap.set(starCursor, { x: me.clientX - 12, y: me.clientY - 12 });
       });
     });
   }
