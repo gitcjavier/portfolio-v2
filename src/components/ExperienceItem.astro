@@ -8,7 +8,7 @@ interface Props {
 const { date, title, description } = Astro.props;
 ---
 
-<li class="gsap-stagger-child relative pl-8 pb-12 last:pb-0">
+<li class="gsap-stagger-child exp-item relative pl-8 pb-12 last:pb-0">
   <!-- Timeline dot -->
   <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full bg-coral border-4 border-cream shadow-sm"></div>
 
@@ -18,3 +18,19 @@ const { date, title, description } = Astro.props;
   </h3>
   <p class="text-slate leading-relaxed" style="font-size: clamp(0.9rem, 1.8vw, 1rem);">{description}</p>
 </li>
+
+<style>
+  .exp-item {
+    border-radius: 0.75rem;
+    margin-left: -0.75rem;
+    padding-left: calc(2rem + 0.75rem);
+    padding-right: 0.75rem;
+    padding-top: 0.5rem;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .exp-item:hover {
+    background: rgba(255, 107, 107, 0.04);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07), 0 1px 4px rgba(255, 107, 107, 0.06);
+    transform: translateX(4px);
+  }
+</style>

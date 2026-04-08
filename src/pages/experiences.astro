@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Experience from '../components/Experience.astro';
 import "../styles/global.css";
 ---
@@ -11,24 +10,38 @@ import "../styles/global.css";
   keywords="experiencia, desarrollador, portfolio, IT, data engineer"
   author="Javier Castro Retamal"
 >
-  <Header />
+  <!-- Back button — fixed left center, always visible -->
+  <a
+    href="/#about"
+    class="back-btn fixed left-4 top-1/2 z-50 flex flex-col items-center gap-2 group"
+    aria-label="Volver al portfolio"
+    style="-translate-y-1/2"
+  >
+    <span class="w-12 h-12 rounded-full border-2 border-coral/40 group-hover:border-coral group-hover:bg-coral flex items-center justify-center transition-all duration-200 bg-coral/10 backdrop-blur-sm shadow-sm">
+      <svg class="w-5 h-5 text-coral group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+    </span>
+    <span class="text-coral/70 group-hover:text-coral transition-colors duration-200 font-bold tracking-widest uppercase text-center" style="font-size:0.72rem; writing-mode:vertical-rl; transform:rotate(180deg);">
+      Portfolio
+    </span>
+  </a>
 
-  <main class="min-h-screen bg-cream pt-24 pb-20">
-    <!-- Back button -->
-    <div class="container mx-auto mobile-px mb-10">
-      <a
-        href="/"
-        class="inline-flex items-center gap-2 text-slate hover:text-coral font-semibold transition-colors duration-200 group"
-      >
-        <span class="w-8 h-8 rounded-full border-2 border-charcoal/20 group-hover:border-coral group-hover:bg-coral flex items-center justify-center transition-all duration-200">
-          <svg class="w-4 h-4 text-charcoal/50 group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-        </span>
-        Volver al portfolio
-      </a>
-    </div>
+  <style>
+    .back-btn {
+      transform: translateY(-50%);
+      animation: nudge-right 2.2s ease-in-out infinite;
+    }
+    .back-btn:hover {
+      animation-play-state: paused;
+    }
+    @keyframes nudge-right {
+      0%, 100% { transform: translateY(-50%) translateX(-3px); }
+      50%       { transform: translateY(-50%) translateX(4px);  }
+    }
+  </style>
 
+  <main class="min-h-screen bg-cream pt-12 pb-20 pl-12">
     <!-- Hero heading -->
     <div class="container mx-auto mobile-px mb-16">
       <p class="text-slate font-bold text-sm tracking-widest uppercase mb-3">/Experiencia</p>

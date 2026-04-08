@@ -59,73 +59,85 @@ import "../styles/global.css";
 </header>
 
 <script>
-  // ── Scroll: add backdrop when scrolled ────────────────────────────────────
-  const header = document.getElementById('landing-header');
-  function updateHeaderBg() {
-    if (!header) return;
-    if (window.scrollY > 20) {
-      header.classList.add('bg-cream/90', 'backdrop-blur-md', 'shadow-sm');
-    } else {
-      header.classList.remove('bg-cream/90', 'backdrop-blur-md', 'shadow-sm');
+  let _scrollHandler = null;
+  let _observer = null;
+
+  function initHeader() {
+    // ── Scroll: add backdrop when scrolled ──────────────────────────────────
+    const header = document.getElementById('landing-header');
+
+    if (_scrollHandler) window.removeEventListener('scroll', _scrollHandler);
+    _scrollHandler = () => {
+      if (!header) return;
+      if (window.scrollY > 20) {
+        header.classList.add('bg-cream/90', 'backdrop-blur-md', 'shadow-sm');
+      } else {
+        header.classList.remove('bg-cream/90', 'backdrop-blur-md', 'shadow-sm');
+      }
+    };
+    window.addEventListener('scroll', _scrollHandler, { passive: true });
+    _scrollHandler();
+
+    // ── Mobile menu ─────────────────────────────────────────────────────────
+    const menuBtn    = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconOpen   = document.getElementById('menuIconOpen');
+    const iconClose  = document.getElementById('menuIconClose');
+
+    function openMenu() {
+      mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.add('opacity-100');
+      iconOpen?.classList.add('hidden');
+      iconClose?.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
+    function closeMenu() {
+      mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu?.classList.remove('opacity-100');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = !mobileMenu?.classList.contains('opacity-0');
+      isOpen ? closeMenu() : openMenu();
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', closeMenu);
+    });
+
+    // ── Active link via IntersectionObserver ─────────────────────────────────
+    // Disconnect previous observer so stale DOM nodes don't keep firing
+    if (_observer) _observer.disconnect();
+
+    const sectionIds = ['hero', 'about', 'projects', 'contact'];
+    const navLinks   = document.querySelectorAll('.nav-link');
+
+    _observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      },
+      { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+    );
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) _observer.observe(el);
+    });
   }
-  window.addEventListener('scroll', updateHeaderBg, { passive: true });
-  updateHeaderBg();
 
-  // ── Mobile menu ───────────────────────────────────────────────────────────
-  const menuBtn       = document.getElementById('menuBtn');
-  const mobileMenu    = document.getElementById('mobileMenu');
-  const iconOpen      = document.getElementById('menuIconOpen');
-  const iconClose     = document.getElementById('menuIconClose');
-
-  function openMenu() {
-    mobileMenu?.classList.remove('opacity-0', 'pointer-events-none');
-    mobileMenu?.classList.add('opacity-100');
-    iconOpen?.classList.add('hidden');
-    iconClose?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeMenu() {
-    mobileMenu?.classList.add('opacity-0', 'pointer-events-none');
-    mobileMenu?.classList.remove('opacity-100');
-    iconOpen?.classList.remove('hidden');
-    iconClose?.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-
-  menuBtn?.addEventListener('click', () => {
-    const isOpen = !mobileMenu?.classList.contains('opacity-0');
-    isOpen ? closeMenu() : openMenu();
-  });
-
-  // Close on link click
-  mobileMenu?.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeMenu);
-  });
-
-  // ── Active link via IntersectionObserver ──────────────────────────────────
-  const sections = ['hero', 'about', 'projects', 'contact'];
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(link => {
-            const href = link.getAttribute('href');
-            link.classList.toggle('active', href === `#${id}`);
-          });
-        }
-      });
-    },
-    { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
-  );
-
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el) observer.observe(el);
-  });
+  // Run on initial load and after every View Transition navigation
+  initHeader();
+  document.addEventListener('astro:page-load', initHeader);
 </script>
 
 <style>

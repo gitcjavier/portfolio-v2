@@ -4,16 +4,22 @@ export interface Props {
   bg?: string;       // Tailwind bg class or inline color
   class?: string;
   fullHeight?: boolean;
+  snapSection?: boolean;
 }
 
-const { id, bg = 'bg-cream', class: className = '', fullHeight = false } = Astro.props;
+const { id, bg = 'bg-cream', class: className = '', fullHeight = false, snapSection = false } = Astro.props;
 ---
 
 <section
   id={id}
+  data-section={snapSection ? id : undefined}
   class:list={[
-    'relative w-full overflow-hidden',
-    fullHeight ? 'min-h-screen flex items-center' : 'py-24 md:py-32 lg:py-40',
+    'relative w-full',
+    snapSection
+      ? 'h-screen flex items-center overflow-y-auto'
+      : fullHeight
+        ? 'min-h-screen flex items-center overflow-hidden'
+        : 'py-24 md:py-32 lg:py-40 overflow-hidden',
     bg,
     className,
   ]}
