@@ -86,12 +86,7 @@ function initAll() {
 }
 
 // ── Lifecycle ─────────────────────────────────────────────────────────────────
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAll);
-} else {
-  requestAnimationFrame(initAll);
-}
-
-document.addEventListener('astro:page-load', () => {
-  requestAnimationFrame(initAll);
-});
+// astro:page-load fires on initial load AND on every ClientRouter navigation.
+// Using it exclusively prevents the double-init race condition where killTweensOf('*')
+// would cancel the hero timeline immediately after creating it.
+document.addEventListener('astro:page-load', initAll);
