@@ -1,0 +1,181 @@
+---
+/* Testimonios PLACEHOLDER — reemplazar con clientes reales cuando los tengas */
+interface Testimonial {
+  quote: string;
+  name: string;
+  role: string;
+  avatar: string;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Con muy poca dirección, Javier entregó diseños que daban en el clavo una y otra vez. El sitio quedó mejor de lo que imaginamos.",
+    name: "Marcela Andrade",
+    role: "Fundadora, Chetomi",
+    avatar: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&dpr=2",
+  },
+  {
+    quote:
+      "Lideró el rediseño completo de nuestra tienda. Rápido, prolijo y con un criterio de diseño que no es común en desarrolladores.",
+    name: "Alejandro Wu",
+    role: "Founder, Nexgate",
+    avatar: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&dpr=2",
+  },
+  {
+    quote:
+      "Trabajar con Javier transformó la visión de nuestro producto. Cada iteración llegaba con ideas que nosotros no habíamos visto.",
+    name: "Jaime Maldonado",
+    role: "VP Product, LaunchPad",
+    avatar: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&dpr=2",
+  },
+  {
+    quote:
+      "La calidad del diseño superó nuestras expectativas. Entiende de negocio, no solo de pixeles.",
+    name: "Raquel Fuentes",
+    role: "Co-founder, Nexus Labs",
+    avatar: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&dpr=2",
+  },
+  {
+    quote:
+      "Trabajo increíble de principio a fin. Comunicación clara, entregas a tiempo y un resultado del que estamos orgullosos.",
+    name: "David Zhang",
+    role: "Head of Design, Paradigm Labs",
+    avatar: "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=96&h=96&dpr=2",
+  },
+];
+
+// Triplicados para scroll infinito
+const slides = [...testimonials, ...testimonials, ...testimonials];
+const COUNT = testimonials.length;
+---
+
+<section class="w-full py-20 overflow-hidden">
+  <!-- Header -->
+  <div class="px-6 md:max-w-4xl md:ml-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-12">
+    <h2
+      data-reveal
+      style="animation-delay: 0.1s"
+      class="text-[32px] md:text-[40px] lg:text-[44px] leading-[1.1] text-ink2 tracking-tight"
+    >
+      Lo que dicen los <span class="font-mondwest">clientes</span>
+    </h2>
+    <div data-reveal style="animation-delay: 0.2s" class="flex items-center gap-2">
+      {Array.from({ length: 5 }).map(() => (
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="black" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/>
+        </svg>
+      ))}
+      <span class="text-sm font-medium text-ink ml-2">5/5</span>
+    </div>
+  </div>
+
+  <!-- Carrusel -->
+  <div id="testimonial-viewport" class="px-6">
+    <div
+      id="testimonial-track"
+      class="flex gap-6 will-change-transform"
+      style="transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);"
+      data-count={COUNT}
+    >
+      {slides.map((t) => (
+        <article class="flex-shrink-0 w-[calc(100vw-48px)] md:w-[427px] bg-white rounded-[32px] md:rounded-[40px] shadow-card px-6 md:pl-10 md:pr-24 py-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-ink2" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M10 7H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v2a2 2 0 0 1-2 2v2a4 4 0 0 0 4-4V9a2 2 0 0 0 0-2zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v2a2 2 0 0 1-2 2v2a4 4 0 0 0 4-4V9a2 2 0 0 0 0-2z"/>
+          </svg>
+          <p class="text-base text-ink2 leading-relaxed mt-5">{t.quote}</p>
+          <div class="flex items-center gap-4 mt-7">
+            <img src={t.avatar} alt={t.name} loading="lazy" class="w-12 h-12 rounded-full object-cover" />
+            <div>
+              <p class="font-semibold text-sm text-ink">{t.name}</p>
+              <p class="text-sm text-mutedink">→ {t.role}</p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <div class="px-6 md:max-w-4xl md:ml-auto flex gap-4 mt-10">
+    <button
+      id="testimonial-prev"
+      aria-label="Anterior"
+      class="w-12 h-12 rounded-full border border-ink2/20 flex items-center justify-center hover:bg-ink2/5 transition-colors"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <button
+      id="testimonial-next"
+      aria-label="Siguiente"
+      class="w-12 h-12 rounded-full border border-ink2/20 flex items-center justify-center hover:bg-ink2/5 transition-colors"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  function initCarousel() {
+    const track = document.getElementById('testimonial-track');
+    const prevBtn = document.getElementById('testimonial-prev');
+    const nextBtn = document.getElementById('testimonial-next');
+    if (!track || !prevBtn || !nextBtn) return;
+    if (track.dataset.initialized) return;
+    track.dataset.initialized = 'true';
+
+    const count = parseInt(track.dataset.count || '5', 10);
+    // empezamos en la copia del medio
+    let index = count;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    function step() {
+      const card = track!.children[0] as HTMLElement;
+      if (!card) return 0;
+      const gap = 24; // gap-6
+      return card.offsetWidth + gap;
+    }
+
+    function render(animate = true) {
+      track!.style.transition = animate
+        ? 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+        : 'none';
+      track!.style.transform = `translateX(${-index * step()}px)`;
+    }
+
+    // al terminar la transición, recolocamos al medio sin animación
+    track.addEventListener('transitionend', () => {
+      if (index >= count * 2) {
+        index -= count;
+        render(false);
+      } else if (index < count) {
+        index += count;
+        render(false);
+      }
+    });
+
+    function next() { index++; render(); }
+    function prev() { index--; render(); }
+
+    function startAuto() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(next, 3000);
+    }
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    nextBtn.addEventListener('click', () => { next(); startAuto(); });
+    prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+    track.addEventListener('mouseenter', stopAuto);
+    track.addEventListener('mouseleave', startAuto);
+    window.addEventListener('resize', () => render(false));
+
+    render(false);
+    startAuto();
+  }
+
+  initCarousel();
+  document.addEventListener('astro:page-load', initCarousel);
+</script>

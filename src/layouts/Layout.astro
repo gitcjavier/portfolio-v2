@@ -19,16 +19,38 @@ const { title, description, keywords, author } = Astro.props;
     <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
     <title>{title}</title>
+    <!-- Pixelify Sans: fallback de PP Mondwest mientras no esté el woff2 local -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet" />
-    <link rel="preload" href="/img/javoru2.webp" as="image" />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div class="page-content">
       <ClientRouter />
       <slot />
     </div>
+
+    <!-- Reveal global: añade .animate-fade-in-up a [data-reveal] al entrar en viewport -->
+    <script>
+      function initReveal() {
+        const els = document.querySelectorAll('[data-reveal]:not(.animate-fade-in-up)');
+        if (!els.length) return;
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fade-in-up');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+      initReveal();
+      document.addEventListener('astro:page-load', initReveal);
+    </script>
   </body>
 </html>
 
@@ -40,34 +62,32 @@ const { title, description, keywords, author } = Astro.props;
   }
 
   html {
-    scroll-behavior: auto;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
   }
 
   body {
-    font-family: Onest, system-ui, sans-serif;
+    font-family: 'PP Neue Montreal', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
-    scroll-behavior: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background-color: #FFF8F0;
-    color: #2D2D2D;
+    background-color: #ffffff;
+    color: #051A24;
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #FFF8F0; }
-  ::-webkit-scrollbar-thumb { background: #FF6B6B; border-radius: 9999px; }
-  ::-webkit-scrollbar-thumb:hover { background: #e85555; }
+  ::-webkit-scrollbar-track { background: #ffffff; }
+  ::-webkit-scrollbar-thumb { background: #0D212C; border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #273C46; }
 
   /* Selection */
-  ::selection { background: #FF6B6B; color: #ffffff; }
+  ::selection { background: #051A24; color: #F6FCFF; }
 
   /* Focus */
   button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
-    outline: 2px solid #FF6B6B;
+    outline: 2px solid #051A24;
     outline-offset: 2px;
   }
 

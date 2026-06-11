@@ -1,66 +1,147 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Experience from '../components/Experience.astro';
+import Layout from "../layouts/Layout.astro";
+import BottomNav from "../components/BottomNav.astro";
 import "../styles/global.css";
+
+const EXPERIENCE = [
+  {
+    date: "Actualmente",
+    title: "Jefe de Soporte IT",
+    description:
+      "Encargado del soporte técnico e implementación de una solución integral de call center (CRM web + Telefonía IP). Capacito usuarios, coordino reuniones y lidero la puesta en marcha de entornos productivos. Desarrollo procedimientos almacenados en Transact-SQL para generar reportes personalizados, y realizo configuraciones avanzadas de Asterisk (SIP, extensiones, reglas de marcado).",
+    stack: "JavaScript · Transact-SQL · MS SQL Server · Asterisk",
+  },
+  {
+    date: "Enero 2020 — Noviembre 2023",
+    title: "Data Engineer para LATAM",
+    description:
+      "Diseñé y mantuve pipelines de datos para poblar el Data Lake de Google Cloud con información proveniente de múltiples orígenes como Oracle, SQL Server, archivos planos y Excel. Usé Git y Bitbucket para versionar scripts y desplegar DAGs en Apache Airflow, orquestando flujos complejos hacia BigQuery mediante Dataflow. Automaticé procesos clave relacionados con reportes de vuelo, bitácoras y ajustes contables.",
+    stack: "GCP · BigQuery · Airflow · Dataflow · Git",
+  },
+  {
+    date: "Marzo 2015 — Agosto 2019",
+    title: "Soporte Técnico IT",
+    description:
+      "Atención de incidentes y solicitudes de soporte técnico de usuarios corporativos. Instalación, configuración y mantenimiento de software y hardware. Participé en proyectos de mejora de sistemas y capacitación a usuarios finales.",
+    stack: "Hardware · Software · Redes",
+  },
+];
+
+const STACK = [
+  { name: "Astro", icon: "/icons/Astro_dark.svg" },
+  { name: "React", icon: "/icons/react.svg" },
+  { name: "TypeScript", icon: "/icons/typescript.svg" },
+  { name: "JavaScript", icon: "/icons/javascript.svg" },
+  { name: "Tailwind", icon: "/icons/tailwindcss.svg" },
+  { name: "HTML5", icon: "/icons/html5.svg" },
+  { name: "CSS3", icon: "/icons/css3.svg" },
+  { name: "Node", icon: "/icons/node.svg" },
+  { name: "Supabase", icon: "/icons/supabase.svg" },
+  { name: "Git", icon: "/icons/git.svg" },
+  { name: "Photoshop", icon: "/icons/photoshop.svg" },
+  { name: "Illustrator", icon: "/icons/illustrator.svg" },
+];
 ---
 
 <Layout
-  title="Experiencia Laboral — Javier Castro"
+  title="Experiencia — Javier Castro"
   description="Trayectoria profesional de Javier Castro Retamal"
   keywords="experiencia, desarrollador, portfolio, IT, data engineer"
   author="Javier Castro Retamal"
 >
-  <!-- Back button — fixed left center, always visible -->
-  <a
-    href="/#about"
-    class="back-btn fixed left-4 top-1/2 z-50 flex flex-col items-center gap-2 group"
-    aria-label="Volver al portfolio"
-    style="-translate-y-1/2"
-  >
-    <span class="w-12 h-12 rounded-full border-2 border-coral/40 group-hover:border-coral group-hover:bg-coral flex items-center justify-center transition-all duration-200 bg-coral/10 backdrop-blur-sm shadow-sm">
-      <svg class="w-5 h-5 text-coral group-hover:text-white transition-colors duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-      </svg>
-    </span>
-    <span class="text-coral/70 group-hover:text-coral transition-colors duration-200 font-bold tracking-widest uppercase text-center" style="font-size:0.72rem; writing-mode:vertical-rl; transform:rotate(180deg);">
-      Portfolio
-    </span>
-  </a>
+  <main class="relative w-full bg-white min-h-screen">
 
-  <style>
-    .back-btn {
-      transform: translateY(-50%);
-      animation: nudge-right 2.2s ease-in-out infinite;
-    }
-    .back-btn:hover {
-      animation-play-state: paused;
-    }
-    @keyframes nudge-right {
-      0%, 100% { transform: translateY(-50%) translateX(-3px); }
-      50%       { transform: translateY(-50%) translateX(4px);  }
-    }
-  </style>
+    <!-- Barra superior -->
+    <div class="w-full bg-ink text-mist font-mono text-xs flex items-center justify-between px-6 py-2">
+      <span>From: Chile</span>
+      <a href="/" class="hover:opacity-70 transition-opacity">← Volver al inicio</a>
+    </div>
 
-  <main class="min-h-screen bg-cream pt-12 pb-20 pl-12">
-    <!-- Hero heading -->
-    <div class="container mx-auto mobile-px mb-16">
-      <p class="text-slate font-bold text-sm tracking-widest uppercase mb-3">/Experiencia</p>
-      <h1 class="section-heading text-charcoal">
-        Trayectoria<br/>
-        <span class="text-coral">profesional.</span>
-      </h1>
-      <p class="text-slate mt-4 max-w-lg leading-relaxed" style="font-size: clamp(0.95rem, 2vw, 1.1rem);">
-        Mi camino en tecnología — de soporte técnico a ingeniería de datos y desarrollo frontend.
-      </p>
+    <!-- Hero -->
+    <section class="border-b border-ink2/10">
+      <div class="max-w-[1200px] mx-auto border-x border-ink2/10 px-6 py-20 md:py-28">
+        <p data-reveal style="animation-delay: 0.1s" class="font-mono text-xs md:text-sm text-ink mb-4">
+          Javier Castro — Trayectoria
+        </p>
+        <h1
+          data-reveal
+          style="animation-delay: 0.2s"
+          class="text-[40px] md:text-[64px] lg:text-[80px] leading-[1.05] tracking-tight text-ink2"
+        >
+          De soporte a <span class="font-mondwest">datos,</span><br />
+          de datos a <span class="font-mondwest">frontend.</span>
+        </h1>
+        <p
+          data-reveal
+          style="animation-delay: 0.3s"
+          class="text-sm md:text-base text-mutedink leading-relaxed mt-6 max-w-lg"
+        >
+          Mi camino en tecnología — de soporte técnico a ingeniería de datos
+          y desarrollo frontend.
+        </p>
+      </div>
+    </section>
+
+    <!-- Barra de sección: experiencia -->
+    <div class="w-full bg-ink text-mist font-mono text-xs flex items-center justify-between px-6 py-2">
+      <span>Experiencia</span>
+      <span>2015 — Hoy</span>
     </div>
 
     <!-- Timeline -->
-    <div class="container mx-auto mobile-px">
-      <Experience />
+    <section class="border-b border-ink2/10">
+      <div class="max-w-[1200px] mx-auto border-x border-ink2/10 divide-y divide-ink2/10">
+        {EXPERIENCE.map((exp, i) => (
+          <article
+            data-reveal
+            style={`animation-delay: ${0.1 + i * 0.1}s`}
+            class="grid md:grid-cols-[220px_1fr] gap-3 md:gap-8 px-6 py-10 md:py-14"
+          >
+            <p class="font-mono text-xs text-mutedink pt-1.5">{exp.date}</p>
+            <div>
+              <h2 class="text-xl md:text-2xl font-medium text-ink2 tracking-tight">{exp.title}</h2>
+              <p class="text-sm md:text-base text-mutedink leading-relaxed mt-3 max-w-2xl">
+                {exp.description}
+              </p>
+              <p class="font-mono text-xs text-ink/60 mt-4">{exp.stack}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- Barra de sección: stack -->
+    <div class="w-full bg-ink text-mist font-mono text-xs flex items-center justify-between px-6 py-2">
+      <span>Stack técnico</span>
+      <span>Herramientas de uso diario</span>
+    </div>
+
+    <!-- Stack -->
+    <section class="border-b border-ink2/10">
+      <div class="max-w-[1200px] mx-auto border-x border-ink2/10 px-6 py-16 md:py-20 text-center">
+        <h2 data-reveal style="animation-delay: 0.1s" class="text-2xl md:text-3xl text-ink2 tracking-tight">
+          Mi <span class="font-mondwest">stack</span>
+        </h2>
+        <p data-reveal style="animation-delay: 0.2s" class="text-sm text-mutedink mt-2 mb-8">
+          Tecnologías con las que trabajo y diseño.
+        </p>
+        <div data-reveal style="animation-delay: 0.3s" class="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+          {STACK.map((tech) => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-ink2/15 bg-white px-4 py-1.5 text-sm text-ink hover:border-ink2/40 transition-colors">
+              <img src={tech.icon} alt="" class="w-4 h-4" loading="lazy" />
+              {tech.name}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pie -->
+    <div class="max-w-[1200px] mx-auto px-6 py-4 pb-28 flex justify-between text-sm text-ink">
+      <span>Javoru — Javier Castro</span>
+      <span>Chile</span>
     </div>
   </main>
 
-  <script>
-    import '../scripts/gsap-animations.js';
-  </script>
+  <BottomNav />
 </Layout>

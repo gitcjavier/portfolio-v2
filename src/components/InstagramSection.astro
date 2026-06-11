@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+
+/* Lee automáticamente las fotos que dejes en src/assets/instagram/
+   (extensiones en minúscula: .jpg, .jpeg, .png o .webp), ordenadas
+   por nombre de archivo. Si la carpeta está vacía, no se muestra. */
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/instagram/*.{jpg,jpeg,png,webp}",
+  { eager: true }
+);
+const photos = Object.entries(modules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, m]) => m.default);
+
+// Duplicadas para el loop infinito (translateX -50%)
+const slides = [...photos, ...photos];
+
+const INSTAGRAM_URL = "https://instagram.com/ijavoru";
+---
+
+{photos.length > 0 && (
+  <section id="instagram" class="w-full py-12 overflow-hidden">
+    <div
+      data-reveal
+      style="animation-delay: 0.1s"
+      class="max-w-[1200px] mx-auto px-6 flex items-end justify-between mb-10"
+    >
+      <h2 class="text-[32px] md:text-[40px] leading-[1.1] text-ink2 tracking-tight">
+        Desde mi <span class="font-mondwest">Instagram</span>
+      </h2>
+      <a
+        href={INSTAGRAM_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-sm text-ink hover:opacity-70 transition-opacity inline-flex items-center gap-1 whitespace-nowrap"
+      >
+        @ijavoru
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Carrusel automático — se pausa con el mouse encima -->
+    <div data-reveal style="animation-delay: 0.2s" class="w-full overflow-x-clip py-4">
+      <div class="flex w-max animate-marquee-ig">
+        {slides.map((photo) => (
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="block mx-3 group relative hover:z-10">
+            <Image
+              src={photo}
+              alt="Foto de Instagram de Javier Castro"
+              height={420}
+              class="h-[260px] md:h-[380px] w-auto object-cover rounded-2xl shadow-lg group-hover:scale-110 group-hover:shadow-2xl transition-all duration-300 ease-out select-none"
+              loading="lazy"
+              draggable="false"
+            />
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

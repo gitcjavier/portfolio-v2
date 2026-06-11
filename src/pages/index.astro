@@ -1,42 +1,31 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
+import Marquee from "../components/Marquee.astro";
+import QuoteSection from "../components/QuoteSection.astro";
 import Projects from "../components/Projects.astro";
-import Contact from "../components/Contact.astro";
-import SectionBlock from "../components/SectionBlock.astro";
+import InstagramSection from "../components/InstagramSection.astro";
+import PartnerSection from "../components/PartnerSection.astro";
+import Footer from "../components/Footer.astro";
+import BottomNav from "../components/BottomNav.astro";
 import "../styles/global.css";
-
 ---
 
 <Layout
   title="Javier Castro — Frontend Developer"
-  description="Portfolio de Javier Castro Retamal - Desarrollador Frontend"
+  description="Portfolio de Javier Castro Retamal - Desarrollador Frontend y diseñador"
   keywords="Portfolio, Javier Castro Retamal, Desarrollador Web, Diseño Web, Frontend"
   author="Javier Castro Retamal"
 >
-  <Header />
-  <main class="relative w-full">
-    <SectionBlock id="hero"     bg="bg-cream" fullHeight={true} class="pt-16">
-      <Hero />
-    </SectionBlock>
-
-    <SectionBlock id="about"    bg="bg-coral">
-      <About />
-    </SectionBlock>
-
-    <SectionBlock id="projects" bg="bg-cream">
-      <Projects />
-    </SectionBlock>
-
-    <SectionBlock id="contact"  bg="bg-plum">
-      <Contact />
-    </SectionBlock>
+  <main class="relative w-full bg-white">
+    <Hero />
+    <Marquee />
+    <QuoteSection />
+    <Projects />
+    <InstagramSection />
+    <PartnerSection />
+    <Footer />
   </main>
 
-  <!-- GSAP animations -->
-  <script>
-    import '../scripts/gsap-animations.js';
-  </script>
+  <BottomNav />
 </Layout>

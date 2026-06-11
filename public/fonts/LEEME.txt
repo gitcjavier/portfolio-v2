@@ -1,0 +1,8 @@
+Coloca aquí el archivo PPMondwest-Regular.woff2
+
+1. Descárgalo gratis (licencia de uso personal) en:
+   https://pangrampangram.com/products/mondwest
+2. Si viene en .otf, conviértelo a .woff2 (por ejemplo en https://cloudconvert.com/otf-to-woff2)
+3. Guárdalo como: public/fonts/PPMondwest-Regular.woff2
+
+Mientras no exista, el sitio usa el fallback "Pixelify Sans" (Google Fonts).

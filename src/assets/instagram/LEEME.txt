@@ -1,0 +1,7 @@
+Deja aquí las fotos de tu Instagram que quieras mostrar en el portfolio.
+
+- Formatos: .jpg, .jpeg, .png o .webp (extensión en minúscula)
+- Se muestran en una grilla cuadrada de 4 columnas, ordenadas por nombre
+  de archivo (usa 01-..., 02-... para controlar el orden)
+- Astro las optimiza automáticamente en el build
+- Si la carpeta está vacía, la sección no aparece en la página

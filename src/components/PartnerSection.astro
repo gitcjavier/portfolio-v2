@@ -1,0 +1,92 @@
+---
+import { MARQUEE_IMAGES } from "./Marquee.astro";
+---
+
+<section class="w-full py-12 px-6">
+  <div
+    id="partner-zone"
+    class="relative max-w-7xl mx-auto bg-white py-48 rounded-[40px] shadow-card overflow-hidden flex flex-col items-center justify-center"
+    data-images={JSON.stringify(MARQUEE_IMAGES)}
+  >
+    <h2
+      data-reveal
+      style="animation-delay: 0.1s"
+      class="relative z-10 font-mondwest text-[48px] md:text-[64px] lg:text-[80px] text-ink2 mb-12 text-center leading-none"
+    >
+      Trabajemos juntos
+    </h2>
+
+    <a
+      href="mailto:icastroretamal@gmail.com"
+      data-reveal
+      style="animation-delay: 0.2s"
+      class="btn-primary relative z-10 !pl-2 !py-2 !pr-6 gap-3 text-base"
+    >
+      <img
+        src="/img/javoru2.webp"
+        alt="Javier"
+        class="w-10 h-10 rounded-full object-cover"
+      />
+      Escríbele a Javier
+    </a>
+  </div>
+</section>
+
+<script>
+  function initPartnerTrail() {
+    const zone = document.getElementById('partner-zone');
+    if (!zone || zone.dataset.initialized) return;
+    zone.dataset.initialized = 'true';
+
+    const images: string[] = JSON.parse(zone.dataset.images || '[]');
+    if (!images.length) return;
+
+    let lastSpawn = 0;
+    let imgIndex = 0;
+
+    zone.addEventListener('mousemove', (e) => {
+      const now = performance.now();
+      if (now - lastSpawn < 80) return;
+      lastSpawn = now;
+
+      const rect = zone.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotation = Math.random() * 20 - 10;
+
+      const img = document.createElement('img');
+      img.src = images[imgIndex % images.length];
+      imgIndex++;
+      img.alt = '';
+      img.draggable = false;
+      img.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        width: 160px;
+        height: 110px;
+        object-fit: cover;
+        border-radius: 12px;
+        pointer-events: none;
+        z-index: 1;
+        transform: translate(-50%, -50%) rotate(${rotation}deg) scale(1);
+        opacity: 1;
+        transition: opacity 1s ease-out, transform 1s ease-out;
+        box-shadow: 0 8px 24px rgba(5,26,36,0.18);
+      `;
+      zone.appendChild(img);
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          img.style.opacity = '0';
+          img.style.transform = `translate(-50%, -50%) rotate(${rotation}deg) scale(0.7)`;
+        });
+      });
+
+      setTimeout(() => img.remove(), 1100);
+    });
+  }
+
+  initPartnerTrail();
+  document.addEventListener('astro:page-load', initPartnerTrail);
+</script>

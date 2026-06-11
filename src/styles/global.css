@@ -2,13 +2,36 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* ── Fuentes ──────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9bb43e36419997ecfe_PPNeueMontreal-Book.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'PP Neue Montreal';
+  src: url('https://assets.website-files.com/6009ec8cda7f305645c9d91b/60176f9b39c5673e51a86f5a_PPNeueMontreal-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-display: swap;
+}
+/* PP Mondwest: descarga gratis (uso personal) en pangrampangram.com/products/mondwest
+   y deja el archivo en public/fonts/PPMondwest-Regular.woff2.
+   Mientras no exista, cae al fallback Pixelify Sans (Google Fonts). */
+@font-face {
+  font-family: 'PP Mondwest';
+  src: url('/fonts/PPMondwest-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
 @layer base {
   body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: #FFF8F0;
-    color: #2D2D2D;
+    background-color: #ffffff;
+    color: #051A24;
     overflow-x: hidden;
     width: 100%;
   }
@@ -17,16 +40,95 @@
     box-sizing: border-box;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: #2D2D2D;
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 @layer components {
 
-  /* ── Buttons ── */
+  /* ════════════════════════════════════════════════════════════════════
+     REDISEÑO — botones pill estilo studio
+     ════════════════════════════════════════════════════════════════════ */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    background-color: #051A24;
+    color: #F6FCFF;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    box-shadow:
+      0 1px 2px 0 rgba(5,26,36,0.1),
+      0 4px 4px 0 rgba(5,26,36,0.09),
+      0 9px 6px 0 rgba(5,26,36,0.05),
+      0 17px 7px 0 rgba(5,26,36,0.01),
+      0 26px 7px 0 rgba(5,26,36,0),
+      inset 0 2px 8px 0 rgba(255,255,255,0.5);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    background-color: #ffffff;
+    color: #051A24;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 0 0.5px rgba(0,0,0,0.05), 0 4px 30px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 0.5px rgba(0,0,0,0.08), 0 8px 36px rgba(0,0,0,0.12);
+  }
+
+  .btn-tertiary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    background-color: #ffffff;
+    color: #051A24;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    box-shadow:
+      0 0 0 0.5px rgba(0,0,0,0.05),
+      0 4px 30px rgba(0,0,0,0.08),
+      inset 0 2px 8px 0 rgba(255,255,255,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .btn-tertiary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 0.5px rgba(0,0,0,0.08), 0 8px 36px rgba(0,0,0,0.12);
+  }
+
+  /* ── Buttons (legacy /experiences) ── */
   .btn-vibrant {
     display: inline-flex;
     align-items: center;
@@ -181,5 +283,55 @@
   .dot-pattern-white {
     background-image: radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
     background-size: 24px 24px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   REDISEÑO — animaciones
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Marquee infinito */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+@media (max-width: 767px) {
+  .animate-marquee { animation-duration: 10s; }
+}
+
+/* Marquee de Instagram — más lento y se pausa al pasar el mouse */
+.animate-marquee-ig {
+  animation: marquee 45s linear infinite;
+}
+.animate-marquee-ig:hover {
+  animation-play-state: paused;
+}
+@media (max-width: 767px) {
+  .animate-marquee-ig { animation-duration: 20s; }
+}
+
+/* Fade in up — disparado por IntersectionObserver via [data-reveal] */
+@keyframes fadeInUp {
+  0%   { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+[data-reveal] {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+  [data-reveal],
+  .animate-fade-in-up {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
   }
 }

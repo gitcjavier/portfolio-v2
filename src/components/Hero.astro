@@ -1,143 +1,60 @@
 ---
-import GeometricDecoration from "./GeometricDecoration.astro";
+import Button from "./Button.astro";
 ---
 
-<style>
-  /* Initial hidden state for hero elements — controlled exclusively by GSAP hero timeline.
-     NOT using the global .gsap-reveal class to avoid double-animation conflicts. */
-  #hero-greeting,
-  #hero-subtitle,
-  #hero-body,
-  #hero-cta,
-  #hero-photo,
-  .hero-badge {
-    opacity: 0;
-  }
-  /* Fallback: if JS is disabled or GSAP fails, show everything */
-  @media (prefers-reduced-motion: reduce) {
-    #hero-greeting,
-    #hero-subtitle,
-    #hero-body,
-    #hero-cta,
-    #hero-photo,
-    .hero-badge {
-      opacity: 1 !important;
-      transform: none !important;
-    }
-  }
-</style>
+<section id="hero" class="mx-auto max-w-[440px] px-6 pt-12 md:pt-16">
+  <!-- Logo -->
+  <h2
+    data-reveal
+    style="animation-delay: 0.1s"
+    class="font-mondwest font-semibold text-[32px] md:text-[40px] lg:text-[44px] text-ink tracking-tight mb-4"
+  >
+    Javier Castro
+  </h2>
 
-<div class="w-full relative flex items-center">
+  <!-- Tagline -->
+  <p data-reveal style="animation-delay: 0.2s" class="font-mono text-xs md:text-sm text-ink mb-2">
+    El estudio creativo de Javoru
+  </p>
 
-  <!-- ── Geometric decorations ─────────────────────────────────────── -->
-  <GeometricDecoration
-    shape="circle"
-    color="#FF6B6B"
-    size="lg"
-    class="absolute top-10 right-8 md:right-16 opacity-15 hidden sm:block"
-    animate={true}
-  />
-  <GeometricDecoration
-    shape="dots"
-    color="#4ECDC4"
-    size="md"
-    class="absolute top-16 left-4 md:left-8 opacity-30"
-    animate={true}
-  />
-  <GeometricDecoration
-    shape="ring"
-    color="#9B59B6"
-    size="md"
-    class="absolute bottom-24 right-4 md:right-12 opacity-20 hidden xs:block"
-    animate={true}
-  />
-  <GeometricDecoration
-    shape="zigzag"
-    color="#F7DC6F"
-    size="md"
-    class="absolute bottom-16 left-8 md:left-20 opacity-40 hidden md:block"
-    animate={false}
-  />
-  <GeometricDecoration
-    shape="triangle"
-    color="#4A90D9"
-    size="sm"
-    class="absolute top-1/3 right-1/4 opacity-20 hidden lg:block"
-    animate={true}
-  />
+  <!-- Heading -->
+  <h1
+    data-reveal
+    style="animation-delay: 0.3s"
+    class="text-[32px] md:text-[40px] lg:text-[44px] leading-[1.1] text-ink2 tracking-tight"
+  >
+    <span class="block whitespace-nowrap">Construyo la <span class="font-mondwest">nueva ola,</span></span>
+    <span class="block whitespace-nowrap">con <span class="font-mondwest">diseño audaz.</span></span>
+  </h1>
 
-  <!-- ── Content grid ───────────────────────────────────────────────── -->
-  <div class="w-full grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-
-    <!-- Left: Text -->
-    <div class="space-y-6 order-2 lg:order-1">
-
-      <p id="hero-greeting" class="text-slate font-semibold text-lg tracking-wide uppercase">
-        Hola, soy —
-      </p>
-
-      <h1 id="hero-title" class="leading-none font-extrabold" style="font-size: clamp(3rem, 8vw, 6rem); letter-spacing: -0.04em;">
-        <span class="word block text-charcoal">Javier</span>
-        <span class="word block text-charcoal">Castro</span>
-      </h1>
-
-      <p id="hero-subtitle" class="font-extrabold text-coral" style="font-size: clamp(1.5rem, 4vw, 2.5rem); letter-spacing: -0.02em;">
-        Frontend Developer.
-      </p>
-
-      <p id="hero-body" class="text-slate leading-relaxed max-w-md" style="font-size: clamp(1rem, 2vw, 1.125rem);">
-        Creo aplicaciones web modernas y experiencias digitales únicas,
-        combinando diseño atractivo con código limpio y eficiente.
-      </p>
-
-      <div id="hero-cta" class="flex flex-col xs:flex-row gap-3 pt-2">
-        <a href="#projects" class="btn-vibrant">
-          Ver Proyectos
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-        <a href="#contact" class="btn-outline-dark">
-          Contactar
-        </a>
-      </div>
-    </div>
-
-    <!-- Right: Photo -->
-    <div class="order-1 lg:order-2 flex justify-center lg:justify-end relative">
-      <div class="relative">
-        <!-- Background rings -->
-        <div class="absolute inset-0 rounded-full bg-coral/15 scale-110 -z-10"></div>
-        <div class="absolute inset-0 rounded-full border-4 border-mint/30 -z-10" style="transform: scale(1.18);"></div>
-
-        <div
-          id="hero-photo"
-          class="relative rounded-full overflow-hidden border-4 border-coral/30 shadow-2xl"
-          style="width: clamp(240px, 40vw, 460px); height: clamp(240px, 40vw, 460px);"
-        >
-          <img
-            src="/img/javoru2.webp"
-            alt="Javier Castro"
-            class="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
-
-        <!-- Floating tech badges -->
-        <div class="hero-badge absolute -top-3 -left-6 bg-coral text-white px-3 py-2 rounded-xl shadow-lg flex items-center gap-2 font-bold text-sm">
-          <img src="/icons/Astro_dark.svg" alt="Astro" class="w-5 h-5 brightness-0 invert" />
-          Astro
-        </div>
-        <div class="hero-badge absolute top-1/2 -right-6 -translate-y-1/2 bg-ocean text-white px-3 py-2 rounded-xl shadow-lg flex items-center gap-2 font-bold text-sm">
-          <img src="/icons/tailwindcss.svg" alt="Tailwind" class="w-5 h-5" />
-          Tailwind
-        </div>
-        <div class="hero-badge absolute -bottom-3 left-1/4 bg-mint text-white px-3 py-2 rounded-xl shadow-lg flex items-center gap-2 font-bold text-sm">
-          <img src="/icons/css3.svg" alt="CSS3" class="w-5 h-5" />
-          CSS3
-        </div>
-      </div>
-    </div>
-
+  <!-- Descripción -->
+  <div
+    data-reveal
+    style="animation-delay: 0.4s"
+    class="flex flex-col gap-6 text-sm md:text-base text-ink leading-relaxed mt-5 md:mt-6"
+  >
+    <p>
+      Soy desarrollador frontend con ojo de diseñador. He construido desde
+      ecommerce completos hasta piezas gráficas, combinando código limpio
+      con un diseño que no pasa desapercibido.
+    </p>
+    <p>
+      Trabajo de punta a punta: cada proyecto lo diseño y lo desarrollo yo
+      mismo, de la idea al deploy, rápido y sin cortar esquinas.
+    </p>
+    <p>
+      Disponible para proyectos freelance y colaboraciones.
+    </p>
   </div>
-</div>
+
+  <!-- CTAs -->
+  <div
+    data-reveal
+    style="animation-delay: 0.5s"
+    class="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-5 md:mt-6"
+  >
+    <Button href="mailto:icastroretamal@gmail.com" variant="primary">Hablemos</Button>
+    <Button href="#projects" variant="secondary">Ver proyectos</Button>
+    <Button href="/experiences" variant="secondary">Experiencia</Button>
+  </div>
+</section>

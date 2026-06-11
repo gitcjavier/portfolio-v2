@@ -4,6 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
+        // ── Nueva paleta (rediseño minimal) ──
+        ink:      '#051A24',  // primary dark
+        ink2:     '#0D212C',  // secondary dark (headings)
+        mist:     '#F6FCFF',  // light text on dark
+        fog:      '#E0EBF0',  // light secondary on dark
+        mutedink: '#273C46',  // muted text
+        // ── Paleta legacy (usada por /experiences) ──
         cream:     '#FFF8F0',
         coral:     '#FF6B6B',
         ocean:     '#4A90D9',
@@ -17,7 +24,14 @@ export default {
         lavender:  '#F0E6FF',
       },
       fontFamily: {
-        sans: ['Onest', 'system-ui', 'sans-serif'],
+        sans: ['PP Neue Montreal', 'system-ui', '-apple-system', 'sans-serif'],
+        mondwest: ['PP Mondwest', 'Pixelify Sans', 'serif'],
+      },
+      boxShadow: {
+        // Sombra de botón primario (multi-capa + brillo interior)
+        'btn-primary': '0 1px 2px 0 rgba(5,26,36,0.1), 0 4px 4px 0 rgba(5,26,36,0.09), 0 9px 6px 0 rgba(5,26,36,0.05), 0 17px 7px 0 rgba(5,26,36,0.01), 0 26px 7px 0 rgba(5,26,36,0), inset 0 2px 8px 0 rgba(255,255,255,0.5)',
+        'btn-secondary': '0 0 0 0.5px rgba(0,0,0,0.05), 0 4px 30px rgba(0,0,0,0.08)',
+        'card': '0 4px 16px rgba(0,0,0,0.08)',
       },
       fontSize: {
         display:    ['clamp(3rem, 8vw, 6rem)',   { lineHeight: '1.05', letterSpacing: '-0.03em' }],
