@@ -1,23 +1,30 @@
 ---
+import type { Lang } from '../i18n/config';
+import { useTranslations, getExperiencesPath } from '../i18n/utils';
 import Button from "./Button.astro";
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <footer class="w-full py-12 px-6 max-w-[1200px] mx-auto">
   <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
-    <!-- CTA -->
     <div>
-      <Button href="mailto:icastroretamal@gmail.com" variant="primary">Hablemos</Button>
+      <Button href="mailto:icastroretamal@gmail.com" variant="primary">{t.footer.letsTalk}</Button>
     </div>
 
-    <!-- Links -->
     <div class="flex items-start gap-8">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-ink mt-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M7 7h10v10"/><path d="M7 17 17 7"/>
       </svg>
       <div class="flex flex-col gap-3">
-        <a href="#projects" class="text-base text-ink hover:opacity-70 transition-opacity">Proyectos</a>
-        <a href="#instagram" class="text-base text-ink hover:opacity-70 transition-opacity">Instagram</a>
-        <a href="/experiences" class="text-base text-ink hover:opacity-70 transition-opacity">Experiencia</a>
+        <a href="#projects" class="text-base text-ink hover:opacity-70 transition-opacity">{t.footer.projects}</a>
+        <a href="#instagram" class="text-base text-ink hover:opacity-70 transition-opacity">{t.footer.instagram}</a>
+        <a href={getExperiencesPath(lang)} class="text-base text-ink hover:opacity-70 transition-opacity">{t.footer.experience}</a>
       </div>
       <div class="flex flex-col gap-3">
         <a href="https://github.com/gitcjavier" target="_blank" rel="noopener noreferrer" class="text-base text-ink hover:opacity-70 transition-opacity">GitHub</a>
@@ -29,8 +36,7 @@ import Button from "./Button.astro";
   </div>
 </footer>
 
-<!-- Barra de copyright -->
 <div class="max-w-[1200px] mx-auto px-6 py-4 pb-28 flex justify-between text-sm text-ink">
-  <span>Javoru — Javier Castro</span>
-  <span>Chile</span>
+  <span>{t.footer.copyright}</span>
+  <span>{t.footer.location}</span>
 </div>

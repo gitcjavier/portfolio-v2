@@ -1,0 +1,79 @@
+---
+import type { Lang } from '../i18n/config';
+import { getAlternatePaths } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+  variant?: 'fixed' | 'bar';
+}
+
+const { lang, variant = 'fixed' } = Astro.props;
+const t = useTranslations(lang);
+const paths = getAlternatePaths(Astro.url.pathname);
+const isBar = variant === 'bar';
+---
+
+<div
+  class:list={[
+    'flex items-center gap-0.5 rounded-full font-mono text-xs',
+    isBar
+      ? 'bg-white/10 px-0.5 py-0.5 shrink-0'
+      : 'fixed top-5 right-5 z-[60] gap-1 bg-white/90 backdrop-blur-sm px-1 py-1 shadow-[0_0_0_0.5px_rgba(0,0,0,0.05),0_4px_20px_rgba(0,0,0,0.08)]',
+  ]}
+  role="group"
+  aria-label={t.langSwitcher.label}
+>
+  <a
+    href={paths.es}
+    data-locale-switch="es"
+    class:list={[
+      'rounded-full px-2 py-0.5 transition-colors',
+      isBar
+        ? lang === 'es'
+          ? 'bg-mist text-ink'
+          : 'text-mist/70 hover:text-mist'
+        : lang === 'es'
+          ? 'bg-ink text-mist'
+          : 'text-ink hover:opacity-70',
+    ]}
+    aria-current={lang === 'es' ? 'true' : undefined}
+  >
+    {t.langSwitcher.es}
+  </a>
+  <a
+    href={paths.en}
+    data-locale-switch="en"
+    class:list={[
+      'rounded-full px-2 py-0.5 transition-colors',
+      isBar
+        ? lang === 'en'
+          ? 'bg-mist text-ink'
+          : 'text-mist/70 hover:text-mist'
+        : lang === 'en'
+          ? 'bg-ink text-mist'
+          : 'text-ink hover:opacity-70',
+    ]}
+    aria-current={lang === 'en' ? 'true' : undefined}
+  >
+    {t.langSwitcher.en}
+  </a>
+</div>
+
+<script>
+  import { LOCALE_COOKIE } from '../i18n/config';
+
+  function saveLocalePreference() {
+    document.querySelectorAll('[data-locale-switch]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const locale = (el as HTMLElement).dataset.localeSwitch;
+        if (locale === 'es' || locale === 'en') {
+          document.cookie = `${LOCALE_COOKIE}=${locale};path=/;max-age=${365 * 24 * 60 * 60};SameSite=Lax`;
+        }
+      });
+    });
+  }
+
+  saveLocalePreference();
+  document.addEventListener('astro:page-load', saveLocalePreference);
+</script>

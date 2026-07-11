@@ -1,9 +1,17 @@
 ---
-import Button from "./Button.astro";
+import type { Lang } from '../i18n/config';
+import { useTranslations, getExperiencesPath } from '../i18n/utils';
+import Button from './Button.astro';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section id="hero" class="mx-auto max-w-[440px] px-6 pt-12 md:pt-16">
-  <!-- Logo -->
   <h2
     data-reveal
     style="animation-delay: 0.1s"
@@ -12,49 +20,40 @@ import Button from "./Button.astro";
     Javier Castro
   </h2>
 
-  <!-- Tagline -->
   <p data-reveal style="animation-delay: 0.2s" class="font-mono text-xs md:text-sm text-ink mb-2">
-    El estudio creativo de Javoru
+    {t.hero.tagline}
   </p>
 
-  <!-- Heading -->
   <h1
     data-reveal
     style="animation-delay: 0.3s"
     class="text-[32px] md:text-[40px] lg:text-[44px] leading-[1.1] text-ink2 tracking-tight"
   >
-    <span class="block whitespace-nowrap">Construyo la <span class="font-mondwest">nueva ola,</span></span>
-    <span class="block whitespace-nowrap">con <span class="font-mondwest">diseño audaz.</span></span>
+    <span class="block whitespace-nowrap">
+      {t.hero.headingLine1Before}<span class="font-mondwest">{t.hero.headingLine1Accent}</span>
+    </span>
+    <span class="block whitespace-nowrap">
+      {t.hero.headingLine2Before}<span class="font-mondwest">{t.hero.headingLine2Accent}</span>
+    </span>
   </h1>
 
-  <!-- Descripción -->
   <div
     data-reveal
     style="animation-delay: 0.4s"
     class="flex flex-col gap-6 text-sm md:text-base text-ink leading-relaxed mt-5 md:mt-6"
   >
-    <p>
-      Soy desarrollador frontend con ojo de diseñador. He construido desde
-      ecommerce completos hasta piezas gráficas, combinando código limpio
-      con un diseño que no pasa desapercibido.
-    </p>
-    <p>
-      Trabajo de punta a punta: cada proyecto lo diseño y lo desarrollo yo
-      mismo, de la idea al deploy, rápido y sin cortar esquinas.
-    </p>
-    <p>
-      Disponible para proyectos freelance y colaboraciones.
-    </p>
+    <p>{t.hero.bio1}</p>
+    <p>{t.hero.bio2}</p>
+    <p>{t.hero.bio3}</p>
   </div>
 
-  <!-- CTAs -->
   <div
     data-reveal
     style="animation-delay: 0.5s"
     class="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-5 md:mt-6"
   >
-    <Button href="mailto:icastroretamal@gmail.com" variant="primary">Hablemos</Button>
-    <Button href="#projects" variant="secondary">Ver proyectos</Button>
-    <Button href="/experiences" variant="secondary">Experiencia</Button>
+    <Button href="mailto:icastroretamal@gmail.com" variant="primary">{t.hero.ctaTalk}</Button>
+    <Button href="#projects" variant="secondary">{t.hero.ctaProjects}</Button>
+    <Button href={getExperiencesPath(lang)} variant="secondary">{t.hero.ctaExperience}</Button>
   </div>
 </section>

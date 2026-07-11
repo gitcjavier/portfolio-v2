@@ -1,16 +1,23 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import type { Lang } from "../i18n/config";
+import { getAlternatePaths } from "../i18n/utils";
+
 export interface Props {
   title: string;
   description: string;
   keywords: string;
   author: string;
+  lang: Lang;
 }
-const { title, description, keywords, author } = Astro.props;
+
+const { title, description, keywords, author, lang } = Astro.props;
+const alternates = getAlternatePaths(Astro.url.pathname);
+const siteOrigin = Astro.site?.origin ?? Astro.url.origin;
 ---
 
 <!doctype html>
-<html lang="es" transition:persist="true">
+<html lang={lang} transition:persist="true">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
@@ -19,7 +26,9 @@ const { title, description, keywords, author } = Astro.props;
     <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
     <title>{title}</title>
-    <!-- Pixelify Sans: fallback de PP Mondwest mientras no esté el woff2 local -->
+    <link rel="alternate" hreflang="es" href={`${siteOrigin}${alternates.es}`} />
+    <link rel="alternate" hreflang="en" href={`${siteOrigin}${alternates.en}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteOrigin}${alternates.es}`} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&display=swap" rel="stylesheet" />
@@ -30,7 +39,6 @@ const { title, description, keywords, author } = Astro.props;
       <slot />
     </div>
 
-    <!-- Reveal global: añade .animate-fade-in-up a [data-reveal] al entrar en viewport -->
     <script>
       function initReveal() {
         const els = document.querySelectorAll('[data-reveal]:not(.animate-fade-in-up)');
@@ -51,6 +59,8 @@ const { title, description, keywords, author } = Astro.props;
       initReveal();
       document.addEventListener('astro:page-load', initReveal);
     </script>
+
+    <script src="../scripts/locale-detect.ts"></script>
   </body>
 </html>
 
@@ -76,22 +86,18 @@ const { title, description, keywords, author } = Astro.props;
     color: #051A24;
   }
 
-  /* Custom scrollbar */
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: #ffffff; }
   ::-webkit-scrollbar-thumb { background: #0D212C; border-radius: 9999px; }
   ::-webkit-scrollbar-thumb:hover { background: #273C46; }
 
-  /* Selection */
   ::selection { background: #051A24; color: #F6FCFF; }
 
-  /* Focus */
   button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible {
     outline: 2px solid #051A24;
     outline-offset: 2px;
   }
 
-  /* Prevent horizontal scroll */
   * { box-sizing: border-box; }
   body { overflow-x: hidden; }
 </style>

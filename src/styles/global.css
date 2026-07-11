@@ -16,14 +16,17 @@
   font-display: swap;
 }
 /* PP Mondwest: descarga gratis (uso personal) en pangrampangram.com/products/mondwest
-   y deja el archivo en public/fonts/PPMondwest-Regular.woff2.
-   Mientras no exista, cae al fallback Pixelify Sans (Google Fonts). */
+   Convierte a .woff2 y guárdalo en public/fonts/PPMondwest-Regular.woff2.
+   Luego descomenta el bloque @font-face de abajo.
+   Sin el archivo local, font-mondwest usa Pixelify Sans (Google Fonts). */
+/*
 @font-face {
   font-family: 'PP Mondwest';
   src: url('/fonts/PPMondwest-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
+*/
 
 @layer base {
   body {

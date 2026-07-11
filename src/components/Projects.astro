@@ -1,25 +1,14 @@
 ---
-interface Project {
-  name: string;
-  description: string;
-  image: string;
-  link: string;
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
 }
 
-const projects: Project[] = [
-  {
-    name: "Chetomi",
-    description: "Ecommerce completo de comida argentina — diseño y desarrollo en Jumpseller",
-    image: "/img/projects/chetomiweb.webp",
-    link: "https://www.chetomi.cl",
-  },
-  {
-    name: "Mob Psycho 100",
-    description: "Diseño gráfico de poster con tipografía dinámica y paleta intensa",
-    image: "/img/projects/mob.png",
-    link: "https://www.behance.net/gallery/227800757/Poster-Chigeo-Kageyama",
-  },
-];
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const projects = t.projects;
 ---
 
 <section id="projects" class="max-w-[1200px] mx-auto px-6 py-12">

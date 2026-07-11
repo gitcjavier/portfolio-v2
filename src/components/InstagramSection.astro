@@ -1,9 +1,15 @@
 ---
 import { Image } from "astro:assets";
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
 
-/* Lee automáticamente las fotos que dejes en src/assets/instagram/
-   (extensiones en minúscula: .jpg, .jpeg, .png o .webp), ordenadas
-   por nombre de archivo. Si la carpeta está vacía, no se muestra. */
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
 const modules = import.meta.glob<{ default: ImageMetadata }>(
   "../assets/instagram/*.{jpg,jpeg,png,webp}",
   { eager: true }
@@ -12,7 +18,6 @@ const photos = Object.entries(modules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, m]) => m.default);
 
-// Duplicadas para el loop infinito (translateX -50%)
 const slides = [...photos, ...photos];
 
 const INSTAGRAM_URL = "https://instagram.com/ijavoru";
@@ -26,7 +31,7 @@ const INSTAGRAM_URL = "https://instagram.com/ijavoru";
       class="max-w-[1200px] mx-auto px-6 flex items-end justify-between mb-10"
     >
       <h2 class="text-[32px] md:text-[40px] leading-[1.1] text-ink2 tracking-tight">
-        Desde mi <span class="font-mondwest">Instagram</span>
+        {t.instagram.titleBefore}<span class="font-mondwest">{t.instagram.titleAccent}</span>
       </h2>
       <a
         href={INSTAGRAM_URL}
@@ -41,14 +46,13 @@ const INSTAGRAM_URL = "https://instagram.com/ijavoru";
       </a>
     </div>
 
-    <!-- Carrusel automático — se pausa con el mouse encima -->
     <div data-reveal style="animation-delay: 0.2s" class="w-full overflow-x-clip py-4">
       <div class="flex w-max animate-marquee-ig">
         {slides.map((photo) => (
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" class="block mx-3 group relative hover:z-10">
             <Image
               src={photo}
-              alt="Foto de Instagram de Javier Castro"
+              alt={t.instagram.photoAlt}
               height={420}
               class="h-[260px] md:h-[380px] w-auto object-cover rounded-2xl shadow-lg group-hover:scale-110 group-hover:shadow-2xl transition-all duration-300 ease-out select-none"
               loading="lazy"

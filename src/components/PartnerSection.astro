@@ -1,5 +1,14 @@
 ---
 import { MARQUEE_IMAGES } from "./Marquee.astro";
+import type { Lang } from '../i18n/config';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="w-full py-12 px-6">
@@ -13,7 +22,7 @@ import { MARQUEE_IMAGES } from "./Marquee.astro";
       style="animation-delay: 0.1s"
       class="relative z-10 font-mondwest text-[48px] md:text-[64px] lg:text-[80px] text-ink2 mb-12 text-center leading-none"
     >
-      Trabajemos juntos
+      {t.partner.title}
     </h2>
 
     <a
@@ -24,10 +33,10 @@ import { MARQUEE_IMAGES } from "./Marquee.astro";
     >
       <img
         src="/img/javoru2.webp"
-        alt="Javier"
+        alt={t.partner.avatarAlt}
         class="w-10 h-10 rounded-full object-cover"
       />
-      Escríbele a Javier
+      {t.partner.cta}
     </a>
   </div>
 </section>
